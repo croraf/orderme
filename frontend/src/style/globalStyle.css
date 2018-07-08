@@ -1,0 +1,14 @@
+
+
+body{
+  background-color: #373d5c;
+  margin: 0px;
+}
+
+@font-face {
+    font-family: 'Aller Display';
+    src: url('./fonts/AllerDisplay.eot') format('eot'),
+         url('./fonts/AllerDisplay.woff') format('woff'),
+         url('./fonts/AllerDisplay.ttf') format('truetype'),
+         url('./fonts/AllerDisplay.svg') format('svg');
+  }
