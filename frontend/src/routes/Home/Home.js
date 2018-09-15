@@ -32,7 +32,10 @@ class Home extends React.Component {
                 justifyContent: 'center',
                 minWidth: '1200px'
             }}>
-                <div>commercial left</div>
+                <div style={{
+                    minWidth: '200px'
+                }}><img src='https://picsum.photos/200/600' /></div>
+
                 <div style={{
                     position: 'relative',
                     minWidth: '800px',
@@ -58,7 +61,9 @@ class Home extends React.Component {
                     {/* <GameOverOverlayContainer /> */}
                     
                 </div>
-                <div>commercial right</div>
+                <div style={{
+                    minWidth: '200px'
+                }}><img src='https://picsum.photos/300/300' /></div>
             </div>
             
         );

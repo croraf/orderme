@@ -15,9 +15,13 @@ class FilterMenu extends React.Component {
     };
 
     handleClose = (event) => {
-        console.log(event);
         this.setState({ anchorEl: null });
     };
+
+    handleSelect = (item) => {
+        this.handleClose();
+        this.props.filterHandler(item);
+    }
 
     render() {
         const { anchorEl } = this.state;
@@ -33,7 +37,13 @@ class FilterMenu extends React.Component {
                     aria-haspopup="true"
                     onClick={this.handleClick}
                 >
-                    {menuName}: {selected}
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: 'column'
+                    }}>
+                        <div>{menuName}:</div>
+                        <div>{selected}</div>
+                    </div>
                 </Button>
                 <Menu
                     id="simple-menu"
@@ -42,7 +52,7 @@ class FilterMenu extends React.Component {
                     onClose={this.handleClose}
                 >
                     {menuItems.map(item => (
-                        <MenuItem key={item} onClick={this.handleClose}>{item}</MenuItem>
+                        <MenuItem key={item} onClick={() => {this.handleSelect(item);}}>{item}</MenuItem>
                     ))}
                 </Menu>
             </div>

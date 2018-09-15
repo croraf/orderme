@@ -11,7 +11,7 @@ const restaurantsList = [
     {
         name: 'burg2',
         open: true,
-        area: 'Tresnjevka'
+        area: 'Trešnjevka'
     },
     {
         name: 'rest2',

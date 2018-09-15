@@ -16,7 +16,7 @@ class FilterRow extends React.Component {
                 flexDirection: 'row',
                 justifyContent: 'left'
             }}>
-                <FilterMenu selected={area} menuName={'Select area'} menuItems={['Centar', 'Trešnjevka', 'Trnje']} filterHandler={filterAreaHandler}/>
+                <FilterMenu selected={area} menuName={'Select area'} menuItems={['-', 'Centar', 'Trešnjevka', 'Trnje']} filterHandler={filterAreaHandler}/>
                 <FilterMenu selected={sortBy} menuName={'Sort by'} menuItems={['Rating', 'Delivery speed']} filterHandler={filterSortByHandler}/>
                 <FilterSwitch openOnly={openOnly} openOnlyToggleHandler={openOnlyToggleHandler}/>
             </div>

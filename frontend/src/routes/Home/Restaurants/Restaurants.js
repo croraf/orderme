@@ -11,7 +11,7 @@ class Restaurants extends React.Component {
         return (
             <div style={{
                 width: '100%',
-                marginTop: '20px',
+                marginTop: '0px',
                 display: 'flex',
                 flexDirection: 'row',
                 flexWrap: 'wrap',
