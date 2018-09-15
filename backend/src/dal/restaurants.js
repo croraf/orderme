@@ -22,8 +22,8 @@ const deleteRestaurant = async (filter) => {
     return (await getDatabaseConnection().collection('restaurants').deleteMany(filter)).deletedCount;
 };
 
-const updateRestaurant = async () => {
-
+const updateRestaurant = async (name, newData) => {
+    return (await getDatabaseConnection().collection('restaurants').updateMany({name: name}, {$set: newData})).result.n;
 };
 
 

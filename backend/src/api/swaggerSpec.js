@@ -110,53 +110,6 @@ const swaggerSpec = {
                     }
                 ]
             }
-            /*
-            'put': {
-                'tags': [
-                    'pet'
-                ],
-                'summary': 'Update an existing pet',
-                'description': '',
-                'operationId': 'updatePet',
-                'consumes': [
-                    'application/json',
-                    'application/xml'
-                ],
-                'produces': [
-                    'application/xml',
-                    'application/json'
-                ],
-                'parameters': [
-                    {
-                        'in': 'body',
-                        'name': 'body',
-                        'description': 'Pet object that needs to be added to the store',
-                        'required': true,
-                        'schema': {
-                            '$ref': '#/definitions/Pet'
-                        }
-                    }
-                ],
-                'responses': {
-                    '400': {
-                        'description': 'Invalid ID supplied'
-                    },
-                    '404': {
-                        'description': 'Pet not found'
-                    },
-                    '405': {
-                        'description': 'Validation exception'
-                    }
-                },
-                'security': [
-                    {
-                        'petstore_auth': [
-                            'write:pets',
-                            'read:pets'
-                        ]
-                    }
-                ]
-            }*/
         },
         
         '/restaurants/{name}': {
@@ -164,7 +117,7 @@ const swaggerSpec = {
                 'tags': [
                     'restaurants'
                 ],
-                'summary': 'Logs user into the system',
+                'summary': 'Get specified restaurant',
                 'description': '',
                 'produces': [
                     'application/json'
@@ -201,7 +154,98 @@ const swaggerSpec = {
                         'description': 'Restaurant name supplied not in the system'
                     }
                 }
-            }
+            },
+            'delete': {
+                'tags': [
+                    'restaurants'
+                ],
+                'summary': 'Deletes the specified restaurant',
+                'description': '',
+                'parameters': [
+                    {
+                        'name': 'name',
+                        'in': 'path',
+                        'description': 'The name of the restaurant to delete',
+                        'required': true,
+                        'type': 'string'
+                    }
+                ],
+                'responses': {
+                    '200': {
+                        'description': 'successful operation',
+                        'schema': {
+                            'type': 'string'
+                        },
+                        'headers': {
+                            'X-Rate-Limit': {
+                                'type': 'integer',
+                                'format': 'int32',
+                                'description': 'calls per hour allowed by the user'
+                            },
+                            'X-Expires-After': {
+                                'type': 'string',
+                                'format': 'date-time',
+                                'description': 'date in UTC when token expires'
+                            }
+                        }
+                    },
+                    '400': {
+                        'description': 'Restaurant name supplied not in the system'
+                    }
+                }
+            },
+            'put': {
+                'tags': [
+                    'restaurants'
+                ],
+                'summary': 'Update restaurant\'s data',
+                'description': '',
+                'consumes': 'application/json',
+                'produces': [
+                    'application/json'
+                ],
+                'parameters': [
+                    {
+                        'name': 'name',
+                        'in': 'path',
+                        'description': 'The name of the restaurant to get',
+                        'required': true,
+                        'type': 'string'
+                    },
+                    {
+                        'in': 'body',
+                        'name': 'body',
+                        'description': 'Updater restaurant object',
+                        'required': true,
+                        'schema': {
+                            '$ref': '#/definitions/Restaurant'
+                        }
+                    }
+                ],
+                'responses': {
+                    '200': {
+                        'description': 'successful operation',
+                        'schema': {
+                            'type': 'string'
+                        },
+                        'headers': {
+                            'X-Rate-Limit': {
+                                'type': 'integer',
+                                'format': 'int32',
+                                'description': 'calls per hour allowed by the user'
+                            },
+                            'X-Expires-After': {
+                                'type': 'string',
+                                'format': 'date-time',
+                                'description': 'date in UTC when token expires'
+                            }
+                        }
+                    },
+                    '400': {
+                        'description': 'Restaurant name supplied not in the system'
+                    }
+                }
+            },
         },
         /* 
         '/user/login': {

@@ -20,8 +20,8 @@ const deleteAllRestaurants = async () => {
     return await dal.deleteRestaurant();
 };
 
-const updateRestaurant = async () => {
-
+const updateRestaurant = async (name, newData) => {
+    return await dal.updateRestaurant(name, newData);
 };
 
 
