@@ -1,7 +1,7 @@
 const {getDatabaseConnection} = require('./db');
 
-const getRestaurant = async (restaurantName) => {
 
+const getRestaurant = async (restaurantName) => {
     return await getDatabaseConnection().collection('restaurants').find({name: restaurantName}).toArray();
 };
 
