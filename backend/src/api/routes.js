@@ -25,13 +25,11 @@ const defineRoutes = (router) => {
 
 
     router.get('/v0/auth', async (ctx) => {
-        const appId = '307207183167195';
-        const redirectURI = 'http://localhost:3000/v0/restaurants';
-        const state = '1234'
-        const oAuthFacebookLoginPage = 
-            `https://www.facebook.com/v3.1/dialog/oauth?client_id=${appId}&redirect_uri=${redirectURI}&state=${state}`;
-        ctx.redirect(oAuthFacebookLoginPage);
+        const authCode = ctx.query.code;
+        console.log('redirect from facebook received with code:', authCode);
+        
+        ctx.redirect('http://localhost:9002/home');
     });
 };
 
-module.exports = {defineRoutes};
+module.exports = { defineRoutes };

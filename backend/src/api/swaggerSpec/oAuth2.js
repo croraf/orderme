@@ -26,7 +26,6 @@ const spec = {
                 }
             }
         },
-        '/authCallback'
     },
     'definitions': {
         /* 'User': {
