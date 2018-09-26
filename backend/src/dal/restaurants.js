@@ -14,7 +14,7 @@ const createRestaurant = async (restaurantObject) => {
     if (n === 1) {
         return;
     } else {
-        throw new Error('restaurant not created');
+        throw new Error('Restaurant not created');
     }
 };
 
@@ -23,7 +23,12 @@ const deleteRestaurant = async (filter) => {
 };
 
 const updateRestaurant = async (name, newData) => {
-    return (await getDatabaseConnection().collection('restaurants').updateMany({name: name}, {$set: newData})).result.n;
+    const n = (await getDatabaseConnection().collection('restaurants').updateMany({name: name}, {$set: newData})).result.n;
+    if (n === 1) {
+        return;
+    } else {
+        throw new Error('Restaurant not updated');
+    }
 };
 
 
