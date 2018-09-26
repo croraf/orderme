@@ -1,14 +1,12 @@
 
-import { createStore } from 'redux';
-
 import reduxThunk from 'redux-thunk';
 
-import { combineReducers, applyMiddleware, compose } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 
 import { filtersReducer } from './filters';
 
 
-import createHistory from 'history/createHashHistory';
+import createHistory from 'history/createBrowserHistory';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 
 const history = createHistory();
