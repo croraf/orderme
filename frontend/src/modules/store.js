@@ -6,10 +6,10 @@ import reduxThunk from 'redux-thunk';
 import { combineReducers, applyMiddleware, compose } from 'redux';
 
 import { filtersReducer } from './filters';
-import { routerReducer, routerMiddleware, push } from 'react-router-redux';
 
 
 import createHistory from 'history/createHashHistory';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
 
 const history = createHistory();
 
@@ -21,7 +21,8 @@ const reducer = combineReducers({
 });
 
 const store = createStore(
-    reducer,
+    connectRouter(history)(reducer),
+    {},
     composeEnhancers(
         applyMiddleware(reduxThunk, routerMiddleware(history))
     )

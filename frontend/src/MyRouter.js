@@ -1,5 +1,5 @@
 import React from 'react';
-import { ConnectedRouter } from 'react-router-redux';
+import { ConnectedRouter } from 'connected-react-router';
 import {history} from './modules/store';
 
 import Main from './Main';
