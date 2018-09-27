@@ -1,11 +1,19 @@
 import {LoginContainer} from './LoginContainer';
 import {LoggingIn} from './LoggingIn';
-
+import {store} from '../../modules/store';
+import {push} from 'connected-react-router';
 
 const fetchJwtToken = async (facebookAuthCode) => {
     console.log('fetching JWT token for received facebook code');
-    const response = await fetch('http://localhost:3000/v0/auth?code=' + facebookAuthCode);
-    console.log('JWT token received:', response);
+    const url = 'http://localhost:3000/v0/auth?code=' + facebookAuthCode;
+    const options = {
+        headers: {
+            'Accept': 'application/json'
+        }
+    };
+    const responseJson = await ((await fetch(url, options)).json());
+    console.log('JWT token received:', responseJson);
+    store.dispatch(push('/home'));
 };
 
 const loginRouteRenderer = () => {

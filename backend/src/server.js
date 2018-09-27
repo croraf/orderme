@@ -2,6 +2,7 @@ const Koa = require('koa');
 const Router = require('koa-router');
 const koaSwagger = require('koa2-swagger-ui');
 const koaBody = require('koa-body');
+const cors = require('koa-cors');
 
 const {defineRoutes} = require('./api/routes');
 
@@ -18,6 +19,8 @@ const createSwaggerMiddleware = () => {
 const startServer = (port) => {
 
     const server = new Koa();
+
+    server.use(cors({ origin: '*', allowMethods: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'] }));
 
     server.use(createSwaggerMiddleware());
 

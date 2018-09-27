@@ -28,6 +28,7 @@ const defineRoutes = (router) => {
     router.get('/v0/auth', async (ctx) => {
         const accessToken = await users.auth(ctx.query.code);
         
+        console.log('access_token:', accessToken);
         ctx.body = accessToken;    
     });
 };
