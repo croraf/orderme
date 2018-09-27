@@ -1,4 +1,5 @@
 const restaurantsAPI = require('./restaurants');
+const users = require('./users');
 
 const defineRoutes = (router) => {
 
@@ -25,10 +26,9 @@ const defineRoutes = (router) => {
 
 
     router.get('/v0/auth', async (ctx) => {
-        const authCode = ctx.query.code;
-        console.log('redirect from facebook received with code:', authCode);
+        const accessToken = await users.auth(ctx.query.code);
         
-        ctx.redirect('http://localhost:9002/home');
+        ctx.body = accessToken;    
     });
 };
 

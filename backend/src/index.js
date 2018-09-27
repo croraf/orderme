@@ -20,8 +20,8 @@ const main = async () => {
     await createRestaurant({ name: 'Chello', meals: ['Pizza Hellas', 'Pizza Chello'] });
     console.log('- Restaurant Chello created');*/
 
-    const allRestaurants = await getAllRestaurants();
-    console.log('- All restaurants:', allRestaurants);
+    /* const allRestaurants = await getAllRestaurants();
+    console.log('- All restaurants:', allRestaurants); */
 
     /* const restaurantChello = await getRestaurant('Chello');
     console.log('- Restaurant Chello:', restaurantChello);
