@@ -17,13 +17,13 @@ const GAME_STATE_ON = 'GAME_STATE_ON';
 const GAME_STATE_INITIALIZING = 'GAME_STATE_INITIALIZING';
 
 
-import winSound from './win1.wav';
+/* import winSound from './win1.wav';
 const winAudioPlayer = new Audio(winSound);
 winAudioPlayer.volume = 0.07;
 
 import loseSound from './lose1.wav';
 const loseAudioPlayer = new Audio(loseSound);
-loseAudioPlayer.volume = 0.07;
+loseAudioPlayer.volume = 0.07; */
 
 /**
  * Async action creator. Dispatch start of fetching for new word. Fetches, and on success dispatches start new game action.
