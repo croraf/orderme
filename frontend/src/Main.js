@@ -1,10 +1,9 @@
 import React from 'react';
 
 import { Route, Switch } from 'react-router';
-import { HomeContainer } from './routes/Home/HomeContainer';
+import { homeRouteRenderer } from './routes/Home/homeRouteRenderer';
 import { loginRouteRenderer } from './routes/Login/loginRouteRenderer';
-//import { LoginContainer } from './routes/Login/LoginContainer';
-
+import { noRouteRenderer } from './routes/NoRoute/noRouteRenderer';
 
 class Main extends React.Component {
 
@@ -13,8 +12,9 @@ class Main extends React.Component {
 
         return (
             <Switch>
-                <Route exact path="/" component={loginRouteRenderer()} />
-                <Route exact path="/home" component={HomeContainer} />
+                <Route exact path="/" component={loginRouteRenderer} />
+                <Route exact path="/home" component={homeRouteRenderer} />
+                <Route component={noRouteRenderer} />
             </Switch>
         );
     }

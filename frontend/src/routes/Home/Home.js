@@ -4,7 +4,6 @@ import React from 'react';
 
 import {RestaurantsContainer} from './Restaurants/RestaurantsContainer';
 import {FilterRowContainer} from './FilterRow/FilterRowContainer';
-import {GameOverOverlayContainer} from './GameOverOverlay/GameOverOverlayContainer';
 import {TitleRowContainer} from './TitleRow/TitleRowContainer';
 
 /* import squareImage from './square.png'; */
@@ -56,9 +55,6 @@ class Home extends React.Component {
                     <FilterRowContainer />
 
                     <RestaurantsContainer />
-
-                    
-                    {/* <GameOverOverlayContainer /> */}
                     
                 </div>
                 <div style={{

@@ -4,8 +4,6 @@ import React from 'react';
 class TitleRow extends React.Component {
     render() {
 
-        const {missedGuesses, countOfMissed} = this.props;
-
         return (
             <div style={{
                 width: '100%',
@@ -19,6 +17,7 @@ class TitleRow extends React.Component {
                     fontSize: 35,
                     marginLeft: '5px'
                 }}>order.me</div>
+                <button onClick={this.props.onLogoutHandler}>Log out</button>
             </div>
         );
     }
