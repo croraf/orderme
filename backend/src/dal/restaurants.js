@@ -10,11 +10,11 @@ const getAllRestaurants = async () => {
 };
 
 const createRestaurant = async (restaurantObject) => {
-    const n = (await getDatabaseConnection().collection('restaurants').insertOne(restaurantObject)).result.n;
-    if (n === 1) {
-        return;
+    const result = (await getDatabaseConnection().collection('restaurants').insertOne(restaurantObject)).result;
+    if (result.n === 1) {
+        return result.n;
     } else {
-        throw new Error('Restaurant not created');
+        throw new Error('Restaurant not created:', result);
     }
 };
 
