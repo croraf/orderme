@@ -18,12 +18,12 @@ const restaurantsList = [
     {
         name: 'Bistro To-Mi',
         open: true,
-        area: 'Centar'
+        area: 'Trešnjevka'
     }, 
     {
         name: 'Bistro Šalša',
         open: true,
-        area: 'Centar'
+        area: 'Trešnjevka'
     }, 
     {
         name: 'Burgeri i to',
