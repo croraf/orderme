@@ -2,9 +2,10 @@ import React from 'react';
 
 
 
-import {RestaurantsContainer} from './Restaurants/RestaurantsContainer';
-import {FilterRowContainer} from './FilterRow/FilterRowContainer';
-import {TitleRowContainer} from './TitleRow/TitleRowContainer';
+import { RestaurantsContainer } from './Restaurants/RestaurantsList/RestaurantsContainer';
+import { TitleRowContainer } from './TitleRow/TitleRowContainer';
+import { Switch, Route } from 'react-router';
+import { RestaurantDetailsContainer } from './Restaurants/RestaurantDetails/RestaurantDetailsContainer';
 
 /* import squareImage from './square.png'; */
 
@@ -12,7 +13,7 @@ import {TitleRowContainer} from './TitleRow/TitleRowContainer';
 class Home extends React.Component {
 
     componentDidMount() {
-        
+
         /* console.log('Home component mounted');
         const body = document.getElementsByTagName('body')[0];
         body.addEventListener('keypress', this.props.newGuessHandler);
@@ -20,9 +21,9 @@ class Home extends React.Component {
         this.props.fetchNewWordAndDispatchNewWordAction(); */
 
     }
-    
+
     render() {
-        
+
         return (
             <div style={{
                 position: 'relative',
@@ -52,16 +53,18 @@ class Home extends React.Component {
 
                     <TitleRowContainer />
 
-                    <FilterRowContainer />
+                    <Switch>
+                        <Route exact={true} path={'/home'} component={RestaurantsContainer} />
+                        <Route path={'/home/:restaurantName'} component={RestaurantDetailsContainer}/>
+                    </Switch>
 
-                    <RestaurantsContainer />
-                    
                 </div>
+                
                 <div style={{
                     minWidth: '200px'
                 }}><img src='https://picsum.photos/300/300' /></div>
             </div>
-            
+
         );
     }
 }

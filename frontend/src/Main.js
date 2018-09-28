@@ -13,8 +13,8 @@ class Main extends React.Component {
         return (
             <Switch>
                 <Route exact path="/" component={loginRouteRenderer} />
-                <Route exact path="/home" component={homeRouteRenderer} />
-                <Route component={noRouteRenderer} />
+                <Route path="/home" component={homeRouteRenderer} />
+                {/* <Route component={noRouteRenderer} /> */}
             </Switch>
         );
     }

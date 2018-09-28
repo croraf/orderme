@@ -1,4 +1,5 @@
 import {connect} from 'react-redux';
+import {push} from 'connected-react-router';
 
 import {Restaurants} from './Restaurants';
 
@@ -11,8 +12,12 @@ const mapStateToProps = (state) => {
     });
 };
 
+const mapDispatchToProps = (dispatch) => ({
+    onRestaurantClickHandler: (restaurantName) => {dispatch(push('/home/' + restaurantName));}
+});
 
 
-const RestaurantsContainer = connect(mapStateToProps, undefined)(Restaurants);
+
+const RestaurantsContainer = connect(mapStateToProps, mapDispatchToProps)(Restaurants);
 
 export {RestaurantsContainer};

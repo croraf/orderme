@@ -10,7 +10,7 @@ const loadListOfRestaurants = async () => {
     store.dispatch({type: 'restaurantsData', data: restaurants});
 };
 
-const homeRouteRenderer = () => {
+const homeRouteRenderer = (props) => {
 
     const auth_token = localStorage.getItem('auth_token');
     console.log('token in local storage:', auth_token);
@@ -20,7 +20,7 @@ const homeRouteRenderer = () => {
 
     loadListOfRestaurants();
     
-    return <HomeContainer />;
+    return <HomeContainer props={props} />;
 };
 
 export {homeRouteRenderer};

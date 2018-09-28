@@ -2,7 +2,7 @@ import React from 'react';
 
 import burgerImage from './burger.png';
 
-class Restaurants extends React.Component {
+class RestaurantsList extends React.Component {
 
     render() {
 
@@ -22,7 +22,7 @@ class Restaurants extends React.Component {
 
                     const restaurantDiv = (
                         <div 
-                            onClick={() => {window.alert('Opening ' + restaurant.name + ' restaurant');}}
+                            onClick={() => {this.props.onRestaurantClickHandler(restaurant.name);}}
                             key={restaurant.name}
                             style={{
                                 backgroundImage: `url(${burgerImage})`,
@@ -50,4 +50,4 @@ class Restaurants extends React.Component {
     }
 }
 
-export {Restaurants};
+export {RestaurantsList};
