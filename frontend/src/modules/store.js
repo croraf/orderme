@@ -9,6 +9,7 @@ import { filtersReducer } from './filters';
 import createHistory from 'history/createBrowserHistory';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { restaurantsReducer } from './restaurants';
+import { restaurantDetailsReducer } from './restaurantDetails';
 
 const history = createHistory();
 
@@ -17,7 +18,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const reducer = combineReducers({
     filters: filtersReducer,
-    restaurants: restaurantsReducer
+    restaurants: restaurantsReducer,
+    restaurantDetails: restaurantDetailsReducer
 });
 
 const store = createStore(

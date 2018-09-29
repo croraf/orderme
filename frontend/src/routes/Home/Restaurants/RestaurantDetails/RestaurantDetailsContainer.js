@@ -5,6 +5,7 @@ import {RestaurantDetails} from './RestaurantDetails';
 /* import {fetchNewWordAndDispatchNewWordAction} from '../../modules/guesses'; */
 
 const mapStateToProps = (state) => ({
+    restaurantDetails: state.restaurantDetails
 });
 
 const mapDispatchToProps = (dispatch) => ({

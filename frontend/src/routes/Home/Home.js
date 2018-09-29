@@ -5,7 +5,7 @@ import React from 'react';
 import { RestaurantsContainer } from './Restaurants/RestaurantsList/RestaurantsContainer';
 import { TitleRowContainer } from './TitleRow/TitleRowContainer';
 import { Switch, Route } from 'react-router';
-import { RestaurantDetailsContainer } from './Restaurants/RestaurantDetails/RestaurantDetailsContainer';
+import { restaurantDetailsRenderer } from './Restaurants/RestaurantDetails/restaurantDetailsRenderer';
 
 /* import squareImage from './square.png'; */
 
@@ -55,7 +55,7 @@ class Home extends React.Component {
 
                     <Switch>
                         <Route exact={true} path={'/home'} component={RestaurantsContainer} />
-                        <Route path={'/home/:restaurantName'} component={RestaurantDetailsContainer}/>
+                        <Route path={'/home/:restaurantName'} component={restaurantDetailsRenderer}/>
                     </Switch>
 
                 </div>

@@ -2,7 +2,7 @@ const {getDatabaseConnection} = require('./db');
 
 
 const getRestaurant = async (restaurantName) => {
-    return await getDatabaseConnection().collection('restaurants').find({name: restaurantName}).toArray();
+    return await getDatabaseConnection().collection('restaurants').findOne({name: restaurantName});
 };
 
 const getAllRestaurants = async () => {
