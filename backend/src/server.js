@@ -3,6 +3,7 @@ const Router = require('koa-router');
 const koaSwagger = require('koa2-swagger-ui');
 const koaBody = require('koa-body');
 const cors = require('koa-cors');
+const koaStatic = require('koa-static');
 
 const {defineRoutes} = require('./api/routes');
 
@@ -30,12 +31,10 @@ const startServer = (port) => {
     defineRoutes(router);
 
     server
-        .use(router.routes());//.use(router.allowedMethods());
+        .use(router.routes());
 
 
-    /* server.use(async ctx => {
-        ctx.body = 'Hello World';
-    }); */
+    server.use(koaStatic('/home/korisnik/Desktop/Programiranje/orderme/frontend'));
 
     server.listen(port);
 };
