@@ -9,7 +9,7 @@ const loadRestaurantDetails = async (restaurantName) => {
 
     console.log(restaurantDetails);
 
-    store.dispatch({type: 'restaurantDetails', data: restaurantDetails});
+    store.dispatch({type: 'restaurantDetailsFetched', data: restaurantDetails});
 };
 
 const restaurantDetailsRenderer = (props) => {
@@ -22,7 +22,9 @@ const restaurantDetailsRenderer = (props) => {
 
     const restaurantName = props.match.params.restaurantName;
 
-    loadRestaurantDetails(restaurantName);
+    store.dispatch({type: 'restaurantDetailsFetching'});
+    setTimeout(
+        () => loadRestaurantDetails(restaurantName), 2000);
     
     return <RestaurantDetailsContainer restaurantName={restaurantName} />;
 };

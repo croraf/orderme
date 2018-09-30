@@ -11,7 +11,8 @@ class FilterSwitch extends React.Component {
                 style={{
                     width: '120px',
                     textAlign: 'center',
-                    backgroundColor: this.props.openOnly ? 'yellow' : undefined
+                    backgroundColor: this.props.openOnly ? 'white' : undefined,
+                    border:  this.props.openOnly ? '1px solid black' : undefined
                 }}
                 onClick={this.props.openOnlyToggleHandler}
             >

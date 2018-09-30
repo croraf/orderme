@@ -22,25 +22,6 @@ class FilterRow extends React.Component {
             </div>
         );
     }
-/*     render() {
-
-        const {lettersRowText} = this.props; 
-
-        return (
-            
-            <div style={{
-                width: '100%',
-                margin: '10px',
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'left'
-            }}>
-                <div style={{marginLeft: '10px'}}>SelectArea</div>
-                <div style={{marginLeft: '10px'}}>SortBy</div>
-                <div style={{marginLeft: '10px'}}>OpenOnly</div>
-            </div>
-        );
-    } */
 }
 
 export {FilterRow};

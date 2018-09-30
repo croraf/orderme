@@ -1,16 +1,14 @@
 import {connect} from 'react-redux';
+import {push} from 'connected-react-router';
 
 import {RestaurantDetails} from './RestaurantDetails';
 
-/* import {fetchNewWordAndDispatchNewWordAction} from '../../modules/guesses'; */
 
 const mapStateToProps = (state) => ({
-    restaurantDetails: state.restaurantDetails
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    /* newGuessHandler: (event) => {dispatch({type: 'newGuess', guess: event.key.toUpperCase()});},
-    fetchNewWordAndDispatchNewWordAction: () => {dispatch(fetchNewWordAndDispatchNewWordAction());} */
+    onReturnToListOfRestaurantsHandler: () => {dispatch(push('/home'));}
 });
 
 const RestaurantDetailsContainer = connect(mapStateToProps, mapDispatchToProps)(RestaurantDetails);

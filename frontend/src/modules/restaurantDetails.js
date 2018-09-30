@@ -2,10 +2,11 @@
 
 const restaurantDetailsReducer = (state = {}, action) => {
     switch (action.type) {
-        case 'restaurantDetails':
-
+        case 'restaurantDetailsFetching':
+            return {fetching: true};
+        case 'restaurantDetailsFetched':
             console.log('restaurant details:', action.data);
-            return action.data;
+            return {fetching: false, data: action.data};
         default:
             return state;
     }

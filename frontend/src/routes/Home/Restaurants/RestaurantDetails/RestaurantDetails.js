@@ -1,10 +1,10 @@
 import React from 'react';
-
+import { RestaurantDetailsBodyContainer } from './RestaurantDetailsBodyContainer';
 
 class RestaurantDetails extends React.Component {
 
     render() {
-        const {restaurantName, restaurantDetails} = this.props;
+        const {restaurantName, onReturnToListOfRestaurantsHandler} = this.props;
 
         return (
             <div style={{
@@ -14,20 +14,18 @@ class RestaurantDetails extends React.Component {
                 flexDirection: 'column'
             }}>
                 <div style={{
-                    fontSize: '30px'
-                }}>{restaurantName}</div>
-                <div>
-                    {restaurantDetails.area},      {restaurantDetails.open ? 'OPEN' : 'CLOSED'}
+                    display: 'flex',
+                    justifyContent: 'space-between'
+                }}>
+                    <div style={{
+                        fontSize: '30px'
+                    }}>{restaurantName}</div>
+
+                    <button onClick={onReturnToListOfRestaurantsHandler}>Return to list of restaurants</button>
                 </div>
-                <div>
-                    food1
-                </div>
-                <div>
-                    food2
-                </div>
-                <div>
-                    food3
-                </div>
+                
+
+                <RestaurantDetailsBodyContainer/>
             </div>
             
         );
