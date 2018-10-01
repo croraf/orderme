@@ -4,7 +4,7 @@
   "description": "Food ordering web app.",
   "main": "index.js",
   "scripts": {
-    "heroku-postbuild": "npm --prefix frontend run installAndCompile && npm --prefix backend install",
+    "heroku-postbuild": "npm --prefix frontend run installAndCompile && npm --prefix backend run installDependencies",
     "start": "npm --prefix backend run start"
   },
   "repository": {
