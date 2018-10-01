@@ -4,6 +4,7 @@ const koaSwagger = require('koa2-swagger-ui');
 const koaBody = require('koa-body');
 const cors = require('koa-cors');
 const koaStatic = require('koa-static');
+const send = require('koa-send');
 const path = require('path');
 
 const {defineRoutes} = require('./api/routes');
@@ -34,10 +35,14 @@ const startServer = (port) => {
     server
         .use(router.routes());
 
-    server.use(koaStatic(path.resolve('../frontend/dist')));
+    /* server.use(koaStatic(path.resolve('../frontend/dist'))); */
 
     server.use(async (ctx) => {
-        ctx.body = 'TODO';
+        await send(ctx, ctx.path, {root: path.resolve('../frontend/dist')});
+    });
+    
+    server.use(async (ctx) => {
+        await send(ctx, path.resolve('../frontend/dist/index.html'));
     });
     
     server.listen(port);
