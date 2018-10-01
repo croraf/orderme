@@ -20,7 +20,7 @@ const swaggerSpec = {
             'url': 'http://www.apache.org/licenses/LICENSE-2.0.html'
         }
     },
-    'host': config.apiHost,
+    'host': config.baseUrl,
     'basePath': '/v0',
     'schemes': [
         'https'

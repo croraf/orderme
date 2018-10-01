@@ -34,8 +34,11 @@ const startServer = (port) => {
     server
         .use(router.routes());
 
-    //server.use(koaStatic('/home/korisnik/Desktop/Programiranje/orderme/frontend'));
     server.use(koaStatic(path.resolve('../frontend/dist')));
+
+    server.use(async (ctx) => {
+        ctx.body = 'TODO';
+    });
     
     server.listen(port);
 };
