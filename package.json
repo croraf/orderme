@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "heroku-postbuild": "npm --prefix frontend run installAndCompile && npm --prefix backend run installDependencies",
-    "start": "npm --prefix backend run start"
+    "start": "npm --prefix backend start"
   },
   "repository": {
     "type": "git",
