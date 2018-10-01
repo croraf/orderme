@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { Login } from './Login';
-import { config } from 'config';
+import config from 'Config';
 
 
 const redirectToFacebookLoginPage = () => (dispatch) => {

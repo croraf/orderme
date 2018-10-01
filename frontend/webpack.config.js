@@ -8,6 +8,11 @@ module.exports = {
         publicPath: '/dist/',
         filename: 'bundle.js'
     },
+    resolve: {
+        alias: {
+            Config: path.resolve(__dirname, 'src/config')
+        }
+    },
     devServer: {
         historyApiFallback: true,
         inline: true,
