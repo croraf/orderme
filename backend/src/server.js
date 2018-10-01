@@ -4,6 +4,7 @@ const koaSwagger = require('koa2-swagger-ui');
 const koaBody = require('koa-body');
 const cors = require('koa-cors');
 const koaStatic = require('koa-static');
+const path = require('path');
 
 const {defineRoutes} = require('./api/routes');
 
@@ -33,9 +34,11 @@ const startServer = (port) => {
     server
         .use(router.routes());
 
+    console.log(path.resolve('../frontend'));
 
-    server.use(koaStatic('/home/korisnik/Desktop/Programiranje/orderme/frontend'));
-
+    //server.use(koaStatic('/home/korisnik/Desktop/Programiranje/orderme/frontend'));
+    server.use(koaStatic(path.resolve('../frontend')));
+    
     server.listen(port);
 };
 

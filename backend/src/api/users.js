@@ -1,5 +1,5 @@
 const request = require('request-promise');
-
+const config = require('config');
 
 const auth = async (authCode) => {
     console.log('JWT token request received with code:', authCode);
@@ -7,7 +7,7 @@ const auth = async (authCode) => {
     const facebookURL = 'https://graph.facebook.com/v3.1/oauth/access_token?';
 
     const appId = '307207183167195';
-    const redirectURI = 'http://localhost:9002/';
+    const redirectURI = config.auth.facebookRedirectUri;
     const appSecret = 'b2c2569ad1edbd5dc9da3445f73b0d4c';
 
     const queryParams = `client_id=${appId}&redirect_uri=${redirectURI}&client_secret=${appSecret}&code=${authCode}`;
