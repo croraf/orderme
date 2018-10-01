@@ -20,5 +20,5 @@
   "engines": {
     "node": "10.11.0"
   },
-  "cacheDirectories": ["frontend/node_modules", "mockserver/node_modules"]
+  "cacheDirectories": ["frontend/node_modules", "backend/node_modules"]
 }
