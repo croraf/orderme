@@ -1,12 +1,11 @@
 const path = require('path');
-const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     devtool: 'inline-source-map',
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        publicPath: '/dist/',
         filename: 'bundle.js'
     },
     resolve: {
@@ -53,5 +52,8 @@ module.exports = {
                 loader: 'file-loader?name=public/fonts/[name].[ext]'
             }
         ]
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({template: 'index_template.html'})
+    ]
 };

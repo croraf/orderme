@@ -23,8 +23,7 @@ const restaurantDetailsRenderer = (props) => {
     const restaurantName = props.match.params.restaurantName;
 
     store.dispatch({type: 'restaurantDetailsFetching'});
-    setTimeout(
-        () => loadRestaurantDetails(restaurantName), 2000);
+    loadRestaurantDetails(restaurantName);
     
     return <RestaurantDetailsContainer restaurantName={restaurantName} />;
 };
