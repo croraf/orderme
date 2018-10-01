@@ -5,15 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "./node_modules/.bin/webpack-dev-server --mode=development",
-    "compile": "./node_modules/.bin/webpack --mode=production",
+    "dev": "webpack-dev-server --mode=development",
+    "compile": "webpack --mode=production",
     "installAndCompile": "npm install && npm run compile"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
-    "@material-ui/core": "^1.2.3",
     "connected-react-router": "^4.4.1",
     "history": "^4.7.2",
     "material-ui-icons": "^1.0.0-beta.17",
