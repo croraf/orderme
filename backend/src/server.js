@@ -39,7 +39,10 @@ const startServer = (port) => {
 
     server.use(async (ctx) => {
         try {
-            await send(ctx, ctx.path, {root: path.resolve('../frontend/dist')});
+            await send(ctx, ctx.path, {
+                root: path.resolve('../frontend/dist'),
+                index: 'index.html'
+            });
         } catch (err) {
             console.log('koa-send path resolution error:', err);
             await send(ctx, 'index.html', {root: path.resolve('../frontend/dist')});
