@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/croraf/orderme#readme",
   "engines": {
-    "node": "10.10.0"
+    "node": "10.11.0"
   }
 }
