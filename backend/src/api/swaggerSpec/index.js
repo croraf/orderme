@@ -3,7 +3,7 @@ const deepmerge = require('deepmerge');
 const restaurantsSpec = require('./restaurantsSpec');
 const usersSpec = require('./usersSpec');
 const oAuth2 = require('./oAuth2');
-
+const config = require('config');
 
 const swaggerSpec = {
     'swagger': '2.0',
@@ -20,10 +20,10 @@ const swaggerSpec = {
             'url': 'http://www.apache.org/licenses/LICENSE-2.0.html'
         }
     },
-    'host': 'localhost:3000',
+    'host': config.apiHost,
     'basePath': '/v0',
     'schemes': [
-        'http'
+        'https'
     ],
     'securityDefinitions': {
         'petstore_auth': {

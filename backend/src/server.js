@@ -37,7 +37,7 @@ const startServer = (port) => {
     //server.use(koaStatic('/home/korisnik/Desktop/Programiranje/orderme/frontend'));
     server.use(koaStatic(path.resolve('../frontend/dist')));
     
-    server.listen(process.env.PORT || port);
+    server.listen(port);
 };
 
 module.exports = { startServer };
