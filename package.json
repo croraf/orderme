@@ -4,8 +4,8 @@
   "description": "Food ordering web app.",
   "main": "index.js",
   "scripts": {
-    "heroku-postbuild": "npm --prefix frontend run installAndCompile && npm --prefix mockserver install",
-    "start": "npm --prefix mockserver start"
+    "heroku-postbuild": "npm --prefix frontend run installAndCompile && npm --prefix backend install",
+    "start": "npm --prefix backend run start"
   },
   "repository": {
     "type": "git",
