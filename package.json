@@ -19,5 +19,6 @@
   "homepage": "https://github.com/croraf/orderme#readme",
   "engines": {
     "node": "10.11.0"
-  }
+  },
+  "cacheDirectories": ["frontend/node_modules", "mockserver/node_modules"]
 }
