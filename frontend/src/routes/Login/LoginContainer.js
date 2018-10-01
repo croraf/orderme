@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import { Login } from './Login';
+import { config } from 'config';
 
 
 const redirectToFacebookLoginPage = () => (dispatch) => {
 
     const appId = '307207183167195';
-    const redirectURI = 'http://localhost:9002/';
+    const redirectURI = config.auth.facebookRedirectUri;
     const state = '1234';
     const oAuthFacebookLoginPage = 
         'https://www.facebook.com/v3.1/dialog/oauth?' + `client_id=${appId}&redirect_uri=${redirectURI}&state=${state}`;
