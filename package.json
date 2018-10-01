@@ -4,16 +4,20 @@
   "description": "Food ordering web app.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "heroku-postbuild": "npm --prefix frontend run installAndCompile && npm --prefix mockserver install",
+    "start": "npm --prefix mockserver start"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/croraf/orderme.git"
   },
-  "author": "",
+  "author": "croraf",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/croraf/orderme/issues"
   },
-  "homepage": "https://github.com/croraf/orderme#readme"
+  "homepage": "https://github.com/croraf/orderme#readme",
+  "engines": {
+    "node": "10.11.0"
+  }
 }
