@@ -2,9 +2,10 @@ import React from 'react';
 import {RestaurantDetailsContainer} from './RestaurantDetailsContainer';
 import {store} from '../../../../modules/store';
 import {push} from 'connected-react-router';
+import config from 'Config';
 
 const loadRestaurantDetails = async (restaurantName) => {
-    const url = 'http://localhost:3000/v0/restaurants/' + restaurantName;
+    const url = config.apiHost + 'v0/restaurants/' + restaurantName;
     const restaurantDetails = await ((await fetch(url)).json());
 
     console.log(restaurantDetails);
