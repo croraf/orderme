@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {push} from 'connected-react-router';
 
-import {Restaurants} from './Restaurants';
+import {RestaurantsList} from './RestaurantsList';
 
 const mapStateToProps = (state) => {
 
@@ -18,6 +18,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 
-const RestaurantsContainer = connect(mapStateToProps, mapDispatchToProps)(Restaurants);
+const RestaurantsListContainer = connect(mapStateToProps, mapDispatchToProps)(RestaurantsList);
 
-export {RestaurantsContainer};
+export {RestaurantsListContainer};

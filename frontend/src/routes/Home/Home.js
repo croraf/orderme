@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-import { RestaurantsContainer } from './Restaurants/RestaurantsList/RestaurantsContainer';
+import { RestaurantsListContainer } from './Restaurants/RestaurantsList/RestaurantsListContainer';
 import { TitleRowContainer } from './TitleRow/TitleRowContainer';
 import { Switch, Route } from 'react-router';
 import { restaurantDetailsRenderer } from './Restaurants/RestaurantDetails/restaurantDetailsRenderer';
@@ -54,7 +54,7 @@ class Home extends React.Component {
                     <TitleRowContainer />
 
                     <Switch>
-                        <Route exact={true} path={'/home'} component={RestaurantsContainer} />
+                        <Route exact={true} path={'/home'} component={RestaurantsListContainer} />
                         <Route path={'/home/:restaurantName'} component={restaurantDetailsRenderer}/>
                     </Switch>
 
