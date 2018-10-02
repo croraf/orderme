@@ -10,7 +10,9 @@ class RestaurantsList extends React.Component {
         const {listOfRestaurants, openOnly, area, onRestaurantClickHandler} = this.props;
 
         return (
-            <div>
+            <div style={{
+                width: '100%'
+            }}>
                 <FilterRowContainer />
                 <RestaurantsListBody 
                     listOfRestaurants={listOfRestaurants}
