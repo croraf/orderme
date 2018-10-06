@@ -8,7 +8,7 @@ const spec = {
                 'url': 'http://swagger.io'
             }
         }
-    ],
+    ],  
     'paths': {
         '/restaurants': {
             'post': {
@@ -58,8 +58,18 @@ const spec = {
                     'application/json'
                 ],
                 'responses': {
+                    '200': {
+                        'description': 'OK',
+                        type: 'array',
+                        items: {
+                            type: 'object'
+                        }
+                    },
                     '405': {
                         'description': 'Invalid input'
+                    },
+                    '500': {
+                        description: 'Internal server error'
                     }
                 },
                 'security': [
@@ -78,6 +88,12 @@ const spec = {
                 'summary': 'Delete all restaurants',
                 'description': '',
                 'responses': {
+                    '200': {
+                        description: 'All deleted. Returns number of deleted',
+                        'schema': {
+                            type: 'integer',
+                        }
+                    },
                     '405': {
                         'description': 'Invalid input'
                     }
@@ -92,7 +108,6 @@ const spec = {
                 ]
             }
         },
-        
         '/restaurants/{name}': {
             'get': {
                 'tags': [

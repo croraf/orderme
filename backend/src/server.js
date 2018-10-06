@@ -3,18 +3,20 @@ const Router = require('koa-router');
 const koaSwagger = require('koa2-swagger-ui');
 const koaBody = require('koa-body');
 const cors = require('koa-cors');
-const koaStatic = require('koa-static');
 const send = require('koa-send');
 const path = require('path');
+/* const swagger2koa = require('swagger2-koa'); */
 
 const {defineRoutes} = require('./api/routes');
+
+const apiSpec = require('./api/swaggerSpec');
 
 const createSwaggerMiddleware = () => {
 
     return koaSwagger({
         routePrefix: '/swagger', // host at /swagger instead of default /docs
         swaggerOptions: {
-            spec: require('./api/swaggerSpec') // path to api specification
+            spec: apiSpec // path to api specification
         },
     });
 };
@@ -29,13 +31,18 @@ const startServer = (port) => {
 
     server.use(koaBody());
 
+    server.use(async (ctx, next) => {
+        console.log('request arrived:', ctx);
+        await next();
+    });
+
+    /* server.use(swagger2koa.validate(apiSpec)); */
+
     const router = new Router();
     defineRoutes(router);
 
     server
         .use(router.routes());
-
-    /* server.use(koaStatic(path.resolve('../frontend/dist'))); */
 
     server.use(async (ctx) => {
         try {
