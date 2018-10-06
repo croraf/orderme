@@ -1,17 +1,6 @@
 import React from 'react';
+import { FoodItemContainer } from './FoodItem/FoodItemContainer';
 
-const foodItemRenderer = (food) => {
-
-    return (
-        <div key={food.name}>
-            <div style={{
-                fontSize: '20px',
-                padding: '5px 0px'
-            }}>{food.name}: {food.price} kn</div>
-            <div>{food.description}</div>
-        </div>
-    );
-};
 
 class RestaurantDetailsBody extends React.Component {
 
@@ -23,16 +12,23 @@ class RestaurantDetailsBody extends React.Component {
         }
 
         return (
-            <div>
+            <div style={{
+            }}>
                 <div>
                     {restaurantDetails.area},      {restaurantDetails.open ? 'OPEN' : 'CLOSED'}
                 </div>
-                <div style={{
-                    marginTop: '20px',
-                    borderTop: '1px solid black',
-                    padding: '5px'
-                }}>
-                    {restaurantDetails.foods.map(food => foodItemRenderer(food))}
+
+                <div 
+                    style={{
+                        marginTop: '20px',
+                        borderTop: '1px solid black',
+                        padding: '5px',
+                        overflowY: 'scroll'
+                    }}    
+                >
+                    {restaurantDetails.foods.map(foodItem => (
+                        <FoodItemContainer key={foodItem.name} foodItem={foodItem} />
+                    ))}
                 </div>
             </div>
             
