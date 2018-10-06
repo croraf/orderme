@@ -12,8 +12,7 @@ class RestaurantDetailsBody extends React.Component {
         }
 
         return (
-            <div style={{
-            }}>
+            <div>
                 <div>
                     {restaurantDetails.area},      {restaurantDetails.open ? 'OPEN' : 'CLOSED'}
                 </div>
@@ -22,8 +21,7 @@ class RestaurantDetailsBody extends React.Component {
                     style={{
                         marginTop: '20px',
                         borderTop: '1px solid black',
-                        padding: '5px',
-                        overflowY: 'scroll'
+                        padding: '5px'
                     }}    
                 >
                     {restaurantDetails.foods.map(foodItem => (

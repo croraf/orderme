@@ -30,7 +30,7 @@ class Home extends React.Component {
                 display: 'flex',
                 flexDirection: 'row',
                 justifyContent: 'center',
-                minWidth: '1200px',
+                minWidth: '1200px'
             }}>
                 <div style={{
                     minWidth: '200px'
@@ -48,7 +48,7 @@ class Home extends React.Component {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'start',
-                    alignItems: 'center',
+                    alignItems: 'center'
                 }}>
 
                     <TitleRowContainer />
