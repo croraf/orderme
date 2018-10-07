@@ -3,7 +3,7 @@ import React from 'react';
 class FoodItem extends React.Component {
 
     render() {
-        const {foodItem} = this.props;
+        const {foodItem, addItem, restaurantId} = this.props;
 
         return (
             <div style={{
@@ -23,7 +23,7 @@ class FoodItem extends React.Component {
                     style={{
                         cursor: 'pointer'
                     }}
-                    onClick={() => alert('asd')}
+                    onClick={() => {addItem(restaurantId, foodItem.name);}}
                 >
                     Add to cart
                 </button>

@@ -17,6 +17,9 @@ class TitleRow extends React.Component {
                     fontSize: 35,
                     marginLeft: '5px'
                 }}>order.me</div>
+
+                <button onClick={() => {this.props.onCartClickHandler(this.props.cart);}}>Cart</button>
+                
                 <button onClick={this.props.onLogoutHandler}>Log out</button>
             </div>
         );

@@ -25,7 +25,7 @@ class RestaurantDetailsBody extends React.Component {
                     }}    
                 >
                     {restaurantDetails.foods.map(foodItem => (
-                        <FoodItemContainer key={foodItem.name} foodItem={foodItem} />
+                        <FoodItemContainer key={foodItem.name} foodItem={foodItem} restaurantId={restaurantDetails.name}/>
                     ))}
                 </div>
             </div>
