@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 
 class FoodItem extends React.Component {
 
@@ -19,14 +20,15 @@ class FoodItem extends React.Component {
                     }}>{foodItem.name}: {foodItem.price} kn</div>
                     <div>{foodItem.description}</div>
                 </div>
-                <button 
+                <Button 
+                    variant='outlined'
                     style={{
                         cursor: 'pointer'
                     }}
                     onClick={() => {addItem(restaurantId, foodItem.name);}}
                 >
                     Add to cart
-                </button>
+                </Button>
             </div>
             
         );

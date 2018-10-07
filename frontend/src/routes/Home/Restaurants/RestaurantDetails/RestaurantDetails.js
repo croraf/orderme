@@ -1,5 +1,6 @@
 import React from 'react';
 import { RestaurantDetailsBodyContainer } from './RestaurantDetailsBodyContainer';
+import Button from '@material-ui/core/Button';
 
 class RestaurantDetails extends React.Component {
 
@@ -20,7 +21,7 @@ class RestaurantDetails extends React.Component {
                         fontSize: '30px'
                     }}>{restaurantName}</div>
 
-                    <button onClick={onReturnToListOfRestaurantsHandler}>Return to list of restaurants</button>
+                    <Button variant='outlined' onClick={onReturnToListOfRestaurantsHandler}>Return to list of restaurants</Button>
                 </div>
                 
 

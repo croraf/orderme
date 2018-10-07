@@ -1,26 +1,25 @@
 import React from 'react';
-
+import Button from '@material-ui/core/Button';
 
 class TitleRow extends React.Component {
     render() {
 
         return (
             <div style={{
-                width: '100%',
-                marginTop: '20px',
-                marginBottom: '20px',
+                width: '99%',
+                margin: '20px',
                 display: 'flex',
                 flexDirection: 'row',
                 justifyContent: 'space-between'
             }}>
                 <div style={{
-                    fontSize: 35,
-                    marginLeft: '5px'
+                    fontSize: 35
                 }}>order.me</div>
 
-                <button onClick={() => {this.props.onCartClickHandler(this.props.cart);}}>Cart</button>
+                <Button variant='outlined' color='primary' onClick={() => {this.props.onCartClickHandler(this.props.cart);}}>Cart</Button>
+
+                <Button variant='outlined' color='secondary' onClick={this.props.onLogoutHandler}>Log out</Button>
                 
-                <button onClick={this.props.onLogoutHandler}>Log out</button>
             </div>
         );
     }
