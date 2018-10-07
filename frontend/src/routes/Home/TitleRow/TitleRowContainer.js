@@ -4,7 +4,6 @@ import {push} from 'connected-react-router';
 import {TitleRow} from './TitleRow';
 
 const mapStateToProps = (state) => ({
-    cart: state.cart
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -12,9 +11,6 @@ const mapDispatchToProps = (dispatch) => ({
         localStorage.removeItem('auth_token');
         dispatch(push('/'));
     },
-    onCartClickHandler: (cart) => {
-        alert('cart content:' + JSON.stringify(cart));
-    }
 });
 
 
