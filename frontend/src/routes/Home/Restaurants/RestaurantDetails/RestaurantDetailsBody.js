@@ -1,6 +1,6 @@
 import React from 'react';
 import { FoodItemContainer } from './FoodItem/FoodItemContainer';
-
+import CustomSpinner from 'Components/CustomSpinner/CustomSpinner';
 
 class RestaurantDetailsBody extends React.Component {
 
@@ -8,7 +8,7 @@ class RestaurantDetailsBody extends React.Component {
         const {restaurantDetails, fetching} = this.props;
 
         if (fetching) {
-            return <div>... fetching ...</div>;
+            return <CustomSpinner />;
         }
 
         return (
