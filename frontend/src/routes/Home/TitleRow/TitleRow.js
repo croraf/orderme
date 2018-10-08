@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import { CartModalContainer } from 'Components/CartModal/CartModalContainer';
+import { CartModalContainer } from '../../../components/CartModal/CartModalContainer';
 
 class TitleRow extends React.Component {
     render() {
@@ -20,6 +20,7 @@ class TitleRow extends React.Component {
                 {/* <Button variant='outlined' color='primary'>Cart</Button> */}
 
                 <CartModalContainer />
+                
                 <Button variant='outlined' color='secondary' onClick={this.props.onLogoutHandler}>Log out</Button>
                 
             </div>

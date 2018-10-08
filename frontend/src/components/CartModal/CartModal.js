@@ -3,15 +3,15 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
+import { CartModalContentContainer } from './CartModalContentContainer';
 
 function Transition(props) {
     return <Slide direction="up" {...props} />;
 }
 
-class CustomDialog extends React.Component {
+class CartModal extends React.Component {
     state = {
         open: false,
     };
@@ -24,12 +24,15 @@ class CustomDialog extends React.Component {
         this.setState({ open: false });
     };
 
-    render() {
+    handleOrder = () => {
+        this.props.orderButtonHandler();
+        this.handleClose();
+    }
 
-        const {openDialogButtonLabel, dialogTitle, dialogContent, dialogAction1, dialogAction2} = this.props;
+    render() {
         return (
             <div>
-                <Button variant='outlined' color='primary' onClick={this.handleClickOpen}>{openDialogButtonLabel}</Button>
+                <Button variant='outlined' color='primary' onClick={this.handleClickOpen}>Cart content</Button>
                 <Dialog
                     open={this.state.open}
                     TransitionComponent={Transition}
@@ -39,17 +42,17 @@ class CustomDialog extends React.Component {
                     aria-describedby="alert-dialog-slide-description"
                 >
                     <DialogTitle id="alert-dialog-slide-title">
-                        {dialogTitle}
+                        Manage cart & Checkout
                     </DialogTitle>
                     <DialogContent>
-                        {dialogContent || <div>abc</div>}
+                        <CartModalContentContainer />
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={this.handleClose} color="primary">
-                            {dialogAction1}
+                            Cancel
                         </Button>
-                        <Button onClick={this.handleClose} color="primary">
-                            {dialogAction2}
+                        <Button onClick={this.handleOrder} color="primary">
+                            Order
                         </Button>
                     </DialogActions>
                 </Dialog>
@@ -58,4 +61,4 @@ class CustomDialog extends React.Component {
     }
 }
 
-export {CustomDialog};
+export {CartModal};

@@ -1,20 +1,13 @@
 import {connect} from 'react-redux';
-import React from 'react';
-import {CartModalContent} from './CartModalContent';
-
-import {CustomDialog} from '../CustomDialogImplementation/CustomDialog';
+import {CartModal} from './CartModal';
 
 const mapStateToProps = (state) => ({
-    openDialogButtonLabel: 'Manage cart',
-    dialogTitle: 'Cart content',
-    dialogContent: <CartModalContent cartData={state.cart} />,
-    dialogAction1: 'Cancel',
-    dialogAction2: 'Order'
 });
 
 const mapDispatchToProps = (dispatch) => ({
+    orderButtonHandler: () => {alert('You have sent your orders for confirmation');}
 });
 
-const CartModalContainer = connect(mapStateToProps, mapDispatchToProps)(CustomDialog);
+const CartModalContainer = connect(mapStateToProps, mapDispatchToProps)(CartModal);
 
 export {CartModalContainer};
