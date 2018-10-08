@@ -1,13 +1,13 @@
 
 
 import React from 'react';
-import DialogContentText from '@material-ui/core/DialogContentText';
+/* import DialogContentText from '@material-ui/core/DialogContentText'; */
 
 class CartModalContent extends React.Component {
-    
+
     render() {
 
-        const {cartData} = this.props;
+        const { cartData } = this.props;
 
         return (
             <div style={{
@@ -17,21 +17,20 @@ class CartModalContent extends React.Component {
                 minHeight: '100px'
             }}>
                 {Object.keys(cartData).map(restaurantId => (
-                    <DialogContentText 
+                    <div
                         key={restaurantId}
-                        id="alert-dialog-slide-description"
                         style={{
                             padding: '10px 0px'
                         }}
                     >
-                        {restaurantId + ': ' + JSON.stringify(cartData[restaurantId])}                                
-                    </DialogContentText>
+                        <div>{restaurantId}:</div>
+                        <div>{JSON.stringify(cartData[restaurantId])}</div>
+                    </div>
                 ))}
             </div>
 
-            
         );
     }
 }
 
-export {CartModalContent};
+export { CartModalContent };
