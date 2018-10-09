@@ -2,7 +2,8 @@ const deepmerge = require('deepmerge');
 
 const restaurantsSpec = require('./restaurantsSpec');
 const usersSpec = require('./usersSpec');
-const oAuth2 = require('./oAuth2');
+const oAuth2Spec = require('./oAuth2Spec');
+const ordersSpec = require('./ordersSpec');
 const config = require('config');
 
 const swaggerSpec = {
@@ -48,4 +49,4 @@ const swaggerSpec = {
 };
 
 
-module.exports = deepmerge.all([swaggerSpec, restaurantsSpec, usersSpec, oAuth2]);
+module.exports = deepmerge.all([swaggerSpec, restaurantsSpec, usersSpec, oAuth2Spec, ordersSpec]);
