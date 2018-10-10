@@ -5,7 +5,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    orderButtonHandler: () => {alert('You have sent your orders for confirmation');}
+    orderButtonHandler: () => {dispatch({type: 'makeOrders'});}
 });
 
 const CartModalContainer = connect(mapStateToProps, mapDispatchToProps)(CartModal);

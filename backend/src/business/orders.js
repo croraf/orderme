@@ -1,6 +1,12 @@
 
 const makeOrder = async (orders) => {
-    const response = orders.map(order => true);
+
+    const response = {};
+
+    Object.keys(orders).forEach(restaurantId => {
+        response[restaurantId] = true;
+    });
+    
     return await response;
 };
 

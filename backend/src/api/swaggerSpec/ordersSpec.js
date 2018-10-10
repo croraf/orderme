@@ -24,10 +24,7 @@ const spec = {
                         'description': 'Order data',
                         'required': true,
                         schema: {
-                            type: 'array',
-                            items: {
-                                '$ref': '#/definitions/Order'
-                            }
+                            type: 'object',
                         }
                     }
                 ],

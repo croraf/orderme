@@ -1,16 +1,16 @@
 
 import reduxThunk from 'redux-thunk';
-
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-
-import { filtersReducer } from './filters';
-
-
 import createHistory from 'history/createBrowserHistory';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
+
+
+import { filtersReducer } from './filters';
 import { restaurantsReducer } from './restaurants';
 import { restaurantDetailsReducer } from './restaurantDetails';
 import { cartReducer } from './cart';
+
+
 
 const history = createHistory();
 

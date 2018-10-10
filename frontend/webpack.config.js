@@ -12,7 +12,9 @@ module.exports = {
     resolve: {
         alias: {
             Config: path.resolve(__dirname, 'src/config'),
-            Components: path.resolve(__dirname, 'src/components')
+            Components: path.resolve(__dirname, 'src/components'),
+            Utilities: path.resolve(__dirname, 'src/utilities'),
+            Modules: path.resolve(__dirname, 'src/modules')
         }
     },
     devServer: {
