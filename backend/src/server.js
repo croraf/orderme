@@ -1,12 +1,11 @@
 const Koa = require('koa');
-const Router = require('koa-router');
 const koaSwagger = require('koa2-swagger-ui');
 const koaBody = require('koa-body');
 const cors = require('koa-cors');
 const send = require('koa-send');
 const path = require('path');
 
-const {defineRoutes} = require('./api/routes');
+const {bindRoutes} = require('./api/routes');
 
 const apiSpec = require('./api/swaggerSpec');
 
@@ -34,12 +33,9 @@ const startServer = (port) => {
         console.log('request arrived:', ctx);
         await next();
     });
-    
-    const router = new Router();
-    defineRoutes(router);
 
-    server
-        .use(router.routes());
+    
+    server.use(bindRoutes());
 
     server.use(async (ctx) => {
         try {

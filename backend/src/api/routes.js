@@ -1,36 +1,51 @@
-const restaurantsAPI = require('./restaurants');
-const users = require('./users');
 
-const defineRoutes = (router) => {
+const Router = require('koa-router');
 
-    router.get('/v0/restaurants', async (ctx) => {
+const restaurantsAPI = require('../business/restaurants');
+const users = require('../business/users');
+const orders = require('../business/orders');
+
+const bindRoutes = () => {
+
+        
+    const router = new Router({prefix: '/v0/'});
+
+    router.get('restaurants', async (ctx) => {
         ctx.body = await restaurantsAPI.getAllRestaurants();
     });
-    router.delete('/v0/restaurants', async (ctx) => {
+    router.delete('restaurants', async (ctx) => {
         ctx.body = await restaurantsAPI.deleteAllRestaurants();
     });
-    router.post('/v0/restaurants', async (ctx) => {
+    router.post('restaurants', async (ctx) => {
         ctx.body = await restaurantsAPI.createRestaurant(ctx.request.body);
     });
 
 
-    router.get('/v0/restaurants/:name', async (ctx) => {
+    router.get('restaurants/:name', async (ctx) => {
         ctx.body = await restaurantsAPI.getRestaurant(ctx.params.name);
     });
-    router.delete('/v0/restaurants/:name', async (ctx) => {
+    router.delete('restaurants/:name', async (ctx) => {
         ctx.body = await restaurantsAPI.deleteRestaurant(ctx.params.name);
     });
-    router.put('/v0/restaurants/:name', async (ctx) => {
+    router.put('restaurants/:name', async (ctx) => {
         ctx.body = await restaurantsAPI.updateRestaurant(ctx.params.name, ctx.request.body);
     });
 
+    
+    router.post('orders', async (ctx) => {
+        ctx.body = await orders.makeOrder(ctx.request.body);
+    });
 
-    router.get('/v0/auth', async (ctx) => {
+
+    router.get('auth', async (ctx) => {
         const accessToken = await users.auth(ctx.query.code);
         
         console.log('access_token:', accessToken);
         ctx.body = accessToken;    
     });
+
+
+    return router.routes();
 };
 
-module.exports = { defineRoutes };
+module.exports = { bindRoutes };

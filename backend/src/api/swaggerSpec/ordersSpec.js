@@ -23,10 +23,9 @@ const spec = {
                         'name': 'body',
                         'description': 'Order data',
                         'required': true,
-                        type: 'array',
-                        items: {
-                            type: 'object',
-                            schema: {
+                        schema: {
+                            type: 'array',
+                            items: {
                                 '$ref': '#/definitions/Order'
                             }
                         }
@@ -34,7 +33,7 @@ const spec = {
                 ],
                 'responses': {
                     '200': {
-                        'description': 'Redirect to facebook log in page',
+                        'description': 'Orders sucessfully placed',
                     }
                 }
             }
@@ -44,6 +43,7 @@ const spec = {
         'Order': {
             'type': 'object',
             'properties': {
+                restaurantId: {type: 'string', example: 'Bistro To-Mi'}
             }
         }
     }
