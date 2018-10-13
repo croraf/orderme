@@ -58,6 +58,9 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({template: 'index_template.html'})
+        new HtmlWebpackPlugin({
+            template: 'index_template.html',
+            favicon: 'src/routes/Home/Restaurants/RestaurantsList/burger.png'
+        })
     ]
 };
