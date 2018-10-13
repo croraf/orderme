@@ -1,18 +1,18 @@
 
 import fetchUtils from 'Utilities/fetchUtils';
 
-const makeOrders = async (cartData) => {
+const makeOrders = () => async (dispatch, getState) => {
+
     const fetchOptions = {
         method: 'POST',
-        body: JSON.stringify(cartData),
+        body: JSON.stringify(getState().cart),
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         }
     };
     const orderResponse = await fetchUtils.fetchRelative('orders', fetchOptions);
-    console.log(orderResponse);
-    alert(JSON.stringify(orderResponse));
+    dispatch({type: 'orderResponseReceived', data: orderResponse});
 };
     
 
@@ -25,12 +25,12 @@ const cartReducer = (state = {}, action) => {
             }
             const updatedRestaurantState = [...state[restaurantId], action.data[1]];
             return Object.assign({}, state, {[restaurantId]: updatedRestaurantState});
-        case 'makeOrders':
-            makeOrders(state);
+        case 'orderResponseReceived':
+            console.log('state cartReducer:', action.data);
             return state;
         default:
             return state;
     }
 };
 
-export { cartReducer };
+export { cartReducer, makeOrders };
