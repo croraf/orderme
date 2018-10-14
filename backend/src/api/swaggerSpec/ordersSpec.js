@@ -24,8 +24,21 @@ const spec = {
                         'description': 'Order data',
                         'required': true,
                         schema: {
-                            type: 'object',
+                            type: 'array',
+                            items: 'string',
+                            example: ['Bečki', 'Zagrebački', 'Palačinke']
+                        },
+                    },
+                    {
+                        'in': 'query',
+                        'name': 'restaurantName',
+                        'description': 'Restaurant name',
+                        'required': true,
+                        schema: {
+                            'type': 'string',
+                            example: 'Bistro To-Mi'
                         }
+                        
                     }
                 ],
                 'responses': {

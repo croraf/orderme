@@ -33,7 +33,7 @@ const bindRoutes = () => {
 
     
     router.post('orders', async (ctx) => {
-        ctx.body = await orders.makeOrder(ctx.request.body);
+        ctx.body = await orders.makeOrder(ctx.query.restaurantName, ctx.request.body);
     });
 
 

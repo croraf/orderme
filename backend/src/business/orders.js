@@ -1,11 +1,8 @@
 
-const makeOrder = async (orders) => {
+const makeOrder = async (restaurantId, orders) => {
 
-    const response = {};
-
-    Object.keys(orders).forEach(restaurantId => {
-        response[restaurantId] = true;
-    });
+    console.log('ordering for ', restaurantId, ': ', orders);
+    const response = true;
     
     return await response;
 };

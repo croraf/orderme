@@ -1,13 +1,15 @@
 
 
 import React from 'react';
+import { CartModalItem } from './CartModalItem';
 /* import DialogContentText from '@material-ui/core/DialogContentText'; */
 
 class CartModalContent extends React.Component {
 
     render() {
 
-        const { cartData } = this.props;
+        const { cartData, removeItemFromCartHandler, orderItemFromCartHandler } = this.props;
+        const numberOfItems = Object.keys(cartData).length;
 
         return (
             <div style={{
@@ -16,16 +18,15 @@ class CartModalContent extends React.Component {
                 borderBottom: '1px solid black',
                 minHeight: '100px'
             }}>
-                {Object.keys(cartData).map(restaurantId => (
-                    <div
+                {Object.keys(cartData).map((restaurantId, i) => (
+                    <CartModalItem 
                         key={restaurantId}
-                        style={{
-                            padding: '10px 0px'
-                        }}
-                    >
-                        <div>{restaurantId}:</div>
-                        <div>{JSON.stringify(cartData[restaurantId])}</div>
-                    </div>
+                        isLastChild={i === numberOfItems - 1}
+                        restaurantId={restaurantId}
+                        restaurantData={cartData[restaurantId]} 
+                        removeItemFromCartHandler={removeItemFromCartHandler}
+                        orderItemFromCartHandler={orderItemFromCartHandler}
+                    />
                 ))}
             </div>
 

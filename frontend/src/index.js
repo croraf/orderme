@@ -10,7 +10,6 @@ import { MyRouter } from './MyRouter';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 
 import './style/globalStyle.css';
-// import Main from './Main';
 
 const theme = createMuiTheme({
     palette: {
