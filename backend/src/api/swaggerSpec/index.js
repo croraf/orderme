@@ -24,7 +24,7 @@ const swaggerSpec = {
     'host': config.baseUrl,
     'basePath': '/v0',
     'schemes': [
-        'https', 'http'
+        'http', 'https' 
     ],
     'securityDefinitions': {
         'petstore_auth': {

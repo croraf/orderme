@@ -16,11 +16,14 @@ class CartModalItem extends React.Component {
             case 'NOT_PLACED':
                 statusColor = 'black';
                 break;
-            case 'ORDER_PLACE_SUCCESS':
+            case 'AWAIT_RESTAURANT_CONFIRMATION':
                 statusColor = 'gold';
                 break;
             case 'ORDER_PLACE_FAIL':
-                statusColor = 'dark red';
+                statusColor = 'darkred';
+                break;
+            case 'ORDER_ACCEPTED':
+                statusColor= 'darkgreen';
                 break;
             default:
                 break;

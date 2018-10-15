@@ -16,7 +16,7 @@ const makeOrder = (restaurantId) => async (dispatch, getState) => {
 
     const makeOrderResponse = await fetchUtils.fetchRelative('orders', fetchOptions, searchParams);
 
-    const status = makeOrderResponse ? 'ORDER_PLACE_SUCCESS' : 'ORDER_PLACE_FAIL';
+    const status = makeOrderResponse ? 'AWAIT_RESTAURANT_CONFIRMATION' : 'ORDER_PLACE_FAIL';
     dispatch({type: 'changeOrderStatus', data: {restaurantId, status}});
 };
     
