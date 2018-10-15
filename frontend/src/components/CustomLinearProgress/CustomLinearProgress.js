@@ -1,12 +1,22 @@
 
 import React from 'react';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import { withStyles } from '@material-ui/core/styles';
 
+const styles = {
+    colorAwaitingResponse: {
+        backgroundColor: 'gold',
+    },
+    colorFail: {
+        backgroundColor: 'red'
+    }
+};
 
 class CustomLinearProgress extends React.Component {
 
     componentDidMount = () => {
-        this.inerval = setInterval(() => {
+        this.interval = setInterval(() => {
+            console.log('abc');
             if (this.state.progress < 100) {
                 this.setState({
                     progress: this.state.progress + 1
@@ -26,9 +36,22 @@ class CustomLinearProgress extends React.Component {
     }
 
     render() {
+        const {classes} = this.props;
 
-        return <LinearProgress variant="determinate" value={this.state.progress} />;
+        let color;
+
+        if (this.state.progress >= 100) {
+            color = classes.colorFail;
+        }
+
+        return (
+            <LinearProgress 
+                variant="determinate"
+                value={this.state.progress} 
+                classes={{ colorPrimary: color, barColorPrimary: color }}
+            />
+        );
     }
 }
 
-export { CustomLinearProgress };
+export default withStyles(styles)(CustomLinearProgress);

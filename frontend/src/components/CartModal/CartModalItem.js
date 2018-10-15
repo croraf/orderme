@@ -21,7 +21,7 @@ class CartModalItem extends React.Component {
                 statusColor = 'gold';
                 break;
             case 'ORDER_PLACE_FAIL':
-                statusColor = 'darkred';
+                statusColor = 'red';
                 break;
             case 'ORDER_ACCEPTED':
                 statusColor= 'darkgreen';

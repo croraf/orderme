@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {CustomLinearProgress} from './CustomLinearProgress';
+import CustomLinearProgress from './CustomLinearProgress';
 
 const mapStateToProps = (state, ownProps) => ({
 });
