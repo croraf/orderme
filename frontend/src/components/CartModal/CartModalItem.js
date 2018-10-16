@@ -45,6 +45,12 @@ class CartModalItem extends React.Component {
             </Button>
         );
 
+        const canceledStatusText = restaurantData.orderStatus === 'ORDER_PLACE_FAIL' && (
+            <div style={{color: 'red'}}>
+                ORDER NOT SUCCESSFUL
+            </div>
+        );
+
         return (
             
             <div
@@ -61,6 +67,8 @@ class CartModalItem extends React.Component {
                     {cancelOrderButton}
 
                     {orderButton}
+
+                    {canceledStatusText}
                 </DialogActions>
 
                 {progressComponent}

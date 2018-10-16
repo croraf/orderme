@@ -3,6 +3,7 @@ import CustomLinearProgress from './CustomLinearProgress';
 import {cancelOrder} from 'Modules/cart';
 
 const mapStateToProps = (state, ownProps) => ({
+    orderStatus: state.cart[ownProps.restaurantId].orderStatus
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -9,10 +9,13 @@ const styles = {
     },
     colorFail: {
         backgroundColor: 'red'
+    },
+    bar1Determinate: {
+        transitionDuration: '0.1s'
     }
 };
 
-const stepSize = 2;
+const stepSize = 0.5;
 
 class CustomLinearProgress extends React.Component {
 
@@ -27,11 +30,18 @@ class CustomLinearProgress extends React.Component {
                 clearInterval(this.interval);
                 this.props.linearProgressFinishedHandler(this.props.restaurantId);
             }
-        }, 200);
+        }, 50);
     }
 
     componentWillUnmount = () => {
         clearInterval(this.interval);
+    }
+
+    componentWillReceiveProps = (nextProps) => {
+        const {orderStatus} = nextProps;
+        if (orderStatus === 'ORDER_PLACE_FAIL') {
+            clearInterval(this.interval);
+        }
     }
 
     state = {
@@ -39,19 +49,24 @@ class CustomLinearProgress extends React.Component {
     }
 
     render() {
-        const {classes} = this.props;
+        const {classes, orderStatus} = this.props;
 
         let color;
-
-        if (this.state.progress >= 100) {
-            color = classes.colorFail;
+        switch (orderStatus) {
+            case 'ORDER_PLACE_FAIL':
+                color = classes.colorFail;
+                break;
+            case 'AWAIT_RESTAURANT_CONFIRMATION':
+                break;
+            default:
+                break;
         }
 
         return (
             <LinearProgress 
                 variant="determinate"
                 value={this.state.progress} 
-                classes={{ colorPrimary: color, barColorPrimary: color }}
+                classes={{ barColorPrimary: color, bar1Determinate: classes.bar1Determinate }}
             />
         );
     }
