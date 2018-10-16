@@ -19,6 +19,11 @@ const makeOrder = (restaurantId) => async (dispatch, getState) => {
     const status = makeOrderResponse ? 'AWAIT_RESTAURANT_CONFIRMATION' : 'ORDER_PLACE_FAIL';
     dispatch({type: 'changeOrderStatus', data: {restaurantId, status}});
 };
+
+const cancelOrder = (restaurantId) => async (dispatch, getState) => {
+
+    dispatch({type: 'changeOrderStatus',  data: {restaurantId, status: 'ORDER_PLACE_FAIL'}});
+};
     
 const addItemToCart = (state, action) => {
     const restaurantId = action.data[0];
@@ -54,4 +59,4 @@ const cartReducer = (state = {}, action) => {
     }
 };
 
-export { cartReducer, makeOrder };
+export { cartReducer, makeOrder, cancelOrder };

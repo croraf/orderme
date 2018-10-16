@@ -10,7 +10,7 @@ class CartModalItem extends React.Component {
 
     render() {
 
-        const { restaurantId, restaurantData, isLastChild, removeItemFromCartHandler, orderItemFromCartHandler } = this.props;
+        const { restaurantId, restaurantData, isLastChild, removeItemFromCartHandler, orderItemFromCartHandler, cancelOrderClickHandler } = this.props;
 
         let statusColor = 'black';
         switch (restaurantData.orderStatus) {
@@ -18,7 +18,7 @@ class CartModalItem extends React.Component {
                 statusColor = 'black';
                 break;
             case 'AWAIT_RESTAURANT_CONFIRMATION':
-                statusColor = 'gold';
+                statusColor = '#3f51b5';
                 break;
             case 'ORDER_PLACE_FAIL':
                 statusColor = 'red';
@@ -30,7 +30,20 @@ class CartModalItem extends React.Component {
                 break;
         }
 
-        const progressComponent = restaurantData.orderStatus === 'AWAIT_RESTAURANT_CONFIRMATION' && <CustomLinearProgressContainer />;
+        const progressComponent = 
+            restaurantData.orderStatus !== 'NOT_PLACED' && <CustomLinearProgressContainer restaurantId={restaurantId} />;
+
+        const orderButton = restaurantData.orderStatus === 'NOT_PLACED' && (
+            <Button onClick={() => {orderItemFromCartHandler(restaurantId);}} color="primary">
+                Order
+            </Button>
+        );
+
+        const cancelOrderButton = restaurantData.orderStatus === 'AWAIT_RESTAURANT_CONFIRMATION' && (
+            <Button onClick={() => {cancelOrderClickHandler(restaurantId);}} color="primary">
+                Cancel
+            </Button>
+        );
 
         return (
             
@@ -45,12 +58,9 @@ class CartModalItem extends React.Component {
                 <div>{JSON.stringify(restaurantData.order)}</div>
 
                 <DialogActions>
-                    <Button onClick={() => {removeItemFromCartHandler(restaurantId);}} color="primary">
-                        Cancel
-                    </Button>
-                    <Button onClick={() => {orderItemFromCartHandler(restaurantId);}} color="primary">
-                        Order
-                    </Button>
+                    {cancelOrderButton}
+
+                    {orderButton}
                 </DialogActions>
 
                 {progressComponent}

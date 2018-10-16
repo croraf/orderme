@@ -8,7 +8,7 @@ class CartModalContent extends React.Component {
 
     render() {
 
-        const { cartData, removeItemFromCartHandler, orderItemFromCartHandler } = this.props;
+        const { cartData, removeItemFromCartHandler, orderItemFromCartHandler, cancelOrderClickHandler } = this.props;
         const numberOfItems = Object.keys(cartData).length;
 
         return (
@@ -26,6 +26,7 @@ class CartModalContent extends React.Component {
                         restaurantData={cartData[restaurantId]} 
                         removeItemFromCartHandler={removeItemFromCartHandler}
                         orderItemFromCartHandler={orderItemFromCartHandler}
+                        cancelOrderClickHandler={cancelOrderClickHandler}
                     />
                 ))}
             </div>

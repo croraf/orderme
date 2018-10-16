@@ -12,17 +12,20 @@ const styles = {
     }
 };
 
+const stepSize = 2;
+
 class CustomLinearProgress extends React.Component {
 
     componentDidMount = () => {
         this.interval = setInterval(() => {
-            console.log('abc');
+            // console.log('custom linear progress tick');
             if (this.state.progress < 100) {
                 this.setState({
-                    progress: this.state.progress + 1
+                    progress: this.state.progress + 1 * stepSize
                 });
             } else {
                 clearInterval(this.interval);
+                this.props.linearProgressFinishedHandler(this.props.restaurantId);
             }
         }, 200);
     }
