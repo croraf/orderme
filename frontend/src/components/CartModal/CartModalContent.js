@@ -1,15 +1,15 @@
 
 
 import React from 'react';
-import { CartModalItem } from './CartModalItem';
+import { CartModalItemContainer } from './CartModalItem/CartModalItemContainer';
 /* import DialogContentText from '@material-ui/core/DialogContentText'; */
 
 class CartModalContent extends React.Component {
 
     render() {
 
-        const { cartData, removeItemFromCartHandler, orderItemFromCartHandler, cancelOrderClickHandler } = this.props;
-        const numberOfItems = Object.keys(cartData).length;
+        const { cartRestaurantIds } = this.props;
+        const numberOfItems = cartRestaurantIds.length;
 
         return (
             <div style={{
@@ -18,15 +18,11 @@ class CartModalContent extends React.Component {
                 borderBottom: '1px solid black',
                 minHeight: '100px'
             }}>
-                {Object.keys(cartData).map((restaurantId, i) => (
-                    <CartModalItem 
+                {cartRestaurantIds.map((restaurantId, i) => (
+                    <CartModalItemContainer 
                         key={restaurantId}
                         isLastChild={i === numberOfItems - 1}
                         restaurantId={restaurantId}
-                        restaurantData={cartData[restaurantId]} 
-                        removeItemFromCartHandler={removeItemFromCartHandler}
-                        orderItemFromCartHandler={orderItemFromCartHandler}
-                        cancelOrderClickHandler={cancelOrderClickHandler}
                     />
                 ))}
             </div>

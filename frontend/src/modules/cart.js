@@ -34,7 +34,7 @@ const addItemToCart = (state, action) => {
     return Object.assign({}, state, {[restaurantId]: updatedRestaurantState});
 };
 
-const removeItemFromCart = (state, action) => {
+const moveItemToCartHistory = (state, action) => {
     const stateCopy = Object.assign({}, state);
     delete stateCopy[action.deletedId];
     return stateCopy;
@@ -50,8 +50,8 @@ const cartReducer = (state = {}, action) => {
     switch (action.type) {
         case 'addItemToCart':
             return addItemToCart(state, action);
-        case 'removeItemFromCart':
-            return removeItemFromCart(state, action);
+        case 'moveItemToCartHistory':
+            return moveItemToCartHistory(state, action);
         case 'changeOrderStatus':
             return changeOrderStatus(state, action);
         default:

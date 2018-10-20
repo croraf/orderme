@@ -10,10 +10,10 @@ class CartModalItem extends React.Component {
 
     render() {
 
-        const { restaurantId, restaurantData, isLastChild, removeItemFromCartHandler, orderItemFromCartHandler, cancelOrderClickHandler } = this.props;
+        const { restaurantId, restaurantOrderData, isLastChild, removeItemFromCartHandler, orderItemFromCartHandler, cancelOrderClickHandler } = this.props;
 
         let statusColor = 'black';
-        switch (restaurantData.orderStatus) {
+        switch (restaurantOrderData.orderStatus) {
             case 'NOT_PLACED':
                 statusColor = 'black';
                 break;
@@ -31,21 +31,21 @@ class CartModalItem extends React.Component {
         }
 
         const progressComponent = 
-            restaurantData.orderStatus !== 'NOT_PLACED' && <CustomLinearProgressContainer restaurantId={restaurantId} />;
+            restaurantOrderData.orderStatus !== 'NOT_PLACED' && <CustomLinearProgressContainer restaurantId={restaurantId} />;
 
-        const orderButton = restaurantData.orderStatus === 'NOT_PLACED' && (
+        const orderButton = restaurantOrderData.orderStatus === 'NOT_PLACED' && (
             <Button onClick={() => {orderItemFromCartHandler(restaurantId);}} color="primary">
                 Order
             </Button>
         );
 
-        const cancelOrderButton = restaurantData.orderStatus === 'AWAIT_RESTAURANT_CONFIRMATION' && (
+        const cancelOrderButton = restaurantOrderData.orderStatus === 'AWAIT_RESTAURANT_CONFIRMATION' && (
             <Button onClick={() => {cancelOrderClickHandler(restaurantId);}} color="primary">
                 Cancel
             </Button>
         );
 
-        const canceledStatusText = restaurantData.orderStatus === 'ORDER_PLACE_FAIL' && (
+        const canceledStatusText = restaurantOrderData.orderStatus === 'ORDER_PLACE_FAIL' && (
             <div style={{color: 'red'}}>
                 ORDER NOT SUCCESSFUL
             </div>
@@ -61,7 +61,7 @@ class CartModalItem extends React.Component {
                 }}
             >
                 <div>{restaurantId}:</div>
-                <div>{JSON.stringify(restaurantData.order)}</div>
+                <div>{JSON.stringify(restaurantOrderData.order)}</div>
 
                 <DialogActions>
                     {cancelOrderButton}
