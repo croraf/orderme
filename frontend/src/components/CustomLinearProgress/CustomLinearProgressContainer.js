@@ -1,13 +1,12 @@
 import {connect} from 'react-redux';
 import CustomLinearProgress from './CustomLinearProgress';
-import {cancelOrder} from 'Modules/cart';
+import {cancelOrder} from 'Modules/orders';
 
 const mapStateToProps = (state, ownProps) => ({
-    orderStatus: state.cart[ownProps.restaurantId].orderStatus
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    linearProgressFinishedHandler: (restaurantId) => {dispatch(cancelOrder(restaurantId));}
+    linearProgressFinishedHandler: (orderId) => {dispatch(cancelOrder(orderId));}
 });
 
 const CustomLinearProgressContainer = connect(mapStateToProps, mapDispatchToProps)(CustomLinearProgress);

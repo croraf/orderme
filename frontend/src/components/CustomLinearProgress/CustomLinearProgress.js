@@ -28,7 +28,7 @@ class CustomLinearProgress extends React.Component {
                 });
             } else {
                 clearInterval(this.interval);
-                this.props.linearProgressFinishedHandler(this.props.restaurantId);
+                this.props.linearProgressFinishedHandler(this.props.orderId);
             }
         }, 50);
     }

@@ -1,62 +1,56 @@
 
 import fetchUtils from 'Utilities/fetchUtils';
 
+let orderCounter = 0;
+
 const makeOrder = (restaurantId) => async (dispatch, getState) => {
+
+    // has to be created before the cart content is deleted
+    const order = {
+        orderId: orderCounter,
+        restaurantId: restaurantId,
+        orderItems: getState().cart[restaurantId],
+        status: 'NOT_PLACED'
+    };
+    dispatch({type: 'createOrder', order});
+    orderCounter = orderCounter + 1;
 
     const fetchOptions = {
         method: 'POST',
-        body: JSON.stringify(getState().cart[restaurantId]),
+        body: JSON.stringify(order),
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         }
     };
-
-    const searchParams = {restaurantName: restaurantId};
-
-    const makeOrderResponse = await fetchUtils.fetchRelative('orders', fetchOptions, searchParams);
-
+    const makeOrderResponse = await fetchUtils.fetchRelative('orders', fetchOptions);
     const status = makeOrderResponse ? 'AWAIT_RESTAURANT_CONFIRMATION' : 'ORDER_PLACE_FAIL';
-    dispatch({type: 'changeOrderStatus', data: {restaurantId, status}});
+    dispatch({type: 'changeOrderStatus', data: {orderId: order.orderId, status}});
+
+    dispatch({type: 'clearCart', restaurantId});
 };
 
-const cancelOrder = (restaurantId) => async (dispatch, getState) => {
 
-    dispatch({type: 'changeOrderStatus',  data: {restaurantId, status: 'ORDER_PLACE_FAIL'}});
-};
-    
 const addItemToCart = (state, action) => {
     const restaurantId = action.data[0];
     if (!state[restaurantId]) {
-        state[restaurantId] = {order: [], orderStatus: 'NOT_PLACED'};
+        state[restaurantId] = [];
     }
-    const updatedRestaurantState = {order: [...state[restaurantId].order, action.data[1]], orderStatus: 'NOT_PLACED'};
+    const updatedRestaurantState = [...state[restaurantId], action.data[1]];
     return Object.assign({}, state, {[restaurantId]: updatedRestaurantState});
 };
-
-const moveItemToCartHistory = (state, action) => {
-    const stateCopy = Object.assign({}, state);
-    delete stateCopy[action.deletedId];
-    return stateCopy;
-};
-
-const changeOrderStatus = (state, action) => {
-    const restaurantId = action.data.restaurantId;
-    const newStatus = action.data.status;
-    return Object.assign({}, state, {[restaurantId]: {order: state[restaurantId].order, orderStatus: newStatus}});
-}
 
 const cartReducer = (state = {}, action) => {
     switch (action.type) {
         case 'addItemToCart':
             return addItemToCart(state, action);
-        case 'moveItemToCartHistory':
-            return moveItemToCartHistory(state, action);
-        case 'changeOrderStatus':
-            return changeOrderStatus(state, action);
+        case 'clearCart':
+            const stateCopy = Object.assign({}, state);
+            delete stateCopy[action.restaurantId];
+            return stateCopy;
         default:
             return state;
     }
 };
 
-export { cartReducer, makeOrder, cancelOrder };
+export { cartReducer, makeOrder };

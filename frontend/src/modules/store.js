@@ -9,7 +9,7 @@ import { filtersReducer } from './filters';
 import { restaurantsReducer } from './restaurants';
 import { restaurantDetailsReducer } from './restaurantDetails';
 import { cartReducer } from './cart';
-
+import { ordersReducer } from './orders';
 
 
 const history = createHistory();
@@ -21,7 +21,8 @@ const reducer = combineReducers({
     filters: filtersReducer,
     restaurants: restaurantsReducer,
     restaurantDetails: restaurantDetailsReducer,
-    cart: cartReducer
+    cart: cartReducer,
+    orders: ordersReducer
 });
 
 const store = createStore(
