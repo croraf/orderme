@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {CartModalItem} from './CartModalItem';
 
-import { makeOrder } from 'Modules/cart';
+import { makeOrder } from 'Modules/orders';
 
 const mapStateToProps = (state, ownProps) => ({
     restaurantOrderData: state.cart[ownProps.restaurantId]

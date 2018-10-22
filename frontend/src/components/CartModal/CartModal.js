@@ -26,7 +26,7 @@ class CartModal extends React.Component {
     render() {
         return (
             <div>
-                <Button variant='outlined' color='primary' onClick={this.handleClickOpen}>Cart content</Button>
+                <Button variant='outlined' color='primary' onClick={this.handleClickOpen}>Manage cart & Checkout</Button>
                 <Dialog
                     open={this.state.open}
                     TransitionComponent={Transition}

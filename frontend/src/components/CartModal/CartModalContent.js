@@ -23,14 +23,13 @@ class CartModalContent extends React.Component {
                     paddingTop: '10px',
                     margin: '0px 0px 10px 0px'
                 }}>
-                    {/* <div style={{textAlign: 'center'}}>Cart:</div> */}
-                    {cartRestaurantIds.map((restaurantId, i) => (
+                    {cartRestaurantIds.map((restaurantId, i) =>
                         <CartModalItemContainer 
                             key={restaurantId}
                             isLastChild={i === numberOfCartItems - 1}
                             restaurantId={restaurantId}
                         />
-                    ))}
+                    ).reverse()}
                 </div>
                 
                 <div style={{
@@ -53,7 +52,7 @@ class CartModalContent extends React.Component {
                             key={orderId}
                             isLastChild={i === numberOfOrderItems - 1}
                             orderData={orders[orderId]} />
-                    )}
+                    ).reverse()}
                 </div>
 
                 <div style={{textAlign: 'center'}}>
