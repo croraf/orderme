@@ -31,11 +31,10 @@ class OrderItem extends React.Component {
 
         console.log(orderData);
 
-        const progressComponent = 
-            orderData.status !== 'NOT_PLACED' && <CustomLinearProgressContainer orderId={orderData.orderId} orderStatus={orderData.status}/>;
+        const progressComponent = <CustomLinearProgressContainer orderId={orderData._id} orderStatus={orderData.status}/>;
 
         const cancelOrderButton = orderData.status === 'AWAIT_RESTAURANT_CONFIRMATION' && (
-            <Button onClick={() => {cancelOrderClickHandler(orderData.orderId);}} color="primary">
+            <Button onClick={() => {cancelOrderClickHandler(orderData._id);}} color="primary">
                 Cancel
             </Button>
         );

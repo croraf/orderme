@@ -52,7 +52,7 @@ class CartModalContent extends React.Component {
                     {Object.keys(orders).map((orderId, i) => 
                         <OrderItemContainer
                             key={orderId}
-                            isLastChild={i === numberOfOrderItems - 1}
+                            isLastChild={i === 0}
                             orderData={orders[orderId]} />
                     ).reverse()}
                 </div>

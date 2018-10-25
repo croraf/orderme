@@ -30,23 +30,23 @@ const makeOrder = (restaurantId) => async (dispatch, getState) => {
     
 };
 
-const cancelOrder = (orderId) => async (dispatch) => {
+const cancelOrder = (_id) => async (dispatch) => {
 
-    dispatch({type: 'changeOrderStatus',  data: {orderId, status: 'ORDER_PLACE_FAIL'}});
+    dispatch({type: 'changeOrderStatus',  data: {_id, status: 'ORDER_PLACE_FAIL'}});
 };
     
 
 const ordersReducer = (state = {}, action) => {
     switch (action.type) {
         case 'createOrder':
-            const newState =  Object.assign({}, state, {[action.order.orderId]: action.order});
+            const newState =  Object.assign({}, state, {[action.order._id]: action.order});
             return newState;
         case 'ordersLoaded':
             return action.data;
         case 'changeOrderStatus':
-            const orderCopy = Object.assign({}, state[action.data.orderId]);
+            const orderCopy = Object.assign({}, state[action.data._id]);
             orderCopy.status = action.data.status;
-            return Object.assign({}, state, {[action.data.orderId]: orderCopy});
+            return Object.assign({}, state, {[action.data._id]: orderCopy});
         default:
             return state;
     }
