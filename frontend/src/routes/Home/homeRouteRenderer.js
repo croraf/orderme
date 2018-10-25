@@ -11,9 +11,8 @@ const loadListOfRestaurants = async () => {
     store.dispatch({type: 'restaurantsData', data: restaurants});
 
     const orders = await fetchUtils.fetchRelative('orders');
-    console.log('orders', orders);
     const ordersToObject = transforms.arrayToObject(orders, '_id');
-    console.log(ordersToObject);
+    console.log('all orders object:', ordersToObject);
     store.dispatch({type: 'ordersLoaded', data: ordersToObject});
 };
 

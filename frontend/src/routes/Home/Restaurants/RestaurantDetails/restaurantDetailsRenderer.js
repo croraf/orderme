@@ -8,18 +8,12 @@ const loadRestaurantDetails = async (restaurantName) => {
     const url = config.apiHost + 'v0/restaurants/' + restaurantName;
     const restaurantDetails = await ((await fetch(url)).json());
 
-    console.log(restaurantDetails);
+    console.log('restaurant details fetched:', restaurantDetails);
 
     store.dispatch({type: 'restaurantDetailsFetched', data: restaurantDetails});
 };
 
 const restaurantDetailsRenderer = (props) => {
-
-    const auth_token = localStorage.getItem('auth_token');
-    console.log('token in local storage:', auth_token);
-    if (!auth_token) {
-        store.dispatch(push('/'));
-    }
 
     const restaurantName = props.match.params.restaurantName;
 

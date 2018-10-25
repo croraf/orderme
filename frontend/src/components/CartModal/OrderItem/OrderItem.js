@@ -29,8 +29,6 @@ class OrderItem extends React.Component {
                 break;
         }
 
-        console.log(orderData);
-
         const progressComponent = <CustomLinearProgressContainer orderId={orderData._id} orderStatus={orderData.status}/>;
 
         const cancelOrderButton = orderData.status === 'AWAIT_RESTAURANT_CONFIRMATION' && (
