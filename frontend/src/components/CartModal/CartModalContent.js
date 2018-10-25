@@ -13,6 +13,8 @@ class CartModalContent extends React.Component {
         const numberOfCartItems = cartRestaurantIds.length;
         const numberOfOrderItems = Object.keys(orders).length;
 
+        
+
         return (
             <div style={{}}>
                 <div style={{

@@ -56,7 +56,7 @@ class OrderItem extends React.Component {
                 }}
             >
                 <div>{orderData.restaurantId}:</div>
-                <div>{JSON.stringify(orderData.orderItems)}</div>
+                <div>{JSON.stringify(orderData.items)}</div>
 
                 <DialogActions>
                     {cancelOrderButton}

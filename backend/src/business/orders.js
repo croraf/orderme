@@ -1,10 +1,20 @@
 
-const makeOrder = async (restaurantId, orders) => {
+const dal = require('../dal/orders');
 
-    console.log('ordering for ', restaurantId, ': ', orders);
-    const response = true;
-    
-    return await response;
+const getAllOrders = async () => {
+    return await dal.getAllOrders();
 };
 
-module.exports = {makeOrder};
+const createOrder = async (orderData) => {
+
+    console.log('ordering for ', orderData.restaurantId, ': ', orderData.items);
+    
+    return await dal.createOrder(orderData);
+};
+
+const deleteAllOrders = async () => {
+    return await dal.deleteOrder();
+};
+
+module.exports = {getAllOrders, createOrder, deleteAllOrders};
+

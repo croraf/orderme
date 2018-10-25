@@ -1,7 +1,7 @@
 
 const Router = require('koa-router');
 
-const restaurantsAPI = require('../business/restaurants');
+const restaurants = require('../business/restaurants');
 const users = require('../business/users');
 const orders = require('../business/orders');
 
@@ -11,29 +11,32 @@ const bindRoutes = () => {
     const router = new Router({prefix: '/v0/'});
 
     router.get('restaurants', async (ctx) => {
-        ctx.body = await restaurantsAPI.getAllRestaurants();
+        ctx.body = await restaurants.getAllRestaurants();
     });
     router.delete('restaurants', async (ctx) => {
-        ctx.body = await restaurantsAPI.deleteAllRestaurants();
+        ctx.body = await restaurants.deleteAllRestaurants();
     });
     router.post('restaurants', async (ctx) => {
-        ctx.body = await restaurantsAPI.createRestaurant(ctx.request.body);
+        ctx.body = await restaurants.createRestaurant(ctx.request.body);
     });
-
-
     router.get('restaurants/:name', async (ctx) => {
-        ctx.body = await restaurantsAPI.getRestaurant(ctx.params.name);
+        ctx.body = await restaurants.getRestaurant(ctx.params.name);
     });
     router.delete('restaurants/:name', async (ctx) => {
-        ctx.body = await restaurantsAPI.deleteRestaurant(ctx.params.name);
+        ctx.body = await restaurants.deleteRestaurant(ctx.params.name);
     });
     router.put('restaurants/:name', async (ctx) => {
-        ctx.body = await restaurantsAPI.updateRestaurant(ctx.params.name, ctx.request.body);
+        ctx.body = await restaurants.updateRestaurant(ctx.params.name, ctx.request.body);
     });
 
-    
+    router.get('orders', async (ctx) => {
+        ctx.body = await orders.getAllOrders();
+    });
     router.post('orders', async (ctx) => {
-        ctx.body = await orders.makeOrder(ctx.query.restaurantName, ctx.request.body);
+        ctx.body = await orders.createOrder(ctx.request.body);
+    });
+    router.delete('orders', async (ctx) => {
+        ctx.body = await orders.deleteAllOrders();
     });
 
 

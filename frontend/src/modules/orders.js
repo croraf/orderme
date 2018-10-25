@@ -1,19 +1,15 @@
 
 import fetchUtils from 'Utilities/fetchUtils';
 
-let orderCounter = 0;
-
 const makeOrder = (restaurantId) => async (dispatch, getState) => {
 
-    // has to be created before the cart content is deleted
+    // has to be created before the cart content is cleared
     const order = {
-        orderId: orderCounter,
         restaurantId: restaurantId,
-        orderItems: getState().cart[restaurantId],
-        status: 'NOT_PLACED'
+        items: getState().cart[restaurantId]
     };
-    dispatch({type: 'createOrder', order});
-    orderCounter = orderCounter + 1;
+    dispatch({type: 'clearCart', restaurantId});
+
 
     const fetchOptions = {
         method: 'POST',
@@ -23,11 +19,15 @@ const makeOrder = (restaurantId) => async (dispatch, getState) => {
             'Accept': 'application/json'
         }
     };
-    const makeOrderResponse = await fetchUtils.fetchRelative('orders', fetchOptions);
-    const status = makeOrderResponse ? 'AWAIT_RESTAURANT_CONFIRMATION' : 'ORDER_PLACE_FAIL';
-    dispatch({type: 'changeOrderStatus', data: {orderId: order.orderId, status}});
+    
+    const orderId = await fetchUtils.fetchRelative('orders', fetchOptions);
+    order['_id'] = orderId;
+    order.status = 'AWAIT_RESTAURANT_CONFIRMATION';
+    /* const status = makeOrderResponse ? 'AWAIT_RESTAURANT_CONFIRMATION' : 'ORDER_PLACE_FAIL'; */
+    dispatch({type: 'createOrder', order});
+    /* dispatch({type: 'changeOrderStatus', data: {orderId: order.orderId, status}}); */
 
-    dispatch({type: 'clearCart', restaurantId});
+    
 };
 
 const cancelOrder = (orderId) => async (dispatch) => {

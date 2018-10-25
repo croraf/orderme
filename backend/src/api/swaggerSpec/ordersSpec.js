@@ -11,6 +11,28 @@ const spec = {
     ],
     'paths': {
         '/orders': {
+            'get': {
+                'tags': [
+                    'orders'
+                ],
+                'summary': 'Get all orders',
+                'description': '',
+                'produces': [
+                    'application/json'
+                ],
+                'responses': {
+                    '200': {
+                        'description': 'OK',
+                        type: 'array',
+                        items: {
+                            type: 'object'
+                        }
+                    },
+                    '500': {
+                        description: 'Internal server error'
+                    }
+                }
+            },
             'post': {
                 'tags': [
                     'orders'
@@ -24,11 +46,9 @@ const spec = {
                         'description': 'Order data',
                         'required': true,
                         schema: {
-                            type: 'array',
-                            items: 'string',
-                            example: ['Bečki', 'Zagrebački', 'Palačinke']
+                            $ref: '#/definitions/Order'
                         },
-                    },
+                    }/* ,
                     {
                         'in': 'query',
                         'name': 'restaurantName',
@@ -39,11 +59,29 @@ const spec = {
                             example: 'Bistro To-Mi'
                         }
                         
-                    }
+                    } */
                 ],
                 'responses': {
                     '200': {
                         'description': 'Orders sucessfully placed',
+                    }
+                }
+            },
+            'delete': {
+                'tags': [
+                    'orders'
+                ],
+                'summary': 'Delete all orders',
+                'description': '',
+                'responses': {
+                    '200': {
+                        description: 'All deleted. Returns number of deleted',
+                        'schema': {
+                            type: 'integer',
+                        }
+                    },
+                    '405': {
+                        'description': 'Invalid input'
                     }
                 }
             }
@@ -53,7 +91,9 @@ const spec = {
         'Order': {
             'type': 'object',
             'properties': {
-                restaurantId: {type: 'string', example: 'Bistro To-Mi'}
+                restaurantId: {type: 'string', example: 'Bistro To-Mi'},
+                items: {type: 'array', items: 'string', example: ['Bečki', 'Zagrebački', 'Palačinke']},
+                status: {type: 'string', example: 'ORDER_ACCEPTED'}
             }
         }
     }
