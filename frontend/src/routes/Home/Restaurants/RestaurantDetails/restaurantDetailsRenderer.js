@@ -7,9 +7,7 @@ import config from 'Config';
 const loadRestaurantDetails = async (restaurantName) => {
     const url = config.apiHost + 'v0/restaurants/' + restaurantName;
     const restaurantDetails = await ((await fetch(url)).json());
-
     console.log('restaurant details fetched:', restaurantDetails);
-
     store.dispatch({type: 'restaurantDetailsFetched', data: restaurantDetails});
 };
 

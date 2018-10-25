@@ -5,15 +5,20 @@ import {push} from 'connected-react-router';
 import fetchUtils from 'Utilities/fetchUtils';
 import transforms from 'Utilities/transforms';
 
-const loadListOfRestaurants = async () => {
+let initialHomeRouteDataLoaded = false;
+
+const loadInitialHomeRouteData = async () => {
 
     const restaurants = await fetchUtils.fetchRelative('restaurants');
+    console.log('restaurants fetched:', restaurants);
     store.dispatch({type: 'restaurantsData', data: restaurants});
 
     const orders = await fetchUtils.fetchRelative('orders');
     const ordersToObject = transforms.arrayToObject(orders, '_id');
-    console.log('all orders object:', ordersToObject);
+    console.log('orders fetched:', ordersToObject);
     store.dispatch({type: 'ordersLoaded', data: ordersToObject});
+
+    initialHomeRouteDataLoaded = true;
 };
 
 const homeRouteRenderer = (props) => {
@@ -24,7 +29,9 @@ const homeRouteRenderer = (props) => {
         store.dispatch(push('/'));
     }
 
-    loadListOfRestaurants();
+    if (!initialHomeRouteDataLoaded) {
+        loadInitialHomeRouteData();
+    }
     
     return <HomeContainer props={props} />;
 };
