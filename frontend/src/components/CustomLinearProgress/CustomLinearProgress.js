@@ -39,7 +39,7 @@ class CustomLinearProgress extends React.Component {
 
     componentWillReceiveProps = (nextProps) => {
         const {orderStatus} = nextProps;
-        if (orderStatus === 'ORDER_PLACE_FAIL') {
+        if (orderStatus === 'CANCELED') {
             clearInterval(this.interval);
         }
     }
@@ -53,7 +53,7 @@ class CustomLinearProgress extends React.Component {
 
         let color;
         switch (orderStatus) {
-            case 'ORDER_PLACE_FAIL':
+            case 'CANCELED':
                 color = classes.colorFail;
                 break;
             case 'AWAIT_RESTAURANT_CONFIRMATION':

@@ -28,7 +28,7 @@ class CartModalContent extends React.Component {
                     {cartRestaurantIds.map((restaurantId, i) =>
                         <CartModalItemContainer 
                             key={restaurantId}
-                            isLastChild={i === numberOfCartItems - 1}
+                            isLastChild={i === 0}
                             restaurantId={restaurantId}
                         />
                     ).reverse()}

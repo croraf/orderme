@@ -17,6 +17,15 @@ const deleteOrder = async (filter) => {
     return (await getDatabaseConnection().collection('orders').deleteMany(filter)).deletedCount;
 };
 
+const updateOrder = async (_id, newData) => {
+    const n = (await getDatabaseConnection().collection('orders').updateOne({_id: _id}, {$set: newData}));
+    console.log(n);
+    if (n === 1) {
+        return;
+    } else {
+        throw new Error('Order not updated');
+    }
+};
 
-module.exports = {getAllOrders, createOrder, deleteOrder};
+module.exports = {getAllOrders, createOrder, deleteOrder, updateOrder};
 

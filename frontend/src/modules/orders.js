@@ -20,10 +20,12 @@ const makeOrder = (restaurantId) => async (dispatch, getState) => {
         }
     };
     
-    const orderId = await fetchUtils.fetchRelative('orders', fetchOptions);
-    order['_id'] = orderId;
-    order.status = 'AWAIT_RESTAURANT_CONFIRMATION';
-    /* const status = makeOrderResponse ? 'AWAIT_RESTAURANT_CONFIRMATION' : 'ORDER_PLACE_FAIL'; */
+    const result = await fetchUtils.fetchRelative('orders', fetchOptions);
+    order['_id'] = result._id;
+    order['timestamp'] = result.timestamp;
+    order['status'] = result.status;
+    
+    /* const status = makeOrderResponse ? 'AWAIT_RESTAURANT_CONFIRMATION' : 'CANCELED'; */
     dispatch({type: 'createOrder', order});
     /* dispatch({type: 'changeOrderStatus', data: {orderId: order.orderId, status}}); */
 
@@ -32,7 +34,7 @@ const makeOrder = (restaurantId) => async (dispatch, getState) => {
 
 const cancelOrder = (_id) => async (dispatch) => {
 
-    dispatch({type: 'changeOrderStatus',  data: {_id, status: 'ORDER_PLACE_FAIL'}});
+    dispatch({type: 'changeOrderStatus',  data: {_id, status: 'CANCELED'}});
 };
     
 

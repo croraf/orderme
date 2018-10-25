@@ -19,7 +19,7 @@ class OrderItem extends React.Component {
             case 'AWAIT_RESTAURANT_CONFIRMATION':
                 statusColor = '#3f51b5';
                 break;
-            case 'ORDER_PLACE_FAIL':
+            case 'CANCELED':
                 statusColor = 'red';
                 break;
             case 'ORDER_ACCEPTED':
@@ -37,7 +37,7 @@ class OrderItem extends React.Component {
             </Button>
         );
 
-        const canceledStatusText = orderData.status === 'ORDER_PLACE_FAIL' && (
+        const canceledStatusText = orderData.status === 'CANCELED' && (
             <div style={{color: 'red'}}>
                 ORDER NOT SUCCESSFUL
             </div>
@@ -52,7 +52,13 @@ class OrderItem extends React.Component {
                     borderBottom: !isLastChild && '1px dashed black'
                 }}
             >
-                <div>{orderData.restaurantId}:</div>
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between'
+                }}>
+                    <div>{orderData.restaurantId}:</div>
+                    <div>{new Date(orderData.timestamp).toLocaleString('de')}</div>
+                </div>
                 <div>{JSON.stringify(orderData.items)}</div>
 
                 <DialogActions>
