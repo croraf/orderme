@@ -25,7 +25,7 @@ const makeOrder = (restaurantId) => async (dispatch, getState) => {
     order['timestamp'] = result.timestamp;
     order['status'] = result.status;
     
-    /* const status = makeOrderResponse ? 'AWAIT_RESTAURANT_CONFIRMATION' : 'CANCELED'; */
+    /* const status = makeOrderResponse ? 'AWAITING CONFIRMATION' : 'CANCELED'; */
     dispatch({type: 'createOrder', order});
     /* dispatch({type: 'changeOrderStatus', data: {orderId: order.orderId, status}}); */
 

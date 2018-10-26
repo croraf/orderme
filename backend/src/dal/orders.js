@@ -18,8 +18,8 @@ const deleteOrder = async (filter) => {
 };
 
 const updateOrder = async (_id, newData) => {
-    const n = (await getDatabaseConnection().collection('orders').updateOne({_id: _id}, {$set: newData}));
-    console.log(n);
+    const n = (await getDatabaseConnection().collection('orders').updateOne({_id: _id}, {$set: newData})).modifiedCount;
+    console.log('updateOrder modified count:', n);
     if (n === 1) {
         return;
     } else {

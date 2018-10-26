@@ -13,13 +13,13 @@ const cancelOrder = async (_id) => {
 const createOrder = async (orderData) => {
 
     orderData['timestamp'] = new Date();
-    orderData['status'] = 'AWAIT_RESTAURANT_CONFIRMATION';
+    orderData['status'] = 'AWAITING CONFIRMATION';
 
     console.log('ordering:', orderData);
 
     const _id = await dal.createOrder(orderData);
 
-    orderTimers[_id] = setInterval(() => {cancelOrder(_id);}, 10000);
+    orderTimers[_id] = setTimeout(() => {cancelOrder(_id);}, 10000);
     
 
     console.log('type:', typeof _id);

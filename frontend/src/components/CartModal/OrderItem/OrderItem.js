@@ -16,8 +16,8 @@ class OrderItem extends React.Component {
             case 'NOT_PLACED':
                 statusColor = 'black';
                 break;
-            case 'AWAIT_RESTAURANT_CONFIRMATION':
-                statusColor = '#3f51b5';
+            case 'AWAITING CONFIRMATION':
+                statusColor = 'gold';
                 break;
             case 'CANCELED':
                 statusColor = 'red';
@@ -29,17 +29,22 @@ class OrderItem extends React.Component {
                 break;
         }
 
-        const progressComponent = <CustomLinearProgressContainer orderId={orderData._id} orderStatus={orderData.status}/>;
+        const progressComponent = orderData.status === 'AWAITING CONFIRMATION' && (
+            <CustomLinearProgressContainer orderId={orderData._id} orderStatus={orderData.status}/>
+        );
 
-        const cancelOrderButton = orderData.status === 'AWAIT_RESTAURANT_CONFIRMATION' && (
+        const cancelOrderButton = orderData.status === 'AWAITING CONFIRMATION' ? (
             <Button onClick={() => {cancelOrderClickHandler(orderData._id);}} color="primary">
                 Cancel
             </Button>
-        );
+        ) : <div />;
 
-        const canceledStatusText = orderData.status === 'CANCELED' && (
-            <div style={{color: 'red'}}>
-                ORDER NOT SUCCESSFUL
+        const canceledStatusText = (
+            <div style={{
+                color: statusColor,
+                padding: '8px 0px'
+            }}>
+                {orderData.status}
             </div>
         );
 
@@ -47,7 +52,7 @@ class OrderItem extends React.Component {
             
             <div
                 style={{
-                    padding: '10px 0px 10px 0px',
+                    padding: '10px 0px 0px 0px',
                     color: 'black',
                     borderBottom: !isLastChild && '1px dashed black'
                 }}
@@ -61,11 +66,17 @@ class OrderItem extends React.Component {
                 </div>
                 <div>{JSON.stringify(orderData.items)}</div>
 
-                <DialogActions>
-                    {cancelOrderButton}
+                {/* <DialogActions>
+                </DialogActions> */}
 
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between'
+                }}>
+                    {cancelOrderButton}
                     {canceledStatusText}
-                </DialogActions>
+                </div>
+                
 
                 {progressComponent}
             </div>
