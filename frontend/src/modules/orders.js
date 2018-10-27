@@ -28,14 +28,16 @@ const makeOrder = (restaurantId) => async (dispatch, getState) => {
     /* const status = makeOrderResponse ? 'AWAITING CONFIRMATION' : 'CANCELED'; */
     dispatch({type: 'createOrder', order});
     /* dispatch({type: 'changeOrderStatus', data: {orderId: order.orderId, status}}); */
-
-    
 };
 
 const cancelOrder = (_id) => async (dispatch) => {
-
     dispatch({type: 'changeOrderStatus',  data: {_id, status: 'CANCELED'}});
 };
+
+const fetchOrder = (_id) => async (dispatch) => {
+    const fetchedOrder = await fetchUtils.fetchRelative('orders/' + _id);
+    dispatch({type: 'changeOrderStatus',  data: {_id, status: fetchedOrder.status}});
+}; 
     
 
 const ordersReducer = (state = {}, action) => {
@@ -54,4 +56,4 @@ const ordersReducer = (state = {}, action) => {
     }
 };
 
-export { ordersReducer, cancelOrder, makeOrder };
+export { ordersReducer, cancelOrder, makeOrder, fetchOrder };

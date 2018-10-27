@@ -1,4 +1,10 @@
 const {getDatabaseConnection} = require('./db');
+const {ObjectId} = require('mongodb');
+
+const getOrder = async (_id) => {
+    console.log('getting order with _id:', _id);
+    return await getDatabaseConnection().collection('orders').findOne({_id: ObjectId(_id)});
+};
 
 const getAllOrders = async () => {
     return await getDatabaseConnection().collection('orders').find().toArray();
@@ -27,5 +33,5 @@ const updateOrder = async (_id, newData) => {
     }
 };
 
-module.exports = {getAllOrders, createOrder, deleteOrder, updateOrder};
+module.exports = {getOrder, getAllOrders, createOrder, deleteOrder, updateOrder};
 

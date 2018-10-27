@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import DialogActions from '@material-ui/core/DialogActions';
+/* import DialogActions from '@material-ui/core/DialogActions'; */
 import {CustomLinearProgressContainer} from 'Components/CustomLinearProgress/CustomLinearProgressContainer';
 
 class OrderItem extends React.Component {
@@ -22,7 +22,7 @@ class OrderItem extends React.Component {
             case 'CANCELED':
                 statusColor = 'red';
                 break;
-            case 'ORDER_ACCEPTED':
+            case 'ACCEPTED':
                 statusColor = 'darkgreen';
                 break;
             default:

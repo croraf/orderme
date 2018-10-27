@@ -38,6 +38,9 @@ const bindRoutes = () => {
     router.delete('orders', async (ctx) => {
         ctx.body = await orders.deleteAllOrders();
     });
+    router.get('orders/:id', async (ctx) => {
+        ctx.body = await orders.getOrder(ctx.params.id);
+    });
 
 
     router.get('auth', async (ctx) => {
