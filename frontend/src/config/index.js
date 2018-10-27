@@ -1,5 +1,6 @@
 import development from './development';
 import production from './production';
+import defaultConfig from './default';
 
 let config;
 
@@ -9,10 +10,10 @@ if (!config) {
 
     switch (process.env.NODE_ENV) {
         case 'development':
-            config = development;
+            config = Object.assign(defaultConfig, development);
             break;
         case 'production':
-            config = production;
+            config = Object.assign(defaultConfig, production);
             break;
         default:
             config = {};
