@@ -6,7 +6,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    linearProgressFinishedHandler: (orderId) => {dispatch(fetchOrder(orderId));}
+    linearProgressFinishedHandler: (orderId) => {dispatch(fetchOrder(orderId));},
+    fetchOrderStatusHandler: (orderId) => {dispatch(fetchOrder(orderId));}
 });
 
 const CustomLinearProgressContainer = connect(mapStateToProps, mapDispatchToProps)(CustomLinearProgress);

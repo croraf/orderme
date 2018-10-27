@@ -34,9 +34,17 @@ const cancelOrder = (_id) => async (dispatch) => {
     dispatch({type: 'changeOrderStatus',  data: {_id, status: 'CANCELED'}});
 };
 
-const fetchOrder = (_id) => async (dispatch) => {
+const fetchOrder = (_id) => async (dispatch, getState) => {
+    console.log('fetching order to check status:', _id);
     const fetchedOrder = await fetchUtils.fetchRelative('orders/' + _id);
-    dispatch({type: 'changeOrderStatus',  data: {_id, status: fetchedOrder.status}});
+
+    if (getState().orders[_id].status !== fetchedOrder.status) {
+        console.log('status changed from', getState().orders[_id].status, ' to ', fetchedOrder.status);
+        dispatch({type: 'changeOrderStatus',  data: {_id, status: fetchedOrder.status}});
+    } else {
+        console.log('nothing changed');
+    }
+    
 }; 
     
 

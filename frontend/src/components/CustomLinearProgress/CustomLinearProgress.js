@@ -19,6 +19,10 @@ const stepSize = 0.5;
 
 class CustomLinearProgress extends React.Component {
 
+    state = {
+        progress: 1
+    }
+
     componentDidMount = () => {
         this.interval = setInterval(() => {
             // console.log('custom linear progress tick');
@@ -26,6 +30,9 @@ class CustomLinearProgress extends React.Component {
                 this.setState({
                     progress: this.state.progress + 1 * stepSize
                 });
+                if (this.state.progress % 10 === 0) {
+                    this.props.fetchOrderStatusHandler(this.props.orderId);
+                }
             } else {
                 clearInterval(this.interval);
                 this.props.linearProgressFinishedHandler(this.props.orderId);
@@ -42,10 +49,6 @@ class CustomLinearProgress extends React.Component {
         if (orderStatus === 'CANCELED') {
             clearInterval(this.interval);
         }
-    }
-
-    state = {
-        progress: 0
     }
 
     render() {

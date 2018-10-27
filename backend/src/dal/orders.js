@@ -1,9 +1,9 @@
 const {getDatabaseConnection} = require('./db');
-const {ObjectId} = require('mongodb');
+const {ObjectID} = require('mongodb');
 
 const getOrder = async (_id) => {
     console.log('getting order with _id:', _id);
-    return await getDatabaseConnection().collection('orders').findOne({_id: ObjectId(_id)});
+    return await getDatabaseConnection().collection('orders').findOne(ObjectID(_id));
 };
 
 const getAllOrders = async () => {

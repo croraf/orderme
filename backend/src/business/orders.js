@@ -31,7 +31,7 @@ const createOrder = async (orderData) => {
         () => {
             Math.random() > 0.5 ? cancelOrder(_id) : acceptOrder(_id);
         },
-        10000
+        3000 + Math.random() * 6000
     );
     
 
