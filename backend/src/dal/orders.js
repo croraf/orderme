@@ -2,7 +2,7 @@ const {getDatabaseConnection} = require('./db');
 const {ObjectID} = require('mongodb');
 
 const getOrder = async (_id) => {
-    console.log('getting order with _id:', _id);
+    // console.log('getting order with _id:', _id);
     return await getDatabaseConnection().collection('orders').findOne(ObjectID(_id));
 };
 
@@ -23,14 +23,13 @@ const deleteOrder = async (filter) => {
     return (await getDatabaseConnection().collection('orders').deleteMany(filter)).deletedCount;
 };
 
-const updateOrder = async (_id, newData) => {
-    const n = (await getDatabaseConnection().collection('orders').updateOne({_id: _id}, {$set: newData})).modifiedCount;
-    console.log('updateOrder modified count:', n);
-    if (n === 1) {
-        return;
-    } else {
-        throw new Error('Order not updated');
-    }
+const updateOrder = async (filter, newData) => {
+    /* console.log('updatingOrder with filter:', filter);
+    console.log('and newData:', newData); */
+    const result = (await getDatabaseConnection().collection('orders').updateOne(filter, {$set: newData}));
+    console.log('updateOrder matchedCount:', result.matchedCount);
+    console.log('updateOrder modifiedCount:', result.modifiedCount);
+    return result.matchedCount;
 };
 
 module.exports = {getOrder, getAllOrders, createOrder, deleteOrder, updateOrder};

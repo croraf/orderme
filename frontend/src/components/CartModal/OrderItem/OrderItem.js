@@ -33,7 +33,7 @@ class OrderItem extends React.Component {
             <CustomLinearProgressContainer orderId={orderData._id} orderStatus={orderData.status}/>
         );
 
-        const cancelOrderButton = orderData.status === 'AWAITING CONFIRMATION' ? (
+        const cancelOrderButton = orderData.status === 'AWAITING CONFIRMATION' || orderData.status === 'ACCEPTED' ? (
             <Button onClick={() => {cancelOrderClickHandler(orderData._id);}} color="primary">
                 Cancel
             </Button>

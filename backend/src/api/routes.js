@@ -41,6 +41,9 @@ const bindRoutes = () => {
     router.get('orders/:id', async (ctx) => {
         ctx.body = await orders.getOrder(ctx.params.id);
     });
+    router.get('cancel/orders/:id', async (ctx) => {
+        ctx.body = await orders.cancelOrder(ctx.params.id);
+    });
 
 
     router.get('auth', async (ctx) => {

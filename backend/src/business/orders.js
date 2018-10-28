@@ -1,5 +1,6 @@
 
 const dal = require('../dal/orders');
+const {ObjectId} = require('mongodb');
 
 const getOrder = async (_id) => {
     return await dal.getOrder(_id);
@@ -11,12 +12,16 @@ const getAllOrders = async () => {
 
 const cancelOrder = async (_id) => {
     console.log('canceling:', _id);
-    return await dal.updateOrder(_id, {status: 'CANCELED'});
+    clearTimeout(orderTimers[ObjectId(_id)]);
+    const cancelingResult = await dal.updateOrder(
+        {$and: [{_id: ObjectId(_id)}, {status: {$ne: 'CONFIRMED'}}]},
+        {status: 'CANCELED'});
+    return cancelingResult;
 };
 
 const acceptOrder = async (_id) => {
     console.log('accepting:', _id);
-    return await dal.updateOrder(_id, {status: 'ACCEPTED'});
+    return await dal.updateOrder({$and: [{_id}, {status: 'AWAITING CONFIRMATION'}]}, {status: 'ACCEPTED'});
 };
 
 const createOrder = async (orderData) => {
@@ -50,5 +55,5 @@ const deleteAllOrders = async () => {
 
 const orderTimers = {};
 
-module.exports = {getOrder, getAllOrders, createOrder, deleteAllOrders};
+module.exports = {getOrder, getAllOrders, createOrder, deleteAllOrders, cancelOrder};
 

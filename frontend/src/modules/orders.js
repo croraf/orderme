@@ -10,7 +10,6 @@ const makeOrder = (restaurantId) => async (dispatch, getState) => {
     };
     dispatch({type: 'clearCart', restaurantId});
 
-
     const fetchOptions = {
         method: 'POST',
         body: JSON.stringify(order),
@@ -19,19 +18,17 @@ const makeOrder = (restaurantId) => async (dispatch, getState) => {
             'Accept': 'application/json'
         }
     };
-    
     const result = await fetchUtils.fetchRelative('orders', fetchOptions);
     order['_id'] = result._id;
     order['timestamp'] = result.timestamp;
     order['status'] = result.status;
     
-    /* const status = makeOrderResponse ? 'AWAITING CONFIRMATION' : 'CANCELED'; */
     dispatch({type: 'createOrder', order});
-    /* dispatch({type: 'changeOrderStatus', data: {orderId: order.orderId, status}}); */
 };
 
 const cancelOrder = (_id) => async (dispatch) => {
-    dispatch({type: 'changeOrderStatus',  data: {_id, status: 'CANCELED'}});
+    const result = await fetchUtils.fetchRelative('cancel/orders/' + _id);
+    dispatch({type: 'changeOrderStatus',  data: {_id, status: result === 1 ? 'CANCELED' : 'CONFIRMED'}});
 };
 
 const fetchOrder = (_id) => async (dispatch, getState) => {
