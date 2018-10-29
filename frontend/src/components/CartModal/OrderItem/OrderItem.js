@@ -29,10 +29,6 @@ class OrderItem extends React.Component {
                 break;
         }
 
-        const progressComponent = orderData.status === 'AWAITING CONFIRMATION' && (
-            <CustomLinearProgressContainer orderId={orderData._id} orderStatus={orderData.status}/>
-        );
-
         const cancelOrderButton = orderData.status === 'AWAITING CONFIRMATION' || orderData.status === 'ACCEPTED' ? (
             <Button onClick={() => {cancelOrderClickHandler(orderData._id);}} color="primary">
                 Cancel
@@ -46,6 +42,10 @@ class OrderItem extends React.Component {
             }}>
                 {orderData.status}
             </div>
+        );
+
+        const progressComponent = orderData.status === 'AWAITING CONFIRMATION' && (
+            <CustomLinearProgressContainer orderId={orderData._id} orderStatus={orderData.status} orderTimestamp={orderData.timestamp} />
         );
 
         return (

@@ -25,7 +25,7 @@ const acceptOrder = async (_id) => {
 };
 
 const createOrder = async (orderData) => {
-    orderData['timestamp'] = new Date();
+    orderData['timestamp'] = Date.now();
     orderData['status'] = 'AWAITING CONFIRMATION';
 
     console.log('ordering:', orderData);

@@ -15,12 +15,20 @@ const styles = {
     }
 };
 
+const initializeProgress = (orderTimestamp) => {
+    console.log(Date.now() - orderTimestamp);
+    const diffInMillis = Date.now() - orderTimestamp;
+    return Math.ceil(diffInMillis / 1000 * 10);
+};
+
+
+
 const stepSize = 0.5;
 
 class CustomLinearProgress extends React.Component {
 
     state = {
-        progress: 1
+        progress: initializeProgress(this.props.orderTimestamp)
     }
 
     componentDidMount = () => {

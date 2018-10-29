@@ -29,6 +29,7 @@ class CustomLinearProgress extends React.Component {
         mounted: false
     }
 
+    // why doesnt work when there is no timeout
     componentDidMount = () => {
         setTimeout(() => {
             this.setState({
