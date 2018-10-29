@@ -19,8 +19,10 @@ class CartModalItem extends React.Component {
                     borderBottom: !isLastChild && '1px dashed black'
                 }}
             >
-                <div>{restaurantId}:</div>
-                <div>{JSON.stringify(restaurantOrderData)}</div>
+                <div style={{
+                    fontWeight: 'bold'
+                }}>{restaurantId}:</div>
+                <div>{restaurantOrderData.join(', ')}</div>
 
                 <DialogActions>
                     <Button onClick={() => {orderItemFromCartHandler(restaurantId);}} color="primary">

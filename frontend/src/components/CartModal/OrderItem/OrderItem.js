@@ -78,10 +78,12 @@ class OrderItem extends React.Component {
                     display: 'flex',
                     justifyContent: 'space-between'
                 }}>
-                    <div>{orderData.restaurantId}:</div>
+                    <div style={{
+                        fontWeight: 'bold'
+                    }}>{orderData.restaurantId}:</div>
                     <div>{new Date(orderData.timestamp).toLocaleString('de')}</div>
                 </div>
-                <div>{JSON.stringify(orderData.items)}</div>
+                <div>{orderData.items.join(', ')}</div>
 
                 {/* <DialogActions>
                 </DialogActions> */}
