@@ -1,6 +1,5 @@
 
 const dal = require('../dal/orders');
-const {ObjectId} = require('mongodb');
 
 const getOrder = async (_id) => {
     return await dal.getOrder(_id);
@@ -11,39 +10,51 @@ const getAllOrders = async () => {
 };
 
 const cancelOrder = async (_id) => {
-    console.log('canceling:', _id, typeof _id, ObjectId(_id), typeof ObjectId(_id));
+    console.log('canceling:', _id, typeof _id);
     
-    clearTimeout(orderAcceptTimers[ObjectId(_id)]);
+    orderAcceptTimers[_id] && clearTimeout(orderAcceptTimers[_id]);
+    orderConfirmationTimers[_id] && clearTimeout(orderConfirmationTimers[_id]);
+
     const cancelingResult = await dal.updateOrder(
-        {$and: [{_id: ObjectId(_id)}, {status: {$ne: 'CONFIRMED'}}]},
+        {$and: [{_id}, {status: {$ne: 'CONFIRMED'}}]},
         {status: 'CANCELED'});
     return cancelingResult;
 };
 
 const acceptOrder = async (_id) => {
-    console.log('accepting:', _id, ObjectId(_id), typeof(ObjectId(_id)));
-    clearTimeout(orderAcceptTimers[ObjectId(_id)]);
-    const updatingResult = await dal.updateOrder({$and: [{_id}, {status: 'AWAITING CONFIRMATION'}]}, {status: 'ACCEPTED'});
+    console.log('accepting:', _id, typeof _id);
+    const acceptedTimestamp = Date.now();
+    const updatingResult = await dal.updateOrder(
+        {$and: [{_id}, {status: 'AWAITING CONFIRMATION'}]}, 
+        {status: 'ACCEPTED', acceptedTimestamp}
+    );
 
     if (updatingResult === 1) {
         // order has been set to accepted from awaiting confirmation
-        // start confirmed timer
-
+        // start confirmation timer
+        orderConfirmationTimers[_id] = setTimeout(() => {confirmOrder(_id);}, acceptedTimestamp + 9500 - Date.now());
     }
-    return updatingResult;
+    console.log('accepting result:', updatingResult);
 };
 
-const confirmTimer = async (_id) => {
-
+const confirmOrder = async (_id) => {
+    console.log('confirming:', _id, typeof _id);
+    
+    const confirmingResult = await dal.updateOrder(
+        {$and: [{_id}, {status: {$ne: 'CANCELED'}}]},
+        {status: 'CONFIRMED'}
+    );
+    console.log('confirming result:', confirmingResult);
 };
+
 
 const createOrder = async (orderData) => {
     orderData['timestamp'] = Date.now();
     orderData['status'] = 'AWAITING CONFIRMATION';
 
     console.log('ordering:', orderData);
-
     const _id = await dal.createOrder(orderData);
+    console.log('order created:', _id, typeof _id);
 
     orderAcceptTimers[_id] = setTimeout(
         () => {
@@ -52,8 +63,6 @@ const createOrder = async (orderData) => {
         3000 + Math.random() * 6000
     );
     
-
-    console.log('type:', typeof _id);
     return {
         _id,
         timestamp: orderData['timestamp'].valueOf(),
@@ -67,7 +76,7 @@ const deleteAllOrders = async () => {
 
 
 const orderAcceptTimers = {};
-const confirmOrderTimers = {};
+const orderConfirmationTimers = {};
 
 module.exports = {getOrder, getAllOrders, createOrder, deleteAllOrders, cancelOrder};
 

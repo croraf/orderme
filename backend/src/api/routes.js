@@ -4,6 +4,8 @@ const Router = require('koa-router');
 const restaurants = require('../business/restaurants');
 const users = require('../business/users');
 const orders = require('../business/orders');
+const {ObjectId} = require('mongodb');
+
 
 const bindRoutes = () => {
 
@@ -42,7 +44,7 @@ const bindRoutes = () => {
         ctx.body = await orders.getOrder(ctx.params.id);
     });
     router.get('cancel/orders/:id', async (ctx) => {
-        ctx.body = await orders.cancelOrder(ctx.params.id);
+        ctx.body = await orders.cancelOrder(ObjectId(ctx.params.id));
     });
 
 

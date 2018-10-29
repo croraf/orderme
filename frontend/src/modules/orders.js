@@ -28,7 +28,7 @@ const makeOrder = (restaurantId) => async (dispatch, getState) => {
 
 const cancelOrder = (_id) => async (dispatch) => {
     const result = await fetchUtils.fetchRelative('cancel/orders/' + _id);
-    dispatch({type: 'changeOrderStatus',  data: {_id, status: result === 1 ? 'CANCELED' : 'CONFIRMED'}});
+    dispatch({type: 'modifyOrder',  _id, data: {status: result === 1 ? 'CANCELED' : 'CONFIRMED'}});
 };
 
 const fetchOrder = (_id) => async (dispatch, getState) => {
@@ -37,7 +37,7 @@ const fetchOrder = (_id) => async (dispatch, getState) => {
 
     if (getState().orders[_id].status !== fetchedOrder.status) {
         console.log('status changed from', getState().orders[_id].status, ' to ', fetchedOrder.status);
-        dispatch({type: 'changeOrderStatus',  data: {_id, status: fetchedOrder.status}});
+        dispatch({type: 'modifyOrder',  _id, data: fetchedOrder});
     } else {
         console.log('nothing changed');
     }
@@ -52,10 +52,9 @@ const ordersReducer = (state = {}, action) => {
             return newState;
         case 'ordersLoaded':
             return action.data;
-        case 'changeOrderStatus':
-            const orderCopy = Object.assign({}, state[action.data._id]);
-            orderCopy.status = action.data.status;
-            return Object.assign({}, state, {[action.data._id]: orderCopy});
+        case 'modifyOrder':
+            const replacedOrder = Object.assign({}, state[action._id], action.data);
+            return Object.assign({}, state, {[action._id]: replacedOrder});
         default:
             return state;
     }

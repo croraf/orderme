@@ -11,41 +11,40 @@ const styles = {
         backgroundColor: 'red'
     },
     bar1Determinate: {
-        transitionDuration: '0.1s'
+        transitionDuration: '0.46s'
     }
 };
 
-const initializeProgress = (orderTimestamp) => {
-    console.log(Date.now() - orderTimestamp);
-    const diffInMillis = Date.now() - orderTimestamp;
-    return Math.ceil(diffInMillis / 1000 * 10);
+const calculateProgress = (initialTimestamp, duration) => {
+    // console.log(Date.now() - initialTimestamp);
+    const diffInMillis = Date.now() - initialTimestamp;
+    return Math.ceil(diffInMillis / 10 / duration);
 };
 
-
-
-const stepSize = 0.5;
 
 class CustomLinearProgress extends React.Component {
 
     state = {
-        progress: initializeProgress(this.props.orderTimestamp)
+        progress: calculateProgress(this.props.initialTimestamp, this.props.duration),
+        tick: 0
     }
 
     componentDidMount = () => {
         this.interval = setInterval(() => {
             // console.log('custom linear progress tick');
-            if (this.state.progress < 100) {
-                this.setState({
-                    progress: this.state.progress + 1 * stepSize
-                });
-                if (this.state.progress % 10 === 0) {
-                    this.props.fetchOrderStatusHandler(this.props.orderId);
-                }
-            } else {
+            const currentProgress = calculateProgress(this.props.initialTimestamp, this.props.duration);
+            this.setState({
+                progress: currentProgress,
+                tick: this.state.tick + 1
+            });
+
+            this.props.fetchOrderStatusHandler(this.props.orderId);
+
+            if (currentProgress >= 100) {
                 clearInterval(this.interval);
-                this.props.linearProgressFinishedHandler(this.props.orderId);
             }
-        }, 50);
+
+        }, 500);
     }
 
     componentWillUnmount = () => {
@@ -62,7 +61,7 @@ class CustomLinearProgress extends React.Component {
     render() {
         const {classes, orderStatus} = this.props;
 
-        let color;
+        /* let color;
         switch (orderStatus) {
             case 'CANCELED':
                 color = classes.colorFail;
@@ -71,7 +70,7 @@ class CustomLinearProgress extends React.Component {
                 break;
             default:
                 break;
-        }
+        } */
 
         return (
             <div style={{
@@ -80,7 +79,7 @@ class CustomLinearProgress extends React.Component {
                 <LinearProgress 
                     variant="determinate"
                     value={this.state.progress} 
-                    classes={{ barColorPrimary: color, bar1Determinate: classes.bar1Determinate }}
+                    classes={{/*  barColorPrimary: color,  */bar1Determinate: classes.bar1Determinate }}
                 />
             </div>
         );

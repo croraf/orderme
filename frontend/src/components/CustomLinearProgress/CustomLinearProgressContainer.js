@@ -6,7 +6,6 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    linearProgressFinishedHandler: (orderId) => {dispatch(fetchOrder(orderId));},
     fetchOrderStatusHandler: (orderId) => {dispatch(fetchOrder(orderId));}
 });
 

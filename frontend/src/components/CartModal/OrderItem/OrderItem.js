@@ -23,7 +23,10 @@ class OrderItem extends React.Component {
                 statusColor = 'red';
                 break;
             case 'ACCEPTED':
-                statusColor = 'darkgreen';
+                statusColor = '#5f5';
+                break;
+            case 'CONFIRMED':
+                statusColor = '#060';
                 break;
             default:
                 break;
@@ -44,8 +47,22 @@ class OrderItem extends React.Component {
             </div>
         );
 
-        const progressComponent = orderData.status === 'AWAITING CONFIRMATION' && (
-            <CustomLinearProgressContainer orderId={orderData._id} orderStatus={orderData.status} orderTimestamp={orderData.timestamp} />
+        const progressComponentAwaiting = orderData.status === 'AWAITING CONFIRMATION' && (
+            <CustomLinearProgressContainer 
+                orderId={orderData._id}
+                orderStatus={orderData.status}
+                initialTimestamp={orderData.timestamp}
+                duration={10} 
+            />
+        );
+
+        const progressComponentAccepted = orderData.status === 'ACCEPTED' && (
+            <CustomLinearProgressContainer 
+                orderId={orderData._id}
+                orderStatus={orderData.status}
+                initialTimestamp={orderData.acceptedTimestamp}
+                duration={10} 
+            />
         );
 
         return (
@@ -78,7 +95,8 @@ class OrderItem extends React.Component {
                 </div>
                 
 
-                {progressComponent}
+                {progressComponentAwaiting}
+                {progressComponentAccepted}
             </div>
 
         );
