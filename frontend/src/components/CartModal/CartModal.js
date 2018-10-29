@@ -5,6 +5,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import Slide from '@material-ui/core/Slide';
 import { CartModalContentContainer } from './CartModalContentContainer';
 import { CartModalHeader } from './CartModalHeader';
+import { CartFilledNotificationContainer } from './CartFilledNotification/CartFilledNotificationContainer';
 
 function Transition(props) {
     return <Slide direction="up" {...props} />;
@@ -26,7 +27,12 @@ class CartModal extends React.Component {
     render() {
         return (
             <div>
-                <Button variant='outlined' color='primary' onClick={this.handleClickOpen}>Manage cart & Checkout</Button>
+                <div style={{
+                    display: 'flex'
+                }}>
+                    <Button variant='outlined' color='primary' onClick={this.handleClickOpen}>Manage cart & Checkout</Button>
+                    <CartFilledNotificationContainer />
+                </div>
                 <Dialog
                     open={this.state.open}
                     TransitionComponent={Transition}
