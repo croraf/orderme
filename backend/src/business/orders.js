@@ -11,8 +11,9 @@ const getAllOrders = async () => {
 };
 
 const cancelOrder = async (_id) => {
-    console.log('canceling:', _id);
-    clearTimeout(orderTimers[ObjectId(_id)]);
+    console.log('canceling:', _id, typeof _id, ObjectId(_id), typeof ObjectId(_id));
+    
+    clearTimeout(orderAcceptTimers[ObjectId(_id)]);
     const cancelingResult = await dal.updateOrder(
         {$and: [{_id: ObjectId(_id)}, {status: {$ne: 'CONFIRMED'}}]},
         {status: 'CANCELED'});
@@ -20,8 +21,20 @@ const cancelOrder = async (_id) => {
 };
 
 const acceptOrder = async (_id) => {
-    console.log('accepting:', _id);
-    return await dal.updateOrder({$and: [{_id}, {status: 'AWAITING CONFIRMATION'}]}, {status: 'ACCEPTED'});
+    console.log('accepting:', _id, ObjectId(_id), typeof(ObjectId(_id)));
+    clearTimeout(orderAcceptTimers[ObjectId(_id)]);
+    const updatingResult = await dal.updateOrder({$and: [{_id}, {status: 'AWAITING CONFIRMATION'}]}, {status: 'ACCEPTED'});
+
+    if (updatingResult === 1) {
+        // order has been set to accepted from awaiting confirmation
+        // start confirmed timer
+
+    }
+    return updatingResult;
+};
+
+const confirmTimer = async (_id) => {
+
 };
 
 const createOrder = async (orderData) => {
@@ -32,7 +45,7 @@ const createOrder = async (orderData) => {
 
     const _id = await dal.createOrder(orderData);
 
-    orderTimers[_id] = setTimeout(
+    orderAcceptTimers[_id] = setTimeout(
         () => {
             Math.random() > 0.5 ? cancelOrder(_id) : acceptOrder(_id);
         },
@@ -53,7 +66,8 @@ const deleteAllOrders = async () => {
 };
 
 
-const orderTimers = {};
+const orderAcceptTimers = {};
+const confirmOrderTimers = {};
 
 module.exports = {getOrder, getAllOrders, createOrder, deleteAllOrders, cancelOrder};
 
