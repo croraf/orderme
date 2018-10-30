@@ -45,7 +45,7 @@ class CartModal extends React.Component {
                     
 
                     <DialogContent>
-                        <CartModalContentContainer />
+                        <CartModalContentContainer closeModal={this.handleClose}/>
                     </DialogContent>
                 </Dialog>
             </div>

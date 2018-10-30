@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    onRestaurantClickHandler: (restaurantName) => {dispatch(push('/home/' + restaurantName));}
+    onRestaurantClickHandler: (restaurantName) => {dispatch(push('/home/restaurants/' + restaurantName));}
 });
 
 

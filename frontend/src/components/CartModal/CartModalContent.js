@@ -63,7 +63,10 @@ class CartModalContent extends React.Component {
                 </div>
 
                 <div style={{textAlign: 'center'}}>
-                    <Button color='primary'>Full orders history</Button>
+                    <Button 
+                        color='primary'
+                        onClick={this.props.onFullOrdersButtonClickHandler}
+                    >Full orders history</Button>
                 </div>
             </div>
         );

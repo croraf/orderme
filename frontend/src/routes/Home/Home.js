@@ -6,6 +6,7 @@ import { RestaurantsListContainer } from './Restaurants/RestaurantsList/Restaura
 import { TitleRowContainer } from './TitleRow/TitleRowContainer';
 import { Switch, Route } from 'react-router';
 import { restaurantDetailsRenderer } from './Restaurants/RestaurantDetails/restaurantDetailsRenderer';
+import { OrdersContainer } from './Orders/OrdersContainer';
 
 /* import squareImage from './square.png'; */
 
@@ -55,7 +56,8 @@ class Home extends React.Component {
 
                     <Switch>
                         <Route exact={true} path={'/home'} component={RestaurantsListContainer} />
-                        <Route path={'/home/:restaurantName'} component={restaurantDetailsRenderer}/>
+                        <Route path={'/home/restaurants/:restaurantName'} component={restaurantDetailsRenderer}/>
+                        <Route path={'/home/orders'} component={OrdersContainer}/>
                     </Switch>
 
                 </div>
