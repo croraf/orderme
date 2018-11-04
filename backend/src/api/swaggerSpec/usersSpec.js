@@ -10,71 +10,102 @@ const spec = {
         }
     ],
     'paths': {
-        '/users/login': {
+        '/users': {
+            'post': {
+                'tags': [
+                    'users'
+                ],
+                'summary': 'Create a new user',
+                'description': '',
+                'consumes': [
+                    'application/json',
+                ],
+                'produces': [
+                    'application/json'
+                ],
+                'parameters': [
+                    {
+                        'in': 'body',
+                        'name': 'body',
+                        'description': 'User object that needs to be added',
+                        'required': true,
+                        'schema': {
+                            '$ref': '#/definitions/User'
+                        }
+                    }
+                ],
+                'responses': {
+                    '405': {
+                        'description': 'Invalid input'
+                    }
+                },
+                'security': [
+                    {
+                        'petstore_auth': [
+                            'write:pets',
+                            'read:pets'
+                        ]
+                    }
+                ]
+            },
             'get': {
                 'tags': [
                     'users'
                 ],
-                'summary': 'Logs user into the system',
+                'summary': 'Get all users',
                 'description': '',
-                'operationId': 'loginUser',
-                'produces': 'application/json',
-                'parameters': [
-                    {
-                        'name': 'username',
-                        'in': 'query',
-                        'description': 'The user name for login',
-                        'required': true,
-                        'type': 'string'
-                    },
-                    {
-                        'name': 'password',
-                        'in': 'query',
-                        'description': 'The password for login in clear text',
-                        'required': true,
-                        'type': 'string'
-                    }
+                'produces': [
+                    'application/json'
                 ],
                 'responses': {
                     '200': {
-                        'description': 'successful operation',
-                        'schema': {
-                            'type': 'string'
-                        },
-                        'headers': {
-                            'X-Rate-Limit': {
-                                'type': 'integer',
-                                'format': 'int32',
-                                'description': 'calls per hour allowed by the user'
-                            },
-                            'X-Expires-After': {
-                                'type': 'string',
-                                'format': 'date-time',
-                                'description': 'date in UTC when token expires'
-                            }
+                        'description': 'OK',
+                        type: 'array',
+                        items: {
+                            type: 'object'
                         }
                     },
-                    '400': {
-                        'description': 'Invalid username/password supplied'
+                    '405': {
+                        'description': 'Invalid input'
+                    },
+                    '500': {
+                        description: 'Internal server error'
                     }
-                }
-            }
-        },
-        '/users/logout': {
-            'get': {
+                },
+                'security': [
+                    {
+                        'petstore_auth': [
+                            'write:pets',
+                            'read:pets'
+                        ]
+                    }
+                ]
+            },
+            'delete': {
                 'tags': [
                     'users'
                 ],
-                'summary': 'Logs out current logged in user session',
+                'summary': 'Delete all users',
                 'description': '',
-                'operationId': 'logoutUser',
-                'produces': 'application/xml',
-                'parameters': [],
                 'responses': {
-                    'default': {
-                        'description': 'successful operation'
+                    '200': {
+                        description: 'All deleted. Returns number of deleted',
+                        'schema': {
+                            type: 'integer',
+                        }
+                    },
+                    '405': {
+                        'description': 'Invalid input'
                     }
-                }
+                },
+                'security': [
+                    {
+                        'petstore_auth': [
+                            'write:pets',
+                            'read:pets'
+                        ]
+                    }
+                ]
             }
         },
         '/users/{username}': {
@@ -178,32 +209,14 @@ const spec = {
             'type': 'object',
             'properties': {
                 'id': {
-                    'type': 'integer',
-                    'format': 'int64'
-                },
-                'username': {
                     'type': 'string'
                 },
-                'firstName': {
+                'name': {
                     'type': 'string'
                 },
-                'lastName': {
+                'token': {
                     'type': 'string'
                 },
-                'email': {
-                    'type': 'string'
-                },
-                'password': {
-                    'type': 'string'
-                },
-                'phone': {
-                    'type': 'string'
-                },
-                'userStatus': {
-                    'type': 'integer',
-                    'format': 'int32',
-                    'description': 'User Status'
-                }
             },
             'xml': {
                 'name': 'User'

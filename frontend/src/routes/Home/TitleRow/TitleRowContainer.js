@@ -9,6 +9,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     onLogoutHandler: () => {
         localStorage.removeItem('auth_token');
+        localStorage.removeItem('name');
         dispatch(push('/'));
     },
 });

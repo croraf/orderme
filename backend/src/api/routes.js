@@ -47,6 +47,19 @@ const bindRoutes = () => {
         ctx.body = await orders.cancelOrder(ObjectId(ctx.params.id));
     });
 
+    router.get('users', async (ctx) => {
+        ctx.body = await users.getUsers();
+    });
+    router.post('users', async (ctx) => {
+        ctx.body = await users.createUser(ctx.request.body);
+    });
+    router.delete('users', async (ctx) => {
+        ctx.body = await users.deleteUsers();
+    });
+    router.get('users/:id', async (ctx) => {
+        ctx.body = await users.getUser(ctx.params.id);
+    });
+
 
     router.get('auth', async (ctx) => {
         const accessToken = await users.auth(ctx.query.code);
