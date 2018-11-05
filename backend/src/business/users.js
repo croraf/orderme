@@ -21,10 +21,7 @@ const auth = async (authCode) => {
 
     const userData = JSON.parse(await request(graphUserInfoURL));
     userData.token = authResponse.access_token;
-    const result = createUser(userData);
-
-    console.log('user data:', userData);
-    console.log('result:', result);
+    dal.updateUser(userData.id, userData);
     
     return {jwt: authResponse.access_token};
 };

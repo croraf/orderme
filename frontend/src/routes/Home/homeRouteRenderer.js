@@ -9,6 +9,8 @@ let initialHomeRouteDataLoaded = false;
 
 const loadInitialHomeRouteData = async () => {
 
+    /* const userData = await fetchUtils.fetchRelative('users'); */
+
     const restaurants = await fetchUtils.fetchRelative('restaurants');
     console.log('restaurants fetched:', restaurants);
     store.dispatch({type: 'restaurantsData', data: restaurants});

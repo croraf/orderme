@@ -22,13 +22,10 @@ const deleteUser = async (filter) => {
     return (await getDatabaseConnection().collection('users').deleteMany(filter)).deletedCount;
 };
 
-const updateUser = async (name, newData) => {
-    const n = (await getDatabaseConnection().collection('users').updateMany({name: name}, {$set: newData})).result.n;
-    if (n === 1) {
-        return;
-    } else {
-        throw new Error('User not updated');
-    }
+const updateUser = async (id, newData) => {
+    const result = (await getDatabaseConnection().collection('users').update({id}, {$set: newData}, {upsert: true})).result;
+
+    console.log('update user result:', result);
 };
 
 
