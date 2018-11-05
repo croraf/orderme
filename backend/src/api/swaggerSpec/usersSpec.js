@@ -39,14 +39,7 @@ const spec = {
                         'description': 'Invalid input'
                     }
                 },
-                'security': [
-                    {
-                        'petstore_auth': [
-                            'write:pets',
-                            'read:pets'
-                        ]
-                    }
-                ]
+                'security': [{'api_key': []}]
             },
             'get': {
                 'tags': [
@@ -72,14 +65,7 @@ const spec = {
                         description: 'Internal server error'
                     }
                 },
-                'security': [
-                    {
-                        'petstore_auth': [
-                            'write:pets',
-                            'read:pets'
-                        ]
-                    }
-                ]
+                'security': [{'api_key': []}]
             },
             'delete': {
                 'tags': [
@@ -98,14 +84,7 @@ const spec = {
                         'description': 'Invalid input'
                     }
                 },
-                'security': [
-                    {
-                        'petstore_auth': [
-                            'write:pets',
-                            'read:pets'
-                        ]
-                    }
-                ]
+                'security': [{'api_key': []}]
             }
         },
         '/users/{username}': {
@@ -139,7 +118,8 @@ const spec = {
                     '404': {
                         'description': 'User not found'
                     }
-                }
+                },
+                'security': [{'api_key': []}]
             },
             'put': {
                 'tags': [
@@ -174,7 +154,8 @@ const spec = {
                     '404': {
                         'description': 'User not found'
                     }
-                }
+                },
+                'security': [{'api_key': []}]
             },
             'delete': {
                 'tags': [
@@ -200,7 +181,8 @@ const spec = {
                     '404': {
                         'description': 'User not found'
                     }
-                }
+                },
+                'security': [{'api_key': []}]
             }
         }
     },

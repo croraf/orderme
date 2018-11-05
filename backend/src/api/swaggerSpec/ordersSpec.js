@@ -31,7 +31,8 @@ const spec = {
                     '500': {
                         description: 'Internal server error'
                     }
-                }
+                },
+                'security': [{'api_key': []}]
             },
             'post': {
                 'tags': [
@@ -65,7 +66,8 @@ const spec = {
                     '200': {
                         'description': 'Orders sucessfully placed',
                     }
-                }
+                },
+                'security': [{'api_key': []}]
             },
             'delete': {
                 'tags': [
@@ -83,7 +85,8 @@ const spec = {
                     '405': {
                         'description': 'Invalid input'
                     }
-                }
+                },
+                'security': [{'api_key': []}]
             }
         },
     },

@@ -38,7 +38,7 @@ const swaggerSpec = {
         },
         'api_key': {
             'type': 'apiKey',
-            'name': 'api_key',
+            'name': 'X-Access-Token',
             'in': 'header'
         }
     },

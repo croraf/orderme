@@ -47,7 +47,9 @@ const bindRoutes = () => {
         ctx.body = await orders.cancelOrder(ObjectId(ctx.params.id));
     });
 
+    const jwt = require('jsonwebtoken');
     router.get('users', async (ctx) => {
+        console.log('user:', jwt.verify(ctx.request.headers['x-access-token'], 'abcdef'));
         ctx.body = await users.getUsers();
     });
     router.post('users', async (ctx) => {

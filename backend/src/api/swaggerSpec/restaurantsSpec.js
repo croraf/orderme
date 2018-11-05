@@ -39,14 +39,7 @@ const spec = {
                         'description': 'Invalid input'
                     }
                 },
-                'security': [
-                    {
-                        'petstore_auth': [
-                            'write:pets',
-                            'read:pets'
-                        ]
-                    }
-                ]
+                'security': [{'api_key': []}]
             },
             'get': {
                 'tags': [
@@ -72,14 +65,7 @@ const spec = {
                         description: 'Internal server error'
                     }
                 },
-                'security': [
-                    {
-                        'petstore_auth': [
-                            'write:pets',
-                            'read:pets'
-                        ]
-                    }
-                ]
+                'security': [{'api_key': []}]
             },
             'delete': {
                 'tags': [
@@ -98,14 +84,7 @@ const spec = {
                         'description': 'Invalid input'
                     }
                 },
-                'security': [
-                    {
-                        'petstore_auth': [
-                            'write:pets',
-                            'read:pets'
-                        ]
-                    }
-                ]
+                'security': [{'api_key': []}]
             }
         },
         '/restaurants/{name}': {
@@ -149,7 +128,8 @@ const spec = {
                     '400': {
                         'description': 'Restaurant name supplied not in the system'
                     }
-                }
+                },
+                'security': [{'api_key': []}]
             },
             'delete': {
                 'tags': [
@@ -188,7 +168,8 @@ const spec = {
                     '400': {
                         'description': 'Restaurant name supplied not in the system'
                     }
-                }
+                },
+                'security': [{'api_key': []}]
             },
             'put': {
                 'tags': [
@@ -240,7 +221,8 @@ const spec = {
                     '400': {
                         'description': 'Restaurant name supplied not in the system'
                     }
-                }
+                },
+                'security': [{'api_key': []}]
             },
         }
     },
