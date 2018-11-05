@@ -1,6 +1,7 @@
 const request = require('request-promise');
 const config = require('config');
 const dal = require('../dal/users');
+const jwt = require('jsonwebtoken');
 
 const auth = async (authCode) => {
     console.log('JWT token request received with code:', authCode);
@@ -20,10 +21,12 @@ const auth = async (authCode) => {
     const graphUserInfoURL = 'https://graph.facebook.com/me?access_token=' + authResponse.access_token;
 
     const userData = JSON.parse(await request(graphUserInfoURL));
-    userData.token = authResponse.access_token;
-    dal.updateUser(userData.id, userData);
-    
-    return {jwt: authResponse.access_token};
+    userData.role = 'customer';
+    await dal.updateUser(userData.id, userData);
+
+
+    const jwtToken = jwt.sign(userData, 'abcdef', {expiresIn: 3600});
+    return jwtToken;
 };
         
 

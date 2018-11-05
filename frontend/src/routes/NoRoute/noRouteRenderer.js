@@ -4,8 +4,8 @@ import {push} from 'connected-react-router';
 
 const noRouteRenderer = () => {
 
-    const auth_token = localStorage.getItem('auth_token');
-    if (!auth_token) {
+    const authToken = localStorage.getItem('token');
+    if (!authToken) {
         store.dispatch(push('/'));
     } else {
         store.dispatch(push('/home'));

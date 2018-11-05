@@ -4,26 +4,31 @@ import {LoggingIn} from './LoggingIn';
 import {store} from '../../modules/store';
 import {push} from 'connected-react-router';
 import config from 'Config';
+var jwtDecode = require('jwt-decode');
 
 const fetchJwtToken = async (facebookAuthCode) => {
     console.log('fetching auth token for received facebook code');
     const url = config.apiHost + 'v0/auth?code=' + facebookAuthCode;
     const options = {
         headers: {
-            'Accept': 'application/json'
+            'Accept': 'application/text'
         }
     };
-    const responseJson = await ((await fetch(url, options)).json());
-    console.log('Auth token received:', responseJson.jwt);
-    localStorage.setItem('auth_token', responseJson.jwt);
+    const jwtToken = await ((await fetch(url, options)).text());
+    console.log('Auth token received:', jwtToken);
+    localStorage.setItem('token', jwtToken);
+
+    const tokenPayload = jwtDecode(jwtToken);
+    console.log('tokenPayload:', tokenPayload);
+
     store.dispatch(push('/home'));
 };
 
 const loginRouteRenderer = () => {
 
-    const auth_token = localStorage.getItem('auth_token');
-    console.log('token in local storage:', auth_token);
-    if (auth_token) {
+    const authToken = localStorage.getItem('token');
+    console.log('token in local storage:', authToken);
+    if (authToken) {
         store.dispatch(push('/home'));
     }
 

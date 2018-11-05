@@ -25,9 +25,9 @@ const loadInitialHomeRouteData = async () => {
 
 const homeRouteRenderer = (props) => {
 
-    const auth_token = localStorage.getItem('auth_token');
-    console.log('token in local storage:', auth_token);
-    if (!auth_token) {
+    const authToken = localStorage.getItem('token');
+    console.log('token in local storage:', authToken);
+    if (!authToken) {
         store.dispatch(push('/'));
     }
 

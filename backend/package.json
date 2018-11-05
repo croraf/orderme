@@ -15,6 +15,7 @@
   "dependencies": {
     "config": "^2.0.1",
     "deepmerge": "^2.1.1",
+    "jsonwebtoken": "^8.3.0",
     "koa": "^2.5.3",
     "koa-body": "^4.0.4",
     "koa-cors": "0.0.16",

@@ -23,7 +23,7 @@ const deleteUser = async (filter) => {
 };
 
 const updateUser = async (id, newData) => {
-    const result = (await getDatabaseConnection().collection('users').update({id}, {$set: newData}, {upsert: true})).result;
+    const result = (await getDatabaseConnection().collection('users').updateOne({id}, {$set: newData}, {upsert: true})).result;
 
     console.log('update user result:', result);
 };
