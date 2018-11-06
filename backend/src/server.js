@@ -4,6 +4,8 @@ const koaBody = require('koa-body');
 const cors = require('koa-cors');
 const send = require('koa-send');
 const path = require('path');
+const swagger2 = require('swagger2');
+const { validate } = require('swagger2-koa');
 
 const {bindRoutes} = require('./api/routes');
 
@@ -33,6 +35,13 @@ const startServer = (port) => {
         console.log('request arrived:', ctx);
         await next();
     });
+
+    // load swagger object
+    // const document = swagger.loadDocumentSync(apiSpec);
+    // validate document
+    if (!swagger2.validateDocument(apiSpec)) {
+        console.log('Swagger object does not conform to the Swagger 2.0 schema');
+    }
 
     
     server.use(bindRoutes());
