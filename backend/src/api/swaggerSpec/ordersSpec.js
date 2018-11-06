@@ -51,22 +51,14 @@ const spec = {
                         schema: {
                             $ref: '#/definitions/Order'
                         },
-                    }/* ,
-                    {
-                        'in': 'query',
-                        'name': 'restaurantName',
-                        'description': 'Restaurant name',
-                        'required': true,
-                        schema: {
-                            'type': 'string',
-                            example: 'Bistro To-Mi'
-                        }
-                        
-                    } */
+                    }
                 ],
                 'responses': {
                     '200': {
                         'description': 'Orders sucessfully placed',
+                        schema: {
+                            type: 'object'
+                        }
                     }
                 },
                 'security': [{'api_key': []}]
@@ -91,6 +83,62 @@ const spec = {
                 'security': [{'api_key': []}]
             }
         },
+        '/orders/{id}': {
+            'get': {
+                'tags': [
+                    'orders'
+                ],
+                'summary': 'Get order by id',
+                'description': '',
+                'produces': ['application/json'],
+                'parameters': [
+                    {
+                        'name': 'id',
+                        'in': 'path',
+                        'description': '24-hex string of order id',
+                        'required': true,
+                        'type': 'string'
+                    }
+                ],
+                'responses': {
+                    '200': {
+                        'description': 'successful operation',
+                        'schema': {
+                            type: 'object'
+                        }
+                    }
+                },
+                'security': [{'api_key': []}]
+            }
+        },
+        '/cancel/orders/{id}': {
+            'get': {
+                'tags': [
+                    'orders'
+                ],
+                'summary': 'Cancel order by id',
+                'description': '',
+                'produces': ['application/json'],
+                'parameters': [
+                    {
+                        'name': 'id',
+                        'in': 'path',
+                        'description': '24-hex string of order id',
+                        'required': true,
+                        'type': 'string'
+                    }
+                ],
+                'responses': {
+                    '200': {
+                        'description': 'successful operation',
+                        'schema': {
+                            type: 'integer'
+                        }
+                    }
+                },
+                'security': [{'api_key': []}]
+            }
+        }
     },
     'definitions': {
         'Order': {

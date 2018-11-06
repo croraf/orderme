@@ -32,17 +32,14 @@ const startServer = (port) => {
     server.use(koaBody());
 
     server.use(async (ctx, next) => {
-        console.log('request arrived:', ctx);
+        console.log('-------request arrived:', ctx.request.method + ' ' + ctx.request.url);
         await next();
     });
 
-    // load swagger object
-    // const document = swagger.loadDocumentSync(apiSpec);
-    // validate document
     if (!swagger2.validateDocument(apiSpec)) {
-        console.log('Swagger object does not conform to the Swagger 2.0 schema');
+        throw Error('Swagger object does not conform to the Swagger 2.0 schema');
     }
-
+    server.use(validate(apiSpec));
     
     server.use(bindRoutes());
 

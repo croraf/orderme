@@ -112,19 +112,7 @@ const spec = {
                     '200': {
                         'description': 'successful operation',
                         'schema': {
-                            'type': 'string'
-                        },
-                        'headers': {
-                            'X-Rate-Limit': {
-                                'type': 'integer',
-                                'format': 'int32',
-                                'description': 'calls per hour allowed by the user'
-                            },
-                            'X-Expires-After': {
-                                'type': 'string',
-                                'format': 'date-time',
-                                'description': 'date in UTC when token expires'
-                            }
+                            'type': 'object'
                         }
                     },
                     '400': {
