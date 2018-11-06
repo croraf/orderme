@@ -53,9 +53,11 @@ const spec = {
                 'responses': {
                     '200': {
                         'description': 'OK',
-                        type: 'array',
-                        items: {
-                            type: 'object'
+                        'schema': {
+                            type: 'array',
+                            items: {
+                                type: 'object'
+                            }
                         }
                     },
                     '405': {
@@ -177,7 +179,7 @@ const spec = {
                 ],
                 'summary': 'Update restaurant\'s data',
                 'description': '',
-                'consumes': 'application/json',
+                'consumes': ['application/json'],
                 'produces': [
                     'application/json'
                 ],

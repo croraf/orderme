@@ -45,8 +45,11 @@ const swaggerSpec = {
     'externalDocs': {
         'description': 'Find out more about Swagger',
         'url': 'http://swagger.io'
+    },
+    'paths': {
+        
     }
 };
 
 
-module.exports = deepmerge.all([swaggerSpec, restaurantsSpec, usersSpec, oAuth2Spec, ordersSpec]);
+module.exports = deepmerge.all([swaggerSpec, restaurantsSpec]);
