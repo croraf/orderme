@@ -51,7 +51,18 @@ const spec = {
                         schema: {
                             $ref: '#/definitions/Order'
                         },
-                    }
+                    }/* ,
+                    {
+                        'in': 'query',
+                        'name': 'restaurantName',
+                        'description': 'Restaurant name',
+                        'required': true,
+                        schema: {
+                            'type': 'string',
+                            example: 'Bistro To-Mi'
+                        }
+                        
+                    } */
                 ],
                 'responses': {
                     '200': {
@@ -86,7 +97,7 @@ const spec = {
             'type': 'object',
             'properties': {
                 restaurantId: {type: 'string', example: 'Bistro To-Mi'},
-                items: {type: 'array', items: 'string', example: ['Bečki', 'Zagrebački', 'Palačinke']},
+                items: {type: 'array', items: {type: 'string'}, example: ['Bečki', 'Zagrebački', 'Palačinke']},
                 status: {type: 'string', example: 'ORDER_ACCEPTED'}
             }
         }
