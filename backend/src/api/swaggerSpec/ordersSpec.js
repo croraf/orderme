@@ -23,9 +23,11 @@ const spec = {
                 'responses': {
                     '200': {
                         'description': 'OK',
-                        type: 'array',
-                        items: {
-                            type: 'object'
+                        schema: {
+                            type: 'array',
+                            items: {
+                                type: 'object'
+                            }
                         }
                     },
                     '500': {
@@ -49,18 +51,7 @@ const spec = {
                         schema: {
                             $ref: '#/definitions/Order'
                         },
-                    }/* ,
-                    {
-                        'in': 'query',
-                        'name': 'restaurantName',
-                        'description': 'Restaurant name',
-                        'required': true,
-                        schema: {
-                            'type': 'string',
-                            example: 'Bistro To-Mi'
-                        }
-                        
-                    } */
+                    }
                 ],
                 'responses': {
                     '200': {

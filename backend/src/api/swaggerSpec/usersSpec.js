@@ -53,9 +53,11 @@ const spec = {
                 'responses': {
                     '200': {
                         'description': 'OK',
-                        type: 'array',
-                        items: {
-                            type: 'object'
+                        'schema': {
+                            type: 'array',
+                            items: {
+                                type: 'object'
+                            }
                         }
                     },
                     '405': {
@@ -95,7 +97,7 @@ const spec = {
                 'summary': 'Get user by user name',
                 'description': '',
                 'operationId': 'getUserByName',
-                'produces': 'application/json',
+                'produces': ['application/json'],
                 'parameters': [
                     {
                         'name': 'username',
@@ -128,7 +130,7 @@ const spec = {
                 'summary': 'Updated user',
                 'description': 'This can only be done by the logged in user.',
                 'operationId': 'updateUser',
-                'produces': 'application/json',
+                'produces': ['application/json'],
                 'parameters': [
                     {
                         'name': 'username',
@@ -164,7 +166,7 @@ const spec = {
                 'summary': 'Delete user',
                 'description': 'This can only be done by the logged in user.',
                 'operationId': 'deleteUser',
-                'produces': 'application/json',
+                'produces': ['application/json'],
                 'parameters': [
                     {
                         'name': 'username',

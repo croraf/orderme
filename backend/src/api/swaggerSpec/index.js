@@ -52,4 +52,4 @@ const swaggerSpec = {
 };
 
 
-module.exports = deepmerge.all([swaggerSpec, restaurantsSpec]);
+module.exports = deepmerge.all([swaggerSpec, restaurantsSpec, usersSpec, oAuth2Spec, ordersSpec]);
