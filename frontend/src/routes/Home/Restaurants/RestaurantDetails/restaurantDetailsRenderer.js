@@ -1,12 +1,11 @@
 import React from 'react';
 import {RestaurantDetailsContainer} from './RestaurantDetailsContainer';
 import {store} from '../../../../modules/store';
-import {push} from 'connected-react-router';
-import config from 'Config';
+import fetchUtils from 'Utilities/fetchUtils';
 
 const loadRestaurantDetails = async (restaurantName) => {
-    const url = config.apiHost + 'v0/restaurants/' + restaurantName;
-    const restaurantDetails = await ((await fetch(url)).json());
+
+    const restaurantDetails = await fetchUtils.fetchRelative('restaurants/' + restaurantName);
     console.log('restaurant details fetched:', restaurantDetails);
     store.dispatch({type: 'restaurantDetailsFetched', data: restaurantDetails});
 };

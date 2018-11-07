@@ -1,6 +1,7 @@
 const Koa = require('koa');
 const koaSwagger = require('koa2-swagger-ui');
 const koaBody = require('koa-body');
+const jwt = require('jsonwebtoken');
 const cors = require('koa-cors');
 const send = require('koa-send');
 const path = require('path');
@@ -19,6 +20,14 @@ const createSwaggerMiddleware = () => {
             spec: apiSpec // path to api specification
         },
     });
+};
+
+const jwtDecodeMiddleware = async (ctx, next) => {
+    if (ctx.request.headers && ctx.request.headers['x-access-token']){
+        const token = ctx.request.header['x-access-token'];
+        ctx.user = jwt.verify(token, 'abcdef');
+    }
+    await next();
 };
 
 const startServer = (port) => {
@@ -40,6 +49,8 @@ const startServer = (port) => {
         throw Error('Swagger object does not conform to the Swagger 2.0 schema');
     }
     server.use(validate(apiSpec));
+
+    server.use(jwtDecodeMiddleware);
     
     server.use(bindRoutes());
 
