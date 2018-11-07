@@ -13,6 +13,7 @@ const bindRoutes = () => {
     const router = new Router({prefix: '/v0/'});
 
     router.get('restaurants', async (ctx) => {
+        
         ctx.body = await restaurants.getAllRestaurants();
     });
     router.delete('restaurants', async (ctx) => {

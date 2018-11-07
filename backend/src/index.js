@@ -1,6 +1,6 @@
 const { initializeDatabase, shutdownDatabase } = require('./dal/db');
 
-const {startServer} = require('./server');
+const {startServer} = require('./server/server');
 
 const main = async () => {
 
