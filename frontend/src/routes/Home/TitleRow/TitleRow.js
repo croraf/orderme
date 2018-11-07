@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import { CartModalContainer } from '../../../components/CartModal/CartModalContainer';
+import { CartModalContainer } from '../CartModal/CartModalContainer';
 
 class TitleRow extends React.Component {
     render() {

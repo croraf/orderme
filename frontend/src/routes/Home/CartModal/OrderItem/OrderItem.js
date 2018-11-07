@@ -3,7 +3,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 /* import DialogActions from '@material-ui/core/DialogActions'; */
-import {CustomLinearProgressContainer} from 'Components/CustomLinearProgress/CustomLinearProgressContainer';
+import {CustomLinearProgressContainer} from '../CustomLinearProgress/CustomLinearProgressContainer';
 
 class OrderItem extends React.Component {
 
