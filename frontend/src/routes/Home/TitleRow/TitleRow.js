@@ -4,6 +4,7 @@ import { CartModalContainer } from '../CartModal/CartModalContainer';
 
 class TitleRow extends React.Component {
     render() {
+        const {loginStatus, logoutButtonHandler, loginButtonHandler} = this.props;
 
         return (
             <div style={{
@@ -17,12 +18,13 @@ class TitleRow extends React.Component {
                     fontSize: 35
                 }}>order.me</div>
 
-                {/* <Button variant='outlined' color='primary'>Cart</Button> */}
-
                 <CartModalContainer />
                 
-                <Button variant='outlined' color='secondary' onClick={this.props.onLogoutHandler}>Log out</Button>
-                
+                {
+                    loginStatus ? 
+                        <Button variant='outlined' color='secondary' onClick={logoutButtonHandler}>Log out</Button> :
+                        <Button variant='outlined' color='secondary' onClick={loginButtonHandler}>Log in</Button>
+                }
             </div>
         );
     }
