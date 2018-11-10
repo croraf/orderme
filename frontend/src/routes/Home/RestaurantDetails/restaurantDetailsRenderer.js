@@ -1,6 +1,6 @@
 import React from 'react';
 import {RestaurantDetailsContainer} from './RestaurantDetailsContainer';
-import {store} from '../../../../modules/store';
+import {store} from 'Modules/store';
 import fetchUtils from 'Utilities/fetchUtils';
 
 const loadRestaurantDetails = async (restaurantName) => {
@@ -11,6 +11,8 @@ const loadRestaurantDetails = async (restaurantName) => {
 };
 
 const restaurantDetailsRenderer = (props) => {
+
+    console.log(props);
 
     const restaurantName = props.match.params.restaurantName;
 

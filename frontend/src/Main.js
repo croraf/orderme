@@ -12,8 +12,8 @@ class Main extends React.Component {
 
         return (
             <Switch>
-                <Route exact path="/" component={loginRouteRenderer} />
-                <Route path="/home" component={homeRouteRenderer} />
+                <Route path="/login" component={loginRouteRenderer} />
+                <Route path="/" component={homeRouteRenderer} />
                 {/* <Route component={noRouteRenderer} /> */}
             </Switch>
         );

@@ -6,9 +6,9 @@ const noRouteRenderer = () => {
 
     const authToken = localStorage.getItem('token');
     if (!authToken) {
-        store.dispatch(push('/'));
+        store.dispatch(push('/login'));
     } else {
-        store.dispatch(push('/home'));
+        store.dispatch(push('/'));
     }
 
     return null;

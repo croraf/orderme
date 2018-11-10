@@ -2,10 +2,10 @@ import React from 'react';
 
 
 
-import { RestaurantsListContainer } from './Restaurants/RestaurantsList/RestaurantsListContainer';
+import { RestaurantsListContainer } from './RestaurantsList/RestaurantsListContainer';
 import { TitleRowContainer } from './TitleRow/TitleRowContainer';
 import { Switch, Route } from 'react-router';
-import { restaurantDetailsRenderer } from './Restaurants/RestaurantDetails/restaurantDetailsRenderer';
+import { restaurantDetailsRenderer } from './RestaurantDetails/restaurantDetailsRenderer';
 import { OrdersContainer } from './Orders/OrdersContainer';
 
 /* import squareImage from './square.png'; */
@@ -55,9 +55,9 @@ class Home extends React.Component {
                     <TitleRowContainer />
 
                     <Switch>
-                        <Route exact={true} path={'/home'} component={RestaurantsListContainer} />
-                        <Route path={'/home/restaurants/:restaurantName'} component={restaurantDetailsRenderer}/>
-                        <Route path={'/home/orders'} component={OrdersContainer}/>
+                        <Route exact={true} path={'/'} component={RestaurantsListContainer} />
+                        <Route path={'/restaurants/:restaurantName'} component={restaurantDetailsRenderer}/>
+                        <Route path={'/orders'} component={OrdersContainer}/>
                     </Switch>
 
                 </div>

@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
     onFullOrdersButtonClickHandler: () => {
         ownProps.closeModal();
-        dispatch(push('/home/orders'));
+        dispatch(push('/orders'));
     }
 });
 

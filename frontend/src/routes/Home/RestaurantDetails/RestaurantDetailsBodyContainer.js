@@ -1,5 +1,4 @@
 import {connect} from 'react-redux';
-import {push} from 'connected-react-router';
 
 import {RestaurantDetailsBody} from './RestaurantDetailsBody';
 

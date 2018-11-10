@@ -9,12 +9,24 @@ class Login extends React.Component {
 
         return (
             <div style={{
-                display: 'flex',
-                justifyContent: 'center',
-                flexDirection: 'row',
                 marginTop: '200px'
             }}>
-                <LoginButton onClick={this.props.loginWithFacebookButtonHandler}/>
+                <div style={{textAlign: 'center'}}>
+                    <LoginButton 
+                        onClick={this.props.loginWithFacebookButtonHandler}
+                        text='Login with Facebook' 
+                        backgroundColor='rgb(53, 120, 229)'
+                        color='white'
+                    />
+                </div>
+                <div style={{textAlign: 'center'}}>
+                    <LoginButton
+                        onClick={this.props.loginWithGoogleButtonHandler}
+                        text='Login with Google'
+                        color='black'
+                    />
+                </div>
+                
             </div>
         );
     }

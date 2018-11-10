@@ -1,11 +1,10 @@
 import React from 'react';
 import {HomeContainer} from './HomeContainer';
 import {store} from '../../modules/store';
-import {push} from 'connected-react-router';
 import fetchUtils from 'Utilities/fetchUtils';
 import transforms from 'Utilities/transforms';
 
-let initialHomeRouteDataLoaded = false;
+// let initialHomeRouteDataLoaded = false;
 
 const loadInitialHomeRouteData = async () => {
 
@@ -20,20 +19,14 @@ const loadInitialHomeRouteData = async () => {
     console.log('orders fetched:', ordersToObject);
     store.dispatch({type: 'ordersLoaded', data: ordersToObject});
 
-    initialHomeRouteDataLoaded = true;
+    // initialHomeRouteDataLoaded = true;
 };
 
 const homeRouteRenderer = (props) => {
 
-    const authToken = localStorage.getItem('token');
-    console.log('token in local storage:', authToken);
-    if (!authToken) {
-        store.dispatch(push('/'));
-    }
-
-    if (!initialHomeRouteDataLoaded) {
+    //if (!initialHomeRouteDataLoaded) {
         loadInitialHomeRouteData();
-    }
+    //}
     
     return <HomeContainer props={props} />;
 };

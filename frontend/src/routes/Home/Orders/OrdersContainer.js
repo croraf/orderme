@@ -7,7 +7,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onReturnToListOfRestaurantsHandler: () => {dispatch(push('/home'));}
+    onReturnToListOfRestaurantsHandler: () => {dispatch(push('/'));}
 });
 
 const OrdersContainer = connect(mapStateToProps, mapDispatchToProps)(Orders);

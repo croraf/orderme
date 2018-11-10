@@ -4,25 +4,27 @@ class LoginButton extends React.Component {
 
 
     render() {
+        const {backgroundColor, color, onClick, text} = this.props;
 
         return (
             <button 
                 style={{
                     cursor: 'pointer',
-                    backgroundColor: 'rgb(53, 120, 229)',
+                    backgroundColor: backgroundColor,
                     borderRadius: '5px',
                     borderColor: 'rgb(53, 120, 229)',
-                    color: 'white',
+                    color: color,
                     fontFamily: 'Helvetica',
                     fontSize: '18px',
                     fontWeight: '700',
-                    height: '60px',
-                    width: '320px',
-                    borderStyle: 'none'
+                    height: '50px',
+                    width: '300px',
+                    borderStyle: 'none',
+                    marginTop: '30px'
                 }}
-                onClick={this.props.onClick}
+                onClick={onClick}
             >
-                Login with Facebook
+                {text}
             </button>
         );
     }
