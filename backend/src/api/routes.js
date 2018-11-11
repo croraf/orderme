@@ -4,6 +4,7 @@ const Router = require('koa-router');
 const restaurants = require('../business/restaurants');
 const users = require('../business/users');
 const orders = require('../business/orders');
+const auth = require('../business/auth');
 const {ObjectId} = require('mongodb');
 
 
@@ -65,7 +66,7 @@ const bindRoutes = () => {
 
 
     router.get('auth', async (ctx) => {
-        ctx.body = await users.auth(ctx.query.code);
+        ctx.body = await auth.auth(ctx.query.code);
     });
 
 
