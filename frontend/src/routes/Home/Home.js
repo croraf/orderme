@@ -13,16 +13,6 @@ import { OrdersContainer } from './Orders/OrdersContainer';
 
 class Home extends React.Component {
 
-    componentDidMount() {
-
-        /* console.log('Home component mounted');
-        const body = document.getElementsByTagName('body')[0];
-        body.addEventListener('keypress', this.props.newGuessHandler);
-
-        this.props.fetchNewWordAndDispatchNewWordAction(); */
-
-    }
-
     render() {
 
         return (

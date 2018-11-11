@@ -1,4 +1,11 @@
+import fetchUtils from 'Utilities/fetchUtils';
 
+
+const loadRouteData = () => async (dispatch) => {
+
+    const restaurants = await fetchUtils.fetchRelative('restaurants');
+    dispatch({type: 'restaurantsData', data: restaurants});
+};
 
 const restaurantsReducer = (state = [], action) => {
     switch (action.type) {
@@ -9,4 +16,4 @@ const restaurantsReducer = (state = [], action) => {
     }
 };
 
-export { restaurantsReducer };
+export { restaurantsReducer, loadRouteData };

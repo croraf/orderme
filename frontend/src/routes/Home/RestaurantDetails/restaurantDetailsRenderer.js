@@ -12,8 +12,6 @@ const loadRestaurantDetails = async (restaurantName) => {
 
 const restaurantDetailsRenderer = (props) => {
 
-    console.log(props);
-
     const restaurantName = props.match.params.restaurantName;
 
     store.dispatch({type: 'restaurantDetailsFetching'});

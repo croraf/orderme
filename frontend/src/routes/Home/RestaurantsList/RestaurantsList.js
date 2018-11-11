@@ -5,6 +5,10 @@ import { FilterRowContainer } from './FilterRow/FilterRowContainer';
 
 class RestaurantsList extends React.Component {
 
+    componentWillMount() {
+        this.props.loadRouteData();
+    }
+
     render() {
 
         const {listOfRestaurants, openOnly, area, onRestaurantClickHandler} = this.props;

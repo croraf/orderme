@@ -8,25 +8,15 @@ import transforms from 'Utilities/transforms';
 
 const loadInitialHomeRouteData = async () => {
 
-    /* const userData = await fetchUtils.fetchRelative('users'); */
-
-    const restaurants = await fetchUtils.fetchRelative('restaurants');
-    console.log('restaurants fetched:', restaurants);
-    store.dispatch({type: 'restaurantsData', data: restaurants});
-
     const orders = await fetchUtils.fetchRelative('orders');
     const ordersToObject = transforms.arrayToObject(orders, '_id');
     console.log('orders fetched:', ordersToObject);
     store.dispatch({type: 'ordersLoaded', data: ordersToObject});
-
-    // initialHomeRouteDataLoaded = true;
 };
 
 const homeRouteRenderer = (props) => {
 
-    //if (!initialHomeRouteDataLoaded) {
-        loadInitialHomeRouteData();
-    //}
+    loadInitialHomeRouteData();
     
     return <HomeContainer props={props} />;
 };

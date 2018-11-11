@@ -1,5 +1,6 @@
 import {connect} from 'react-redux';
 import {push} from 'connected-react-router';
+import {loadRouteData} from 'Modules/restaurants';
 
 import {RestaurantsList} from './RestaurantsList';
 
@@ -13,7 +14,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    onRestaurantClickHandler: (restaurantName) => {dispatch(push('/restaurants/' + restaurantName));}
+    onRestaurantClickHandler: (restaurantName) => {dispatch(push('/restaurants/' + restaurantName));},
+    loadRouteData: () => {dispatch(loadRouteData());}
 });
 
 
