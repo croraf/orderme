@@ -1,27 +1,29 @@
 import React from 'react';
 
+const defaultStyle = {
+    cursor: 'pointer',
+    borderRadius: '5px',
+    borderColor: 'rgb(53, 120, 229)',
+    fontFamily: 'Helvetica',
+    fontSize: '18px',
+    fontWeight: '700',
+    height: '50px',
+    width: '300px',
+    borderStyle: 'none',
+    marginTop: '30px'
+};
+
 class LoginButton extends React.Component {
 
 
     render() {
-        const {backgroundColor, color, onClick, text} = this.props;
+        const {style, onClick, text} = this.props;
+
+        const computedStyle = Object.assign({}, defaultStyle, style);
 
         return (
             <button 
-                style={{
-                    cursor: 'pointer',
-                    backgroundColor: backgroundColor,
-                    borderRadius: '5px',
-                    borderColor: 'rgb(53, 120, 229)',
-                    color: color,
-                    fontFamily: 'Helvetica',
-                    fontSize: '18px',
-                    fontWeight: '700',
-                    height: '50px',
-                    width: '300px',
-                    borderStyle: 'none',
-                    marginTop: '30px'
-                }}
+                style={computedStyle}
                 onClick={onClick}
             >
                 {text}

@@ -15,15 +15,21 @@ class Login extends React.Component {
                     <LoginButton 
                         onClick={this.props.loginWithFacebookButtonHandler}
                         text='Login with Facebook' 
-                        backgroundColor='rgb(53, 120, 229)'
-                        color='white'
+                        style={{
+                            backgroundColor: 'rgb(53, 120, 229)',
+                            color: 'white'
+                        }}
                     />
                 </div>
                 <div style={{textAlign: 'center'}}>
                     <LoginButton
                         onClick={this.props.loginWithGoogleButtonHandler}
                         text='Login with Google'
-                        color='black'
+                        style={{
+                            backgroundColor: 'white',
+                            color: 'black',
+                            cursor: 'not-allowed'
+                        }}
                     />
                 </div>
                 

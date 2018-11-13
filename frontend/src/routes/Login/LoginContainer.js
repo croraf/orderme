@@ -27,14 +27,12 @@ const redirectToGoogleLoginPage = () => (dispatch) => {
     window.location.href = oAuthGoogleLoginPage;
 };
 
-// facebookAuthCode is null on plain /login endpoint,
-// on FB return redirect after FB login it has the string value of the auth code
 const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
     loginWithFacebookButtonHandler: () => {dispatch(redirectToFacebookLoginPage());},
-    loginWithGoogleButtonHandler: () => {dispatch(redirectToGoogleLoginPage());}
+    loginWithGoogleButtonHandler: () => {/* dispatch(redirectToGoogleLoginPage()); */}
 });
 
 const LoginContainer = connect(mapStateToProps, mapDispatchToProps)(Login);
