@@ -1,10 +1,9 @@
 import React from 'react';
+import config from 'Config';
+
 import {LoginContainer} from './LoginContainer';
 import {LoggingIn} from './LoggingIn';
-import {store} from '../../modules/store';
-import {push} from 'connected-react-router';
-import config from 'Config';
-var jwtDecode = require('jwt-decode');
+
 
 const fetchJwtToken = async (facebookAuthCode) => {
     console.log('fetching auth token for received facebook code');
@@ -15,13 +14,8 @@ const fetchJwtToken = async (facebookAuthCode) => {
         }
     };
     const jwtToken = await ((await fetch(url, options)).text());
-    console.log('Auth token received:', jwtToken);
-
-    const tokenPayload = jwtDecode(jwtToken);
-    console.log('tokenPayload:', tokenPayload);
-
-    store.dispatch({type: 'login', token: jwtToken, name: tokenPayload.name});
-    store.dispatch(push('/'));
+    window.opener.loginPopupChildWindowMessageHandler(jwtToken);
+    window.close();
 };
 
 const loginRouteRenderer = () => {

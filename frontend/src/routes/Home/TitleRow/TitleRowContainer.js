@@ -1,6 +1,5 @@
 import {connect} from 'react-redux';
-import {push} from 'connected-react-router';
-
+import {loginButtonHandler} from 'Modules/login';
 import {TitleRow} from './TitleRow';
 
 const mapStateToProps = (state) => ({
@@ -12,7 +11,7 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch({type: 'logout'});
     },
     loginButtonHandler: () => {
-        dispatch(push('/login'));
+        dispatch(loginButtonHandler());
     }
 });
 
