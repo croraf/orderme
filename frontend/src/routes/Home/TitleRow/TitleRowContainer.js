@@ -4,14 +4,12 @@ import {push} from 'connected-react-router';
 import {TitleRow} from './TitleRow';
 
 const mapStateToProps = (state) => ({
-    loginStatus: localStorage.getItem('token')
+    loginStatus: state.login.token
 });
 
 const mapDispatchToProps = (dispatch) => ({
     logoutButtonHandler: () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('name');
-        dispatch(push('/login'));
+        dispatch({type: 'logout'});
     },
     loginButtonHandler: () => {
         dispatch(push('/login'));

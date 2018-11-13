@@ -16,21 +16,15 @@ const fetchJwtToken = async (facebookAuthCode) => {
     };
     const jwtToken = await ((await fetch(url, options)).text());
     console.log('Auth token received:', jwtToken);
-    localStorage.setItem('token', jwtToken);
 
     const tokenPayload = jwtDecode(jwtToken);
     console.log('tokenPayload:', tokenPayload);
 
+    store.dispatch({type: 'login', token: jwtToken, name: tokenPayload.name});
     store.dispatch(push('/'));
 };
 
 const loginRouteRenderer = () => {
-
-    /* const authToken = localStorage.getItem('token');
-    console.log('token in local storage:', authToken);
-    if (authToken) {
-        store.dispatch(push('/'));
-    } */
 
     const facebookAuthCode = new URLSearchParams(location.search).get('code');
     if (facebookAuthCode) {
