@@ -5,8 +5,9 @@ const jwt = require('jsonwebtoken');
 const dal = require('../dal/users');
 
 
-const auth = async (authCode) => {
+const auth = async (provider, authCode) => {
     console.log('JWT token request received with code:', authCode);
+    console.log('...for provider:', provider);
 
     const facebookAuthURL = 'https://graph.facebook.com/v3.1/oauth/access_token?';
 

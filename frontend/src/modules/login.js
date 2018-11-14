@@ -6,7 +6,7 @@ const loginButtonHandler = () => async (dispatch, getState) => {
         window.loginPopupChildWindowObjectReference = window.open(
             '/login', 
             'loginPopupWindow',
-            'height=800,width=1000,modal=yes,alwaysRaised=yes,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,directories=no,status=no'
+            'height=700,width=700,modal=yes,alwaysRaised=yes,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,directories=no,status=no'
         );
     } else {
         window.loginPopupChildWindowObjectReference.focus();

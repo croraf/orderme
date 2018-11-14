@@ -2,8 +2,7 @@ import React from 'react';
 
 import { Route, Switch } from 'react-router';
 import { LoginContainer } from './LoginContainer';
-import facebookLoginRedirect from './FacebookLoginRedirect';
-import googleLoginRedirect from './GoogleLoginRedirect';
+import { LoggingIn } from './LoginRedirectCommonRoute/LoggingIn';
 
 class MainRouter extends React.Component {
 
@@ -13,8 +12,7 @@ class MainRouter extends React.Component {
         return (
             <Switch>
                 <Route exact={true} path="/login" component={LoginContainer} />
-                <Route path="/login/facebookLoginRedirect" component={facebookLoginRedirect.tokenExchange} />
-                <Route path="/login/googleLoginRedirect" component={googleLoginRedirect.tokenExchange} />
+                <Route path="/login/:provider" component={LoggingIn} />
                 {/* <Route component={noRouteRenderer} /> */}
             </Switch>
         );

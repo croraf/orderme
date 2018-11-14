@@ -66,7 +66,7 @@ const bindRoutes = () => {
 
 
     router.get('auth', async (ctx) => {
-        ctx.body = await auth.auth(ctx.query.code);
+        ctx.body = await auth.auth(ctx.query.provider, ctx.query.code);
     });
 
 

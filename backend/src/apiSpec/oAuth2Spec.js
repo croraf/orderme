@@ -15,7 +15,7 @@ const spec = {
                 'tags': [
                     'auth'
                 ],
-                'summary': 'Endpoint which accepts Facebook\'s OAuth2 code, and returns authentication jwt',
+                'summary': 'Endpoint which accepts providers OAuth2 code, and returns authentication jwt',
                 'description': '',
                 'parameters': [
                     {
@@ -23,11 +23,17 @@ const spec = {
                         name: 'code',
                         type: 'string',
                         description: 'Facebook returned OAuth2 code, which is used on backend to query Facebook for access_token'
+                    },
+                    {
+                        in: 'query',
+                        name: 'provider',
+                        type: 'string',
+                        description: 'Name of the OAuth2 provider'
                     }
                 ],
                 'responses': {
                     '200': {
-                        'description': 'Redirect to facebook log in page',
+                        'description': 'jwt as string',
                         schema: {
                             type: 'string'
                         }
