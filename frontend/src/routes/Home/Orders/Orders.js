@@ -19,7 +19,7 @@ class Orders extends React.Component {
                 }}>
                     <div style={{
                         fontSize: '30px'
-                    }}>Orders:</div>
+                    }}>Your orders</div>
 
                     <Button variant='outlined' onClick={onReturnToListOfRestaurantsHandler}>Return to list of restaurants</Button>
                 </div>

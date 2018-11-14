@@ -19,7 +19,7 @@ class LoggingIn extends React.Component {
                     }}
                 >
                     ... logging in ...
-                </div>;
+                </div>
             </div>
         );
     }
