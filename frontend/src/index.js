@@ -4,13 +4,14 @@ import React from 'react';
 import { Provider } from 'react-redux';
 
 import {store} from './modules/store';
-import { MyRouter } from './MyRouter';
+import { ConnectedRouter } from 'connected-react-router';
+import {history} from './modules/store';
+
+import MainRouter from './MainRouter';
 
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
-
 import './style/globalStyle.css';
-
 const theme = createMuiTheme({
     palette: {
         //type: 'light', // Switching the dark mode on is a single property value change.
@@ -23,13 +24,14 @@ const theme = createMuiTheme({
             icon: '#f00'
         } */
     }
-    
 });
 
 ReactDOM.render(
     <Provider store={store}>
         <MuiThemeProvider theme={theme}> 
-            <MyRouter />
+            <ConnectedRouter history={history}>
+                <MainRouter />
+            </ConnectedRouter>
         </MuiThemeProvider>
     </Provider>,
     document.getElementById('root')

@@ -5,7 +5,7 @@ import { homeRouteRenderer } from './routes/Home/homeRouteRenderer';
 import { loginRouteRenderer } from './routes/Login/loginRouteRenderer';
 /* import { noRouteRenderer } from './routes/NoRoute/noRouteRenderer'; */
 
-class Main extends React.Component {
+class MainRouter extends React.Component {
 
 
     render() {
@@ -20,4 +20,4 @@ class Main extends React.Component {
     }
 }
 
-export default (Main);
+export default (MainRouter);
