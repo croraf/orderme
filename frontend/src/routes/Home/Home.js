@@ -13,6 +13,10 @@ import { OrdersContainer } from './Orders/OrdersContainer';
 
 class Home extends React.Component {
 
+    componentWillMount() {
+        this.props.loadInitialHomeRouteData();
+    }
+
     render() {
 
         return (

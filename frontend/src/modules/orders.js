@@ -1,5 +1,14 @@
 
 import fetchUtils from 'Utilities/fetchUtils';
+import transforms from 'Utilities/transforms';
+
+
+const fetchOrders = () => async (dispatch) => {
+    const orders = await fetchUtils.fetchRelative('orders');
+    const ordersToObject = transforms.arrayToObject(orders, '_id');
+    console.log('orders fetched:', ordersToObject);
+    dispatch({type: 'ordersLoaded', data: ordersToObject});
+};
 
 const makeOrder = (restaurantId) => async (dispatch, getState) => {
 
@@ -60,4 +69,4 @@ const ordersReducer = (state = {}, action) => {
     }
 };
 
-export { ordersReducer, cancelOrder, makeOrder, fetchOrder };
+export { ordersReducer, cancelOrder, makeOrder, fetchOrder, fetchOrders };

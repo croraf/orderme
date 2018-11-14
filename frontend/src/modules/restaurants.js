@@ -4,6 +4,7 @@ import fetchUtils from 'Utilities/fetchUtils';
 const loadRouteData = () => async (dispatch) => {
 
     const restaurants = await fetchUtils.fetchRelative('restaurants');
+    console.log('restaurants fetched:', restaurants);
     dispatch({type: 'restaurantsData', data: restaurants});
 };
 
