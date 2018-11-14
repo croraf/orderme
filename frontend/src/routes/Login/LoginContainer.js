@@ -32,7 +32,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch, props) => ({
     loginWithFacebookButtonHandler: () => {dispatch(redirectToFacebookLoginPage());},
-    loginWithGoogleButtonHandler: () => {/* dispatch(redirectToGoogleLoginPage()); */}
+    loginWithGoogleButtonHandler: () => {dispatch(redirectToGoogleLoginPage());}
 });
 
 const LoginContainer = connect(mapStateToProps, mapDispatchToProps)(Login);

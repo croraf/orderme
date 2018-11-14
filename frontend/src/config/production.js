@@ -1,8 +1,8 @@
 const config = {
     apiHost: 'https://order1.herokuapp.com/',
     auth: {
-        facebookRedirectUri: 'https://order1.herokuapp.com/login',
-        googleRedirectUri: 'https://order1.herokuapp.com/login'
+        facebookRedirectUri: 'https://order1.herokuapp.com/login/facebookLoginRedirect',
+        googleRedirectUri: 'https://order1.herokuapp.com/login/googleLoginRedirect'
     }
 };
 

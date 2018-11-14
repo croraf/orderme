@@ -1,8 +1,7 @@
 import React from 'react';
 import config from 'Config';
 
-import {LoginContainer} from './LoginContainer';
-import {LoggingIn} from './LoggingIn';
+import {LoggingIn} from '../LoggingIn';
 
 
 const fetchJwtToken = async (facebookAuthCode) => {
@@ -18,15 +17,12 @@ const fetchJwtToken = async (facebookAuthCode) => {
     window.close();
 };
 
-const loginRouteRenderer = () => {
+const tokenExchange = () => {
 
     const facebookAuthCode = new URLSearchParams(location.search).get('code');
-    if (facebookAuthCode) {
-        fetchJwtToken(facebookAuthCode);
-        return <LoggingIn />;
-    } else {
-        return <LoginContainer />;
-    }
+
+    fetchJwtToken(facebookAuthCode);
+    return <LoggingIn />;
 };
 
-export {loginRouteRenderer};
+export default {tokenExchange};

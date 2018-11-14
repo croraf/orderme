@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Route, Switch } from 'react-router';
 import { homeRouteRenderer } from './routes/Home/homeRouteRenderer';
-import { loginRouteRenderer } from './routes/Login/loginRouteRenderer';
+import LoginRouter from './routes/Login/LoginRouter';
 /* import { noRouteRenderer } from './routes/NoRoute/noRouteRenderer'; */
 
 class MainRouter extends React.Component {
@@ -12,7 +12,7 @@ class MainRouter extends React.Component {
 
         return (
             <Switch>
-                <Route path="/login" component={loginRouteRenderer} />
+                <Route path="/login" component={LoginRouter} />
                 <Route path="/" component={homeRouteRenderer} />
                 {/* <Route component={noRouteRenderer} /> */}
             </Switch>

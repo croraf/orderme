@@ -27,8 +27,7 @@ class Login extends React.Component {
                         text='Login with Google'
                         style={{
                             backgroundColor: 'white',
-                            color: 'black',
-                            cursor: 'not-allowed'
+                            color: 'black'
                         }}
                     />
                 </div>
