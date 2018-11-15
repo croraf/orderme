@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import { CartModalContainer } from '../CartModal/CartModalContainer';
+import MainPersonalMenu from './MainPersonalMenu';
 
 class TitleRow extends React.Component {
     render() {
@@ -19,10 +20,10 @@ class TitleRow extends React.Component {
                 }}>order.me</div>
 
                 <CartModalContainer />
-                
+                {/* <Button variant='outlined' color='secondary' onClick={logoutButtonHandler}>Log out</Button> */}
                 {
                     loginStatus ? 
-                        <Button variant='outlined' color='secondary' onClick={logoutButtonHandler}>Log out</Button> :
+                        <MainPersonalMenu /> :
                         <Button variant='outlined' color='secondary' onClick={loginButtonHandler}>Log in</Button>
                 }
             </div>
