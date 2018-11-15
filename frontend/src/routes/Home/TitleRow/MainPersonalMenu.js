@@ -35,8 +35,8 @@ class MainPersonalMenu extends React.Component {
                     open={Boolean(anchorEl)}
                     onClose={this.handleClose}
                 >
-                    <MenuItem onClick={this.handleClose}>Profile</MenuItem>
                     <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                    <MenuItem onClick={this.handleClose}>Orders</MenuItem>
                     <MenuItem onClick={this.handleClose}>Logout</MenuItem>
                 </Menu>
             </div>
