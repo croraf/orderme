@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
+import { OrdersContentContainer } from './OrdersContentContainer';
 
 class Orders extends React.Component {
 
@@ -24,7 +25,7 @@ class Orders extends React.Component {
                     <Button variant='outlined' onClick={onReturnToListOfRestaurantsHandler}>Return to list of restaurants</Button>
                 </div>
                 
-                <div>...TODO...</div>
+                <OrdersContentContainer />
             </div>
         );
     }
