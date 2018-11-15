@@ -16,6 +16,16 @@ class MainPersonalMenu extends React.Component {
         this.setState({ anchorEl: null });
     };
 
+    handleOrdersButtonClick = () => {
+        this.handleClose();
+        this.props.onFullOrdersButtonClickHandler();
+    }
+
+    handleLogoutButtonClick = () => {
+        this.handleClose();
+        this.props.logoutButtonHandler();
+    }
+
     render() {
         const { anchorEl } = this.state;
 
@@ -35,9 +45,9 @@ class MainPersonalMenu extends React.Component {
                     open={Boolean(anchorEl)}
                     onClose={this.handleClose}
                 >
-                    <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                    <MenuItem onClick={this.handleClose}>Orders</MenuItem>
-                    <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+                    <MenuItem onClick={this.handleClose}>My Account</MenuItem>
+                    <MenuItem onClick={this.handleOrdersButtonClick}>My Orders</MenuItem>
+                    <MenuItem onClick={this.handleLogoutButtonClick}>Logout</MenuItem>
                 </Menu>
             </div>
         );

@@ -7,9 +7,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    logoutButtonHandler: () => {
-        dispatch({type: 'logout'});
-    },
     loginButtonHandler: () => {
         dispatch(loginButtonHandler());
     }

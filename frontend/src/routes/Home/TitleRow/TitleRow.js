@@ -1,11 +1,11 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import { CartModalContainer } from '../CartModal/CartModalContainer';
-import MainPersonalMenu from './MainPersonalMenu';
+import {MainPersonalMenuContainer} from './MainPersonalMenuContainer';
 
 class TitleRow extends React.Component {
     render() {
-        const {loginStatus, logoutButtonHandler, loginButtonHandler} = this.props;
+        const {loginStatus, loginButtonHandler} = this.props;
 
         return (
             <div style={{
@@ -23,7 +23,7 @@ class TitleRow extends React.Component {
                 {/* <Button variant='outlined' color='secondary' onClick={logoutButtonHandler}>Log out</Button> */}
                 {
                     loginStatus ? 
-                        <MainPersonalMenu /> :
+                        <MainPersonalMenuContainer /> :
                         <Button variant='outlined' color='secondary' onClick={loginButtonHandler}>Log in</Button>
                 }
             </div>
