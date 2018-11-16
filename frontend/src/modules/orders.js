@@ -5,7 +5,10 @@ import transforms from 'Utilities/transforms';
 
 const fetchOrders = () => async (dispatch) => {
     const orders = await fetchUtils.fetchRelative('orders');
-    const ordersToObject = transforms.arrayToObject(orders, '_id');
+    performance.mark('before transform');
+    const ordersToObject = transforms.arrayToObjectAddLocaleTimestamp(orders, '_id');
+    performance.mark('after transform');
+    performance.measure('measure222');
     console.log('orders fetched:', ordersToObject);
     dispatch({type: 'ordersLoaded', data: ordersToObject});
 };
@@ -30,6 +33,7 @@ const makeOrder = (restaurantId) => async (dispatch, getState) => {
     const result = await fetchUtils.fetchRelative('orders', fetchOptions);
     order['_id'] = result._id;
     order['timestamp'] = result.timestamp;
+    order['localeTimestamp'] = new Date(result.timestamp).toLocaleString('de');
     order['status'] = result.status;
     
     dispatch({type: 'createOrder', order});

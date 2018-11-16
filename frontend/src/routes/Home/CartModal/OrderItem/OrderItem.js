@@ -81,7 +81,7 @@ class OrderItem extends React.Component {
                     <div style={{
                         fontWeight: 'bold'
                     }}>{orderData.restaurantId}:</div>
-                    <div>{new Date(orderData.timestamp).toLocaleString('de')}</div>
+                    <div>{orderData.localeTimestamp}</div>
                 </div>
                 <div>{orderData.items.join(', ')}</div>
 
