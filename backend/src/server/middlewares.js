@@ -7,7 +7,7 @@ const { validate } = require('swagger2-koa');
 
 const koaSwagger = require('koa2-swagger-ui');
 const apiSpec = require('../apiSpec');
-
+const staticCache = require('koa-static-cache');
 
 const loggingMiddleware = async (ctx, next) => {
     console.log('-------request arrived:', ctx.request.method + ' ' + ctx.request.url);
@@ -39,17 +39,22 @@ const jwtDecodeMiddleware = async (ctx, next) => {
     await next();
 };
 
-const staticMiddleware = async (ctx) => {
-    try {
-        await send(ctx, ctx.path, {
-            root: path.resolve('../frontend/dist'),
-            index: 'index.html'
-        });
-    } catch (err) {
-        console.log('koa-send path resolution error:', err);
-        await send(ctx, 'index.html', {root: path.resolve('../frontend/dist')});
-    }
+const createStaticCacheMiddleware = () => {
+    return staticCache(path.resolve('..', 'frontend', 'dist'), {
+        maxAge: 365 * 24 * 60 * 60
+    });
+};
+
+const serveIndexMiddleware = async (ctx) => {
+    await send(ctx, 'index.html', {root: path.resolve('../frontend/dist')});
 };
 
 
-module.exports = {createSwaggerUiMiddleware, createSwaggerValidateMiddleware, jwtDecodeMiddleware, staticMiddleware, loggingMiddleware};
+module.exports = {
+    createSwaggerUiMiddleware,
+    createSwaggerValidateMiddleware,
+    jwtDecodeMiddleware,
+    loggingMiddleware,
+    createStaticCacheMiddleware,
+    serveIndexMiddleware,
+};
