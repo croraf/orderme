@@ -5,11 +5,30 @@ import Button from '@material-ui/core/Button';
 /* import DialogActions from '@material-ui/core/DialogActions'; */
 import {CustomLinearProgressContainer} from '../CustomLinearProgress/CustomLinearProgressContainer';
 
+class FoodItems extends React.Component {
+
+    render() {
+        const {items} = this.props;
+
+        return (
+            <ul style={{
+                margin: '5px 0px 0px 0px'
+            }}>
+                {items.map((foodItem, index) => <li key={index}>{foodItem}</li>)}
+            </ul>
+        );
+    }
+}
+
 class OrderItem extends React.Component {
+
+    cancelOrder = () => {
+        this.props.cancelOrderClickHandler(this.props.orderData._id);
+    } 
 
     render() {
 
-        const { isLastChild, orderData, cancelOrderClickHandler} = this.props;
+        const { isLastChild, orderData} = this.props;
 
         let statusColor = 'black';
         switch (orderData.status) {
@@ -33,7 +52,7 @@ class OrderItem extends React.Component {
         }
 
         const cancelOrderButton = orderData.status === 'AWAITING CONFIRMATION' || orderData.status === 'ACCEPTED' ? (
-            <Button onClick={() => {cancelOrderClickHandler(orderData._id);}} color="primary">
+            <Button onClick={this.cancelOrder} color="primary">
                 Cancel
             </Button>
         ) : <div />;
@@ -83,7 +102,7 @@ class OrderItem extends React.Component {
                     }}>{orderData.restaurantId}:</div>
                     <div>{orderData.localeTimestamp}</div>
                 </div>
-                <div>{orderData.items.join(', ')}</div>
+                <FoodItems items={orderData.items} />
 
                 {/* <DialogActions>
                 </DialogActions> */}
