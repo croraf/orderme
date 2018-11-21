@@ -25,21 +25,20 @@ class Home extends React.Component {
                 display: 'flex',
                 flexDirection: 'row',
                 justifyContent: 'center',
-                minWidth: '1200px'
             }}>
-                <div style={{
+                {/* <div style={{
                     minWidth: '200px'
-                }}><img src='https://picsum.photos/200/600' /></div>
+                }}><img src='https://picsum.photos/200/600' /></div> */}
 
                 <div style={{
                     position: 'relative',
-                    minWidth: '800px',
-                    maxWidth: '800px',
+                    width: '800px',
+                    minHeight: '100vh',
                     backgroundColor: '#f5f5f5',
                     /* backgroundImage: `url(${squareImage})`,
                     backgroundPosition: 'bottom right',
                     backgroundRepeat: 'no-repeat', */
-                    margin: '0px 200px 0px 200px',
+                    margin: 'auto',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'start',
@@ -56,9 +55,9 @@ class Home extends React.Component {
 
                 </div>
                 
-                <div style={{
+                {/* <div style={{
                     minWidth: '200px'
-                }}><img src='https://picsum.photos/300/300' /></div>
+                }}><img src='https://picsum.photos/300/300' /></div> */}
             </div>
 
         );
