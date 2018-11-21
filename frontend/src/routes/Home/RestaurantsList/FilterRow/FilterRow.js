@@ -11,7 +11,7 @@ class FilterRow extends React.Component {
         return (
             <div style={{
                 width: '100%',
-                margin: '10px',
+                margin: '10px 0px',
                 display: 'flex',
                 flexDirection: 'row',
                 justifyContent: 'left'

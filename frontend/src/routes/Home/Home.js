@@ -1,5 +1,5 @@
 import React from 'react';
-
+import MediaQuery from 'react-responsive';
 
 
 import { RestaurantsListContainer } from './RestaurantsList/RestaurantsListContainer';
@@ -8,7 +8,20 @@ import { Switch, Route } from 'react-router';
 import { restaurantDetailsRenderer } from './RestaurantDetails/restaurantDetailsRenderer';
 import { OrdersContainer } from './Orders/OrdersContainer';
 
-/* import squareImage from './square.png'; */
+const containerStyleFullHd = {
+    position: 'relative',
+    width: '800px',
+    minWidth: '800px',
+    minHeight: '100vh',
+    backgroundColor: '#f5f5f5',
+    margin: 'auto',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'start',
+    alignItems: 'center'
+};
+
+const containerStyleHD = Object.assign({}, containerStyleFullHd, {width: '700px', minWidth: '700px'});
 
 
 class Home extends React.Component {
@@ -18,6 +31,14 @@ class Home extends React.Component {
     }
 
     render() {
+
+        const homeRouter = (
+            <Switch>
+                <Route exact={true} path={'/'} component={RestaurantsListContainer} />
+                <Route path={'/restaurants/:restaurantName'} component={restaurantDetailsRenderer}/>
+                <Route path={'/orders'} component={OrdersContainer}/>
+            </Switch>
+        );
 
         return (
             <div style={{
@@ -30,36 +51,24 @@ class Home extends React.Component {
                     minWidth: '200px'
                 }}><img src='https://picsum.photos/200/600' /></div> */}
 
-                <div style={{
-                    position: 'relative',
-                    width: '800px',
-                    minHeight: '100vh',
-                    backgroundColor: '#f5f5f5',
-                    /* backgroundImage: `url(${squareImage})`,
-                    backgroundPosition: 'bottom right',
-                    backgroundRepeat: 'no-repeat', */
-                    margin: 'auto',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'start',
-                    alignItems: 'center'
-                }}>
+                <MediaQuery query='(max-device-width: 1700px)'>
+                    <div style={containerStyleHD}>
+                        <TitleRowContainer />
+                        {homeRouter}
+                    </div>
+                </MediaQuery>
 
-                    <TitleRowContainer />
-
-                    <Switch>
-                        <Route exact={true} path={'/'} component={RestaurantsListContainer} />
-                        <Route path={'/restaurants/:restaurantName'} component={restaurantDetailsRenderer}/>
-                        <Route path={'/orders'} component={OrdersContainer}/>
-                    </Switch>
-
-                </div>
+                <MediaQuery query='(min-device-width: 1701px)'>
+                    <div style={containerStyleFullHd}>
+                        <TitleRowContainer />
+                        {homeRouter}
+                    </div>
+                </MediaQuery>
                 
                 {/* <div style={{
                     minWidth: '200px'
                 }}><img src='https://picsum.photos/300/300' /></div> */}
             </div>
-
         );
     }
 }

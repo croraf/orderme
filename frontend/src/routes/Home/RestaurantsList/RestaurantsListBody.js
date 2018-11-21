@@ -15,7 +15,6 @@ class RestaurantsListBody extends React.Component {
                 display: 'flex',
                 flexDirection: 'row',
                 flexWrap: 'wrap',
-                minHeight: '800px',
                 alignContent: 'flex-start'
             }}>
                 {listOfRestaurants.map((restaurant) => {
@@ -26,14 +25,20 @@ class RestaurantsListBody extends React.Component {
                             key={restaurant.name}
                             style={{
                                 backgroundImage: `url(${burgerImage})`,
-                                backgroundSize: '256px 256px',
+                                backgroundSize: '100% 100%',
                                 backgroundColor: !restaurant.open && 'grey',
-                                width: '256px',
-                                height: '256px',
-                                margin: '4px',
+                                width: '32%',
+                                paddingTop: '32%',
+                                margin: '0.5%',
                                 border: '1px solid red',
-                                cursor: 'pointer'
-                            }}>{restaurant.name} ({restaurant.area}; {restaurant.open ? 'open' : 'closed'})</div>
+                                borderRadius: '3px',
+                                cursor: 'pointer',
+                                position: 'relative'
+                            }}>
+                            <div style={{position: 'absolute', top: '0px'}}>
+                                {restaurant.name} ({restaurant.area}; {restaurant.open ? 'open' : 'closed'})
+                            </div>
+                        </div>
                     );
 
                     if (

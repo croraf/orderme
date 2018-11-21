@@ -10,13 +10,13 @@ class TitleRow extends React.Component {
         return (
             <div style={{
                 width: '99%',
-                margin: '20px',
+                margin: '20px 0px',
                 display: 'flex',
                 flexDirection: 'row',
                 justifyContent: 'space-between'
             }}>
                 <div style={{
-                    fontSize: 35
+                    fontSize: '35px'
                 }}>order.me</div>
 
                 <CartModalContainer />
