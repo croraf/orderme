@@ -42,10 +42,10 @@ class Home extends React.Component {
 
         return (
             <div style={{
-                position: 'relative',
+                /* position: 'relative',
                 display: 'flex',
                 flexDirection: 'row',
-                justifyContent: 'center',
+                justifyContent: 'center', */
             }}>
                 {/* <div style={{
                     minWidth: '200px'
