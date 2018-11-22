@@ -1,6 +1,7 @@
 import React from 'react';
 
 import burgerImage from './burger.png';
+import food8 from './food8.jpg';
 
 class RestaurantsListBody extends React.Component {
 
@@ -24,8 +25,10 @@ class RestaurantsListBody extends React.Component {
                             onClick={() => {this.props.onRestaurantClickHandler(restaurant.name);}}
                             key={restaurant.name}
                             style={{
-                                backgroundImage: `url(${burgerImage})`,
+                                backgroundImage: `url(${food8})`,
                                 backgroundSize: '100% 100%',
+                                backgroundPositionY: 'bottom',
+                                backgroundRepeat: 'no-repeat',
                                 backgroundColor: !restaurant.open && 'grey',
                                 width: '31%',
                                 paddingTop: '31%',
@@ -33,10 +36,13 @@ class RestaurantsListBody extends React.Component {
                                 border: '1px solid red',
                                 borderRadius: '3px',
                                 cursor: 'pointer',
-                                position: 'relative'
+                                position: 'relative',
+                                marginBottom: '10%'
                             }}>
-                            <div style={{position: 'absolute', top: '0px'}}>
-                                {restaurant.name} ({restaurant.area}; {restaurant.open ? 'open' : 'closed'})
+                            <div style={{position: 'relative', top: '110%', display: 'flex', flexDirection: 'column'}}>
+                                <div>{restaurant.name}</div>
+                                <div>({restaurant.area})</div>
+                                <div>{restaurant.open ? 'open' : 'closed'}</div>
                             </div>
                         </div>
                     );
