@@ -31,15 +31,22 @@ class RestaurantsListBody extends React.Component {
                                 backgroundRepeat: 'no-repeat',
                                 backgroundColor: !restaurant.open && 'grey',
                                 width: '31%',
+                                height: '0px',
                                 paddingTop: '31%',
                                 margin: '1%',
                                 border: '1px solid red',
                                 borderRadius: '3px',
                                 cursor: 'pointer',
                                 position: 'relative',
-                                marginBottom: '10%'
+                                marginBottom: '9%'
                             }}>
-                            <div style={{position: 'relative', top: '110%', display: 'flex', flexDirection: 'column'}}>
+                            <div style={{
+                                paddingTop: '1%',
+                                position: 'relative',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                fontSize: '1rem'
+                            }}>
                                 <div>{restaurant.name}</div>
                                 <div>({restaurant.area})</div>
                                 <div>{restaurant.open ? 'open' : 'closed'}</div>
