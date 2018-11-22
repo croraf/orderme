@@ -29,7 +29,10 @@ class FilterMenu extends React.Component {
 
         return (
             <div style={{
-                width: '200px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: '150px',
                 textAlign: 'center'
             }}>
                 <Button

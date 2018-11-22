@@ -8,20 +8,29 @@ import { Switch, Route } from 'react-router';
 import { restaurantDetailsRenderer } from './RestaurantDetails/restaurantDetailsRenderer';
 import { OrdersContainer } from './Orders/OrdersContainer';
 
+const containerWidth = 800;
+
 const containerStyleFullHd = {
     position: 'relative',
-    width: '800px',
-    minWidth: '800px',
+    width: containerWidth + 'px',
+    minWidth: containerWidth + 'px',
     minHeight: '100vh',
     backgroundColor: '#f5f5f5',
     margin: 'auto',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'start',
-    alignItems: 'center'
+    alignItems: 'center',
+    fontSize: '1rem'
 };
 
-const containerStyleHD = Object.assign({}, containerStyleFullHd, {width: '700px', minWidth: '700px'});
+const containerStyleHdOverrides = {
+    width: (containerWidth * 0.87) + 'px',
+    minWidth: (containerWidth * 0.87) + 'px',
+    fontSize: '0.87rem',
+};
+
+const containerStyleHd = Object.assign({}, containerStyleFullHd, containerStyleHdOverrides);
 
 
 class Home extends React.Component {
@@ -52,7 +61,7 @@ class Home extends React.Component {
                 }}><img src='https://picsum.photos/200/600' /></div> */}
 
                 <MediaQuery query='(max-device-width: 1700px)'>
-                    <div style={containerStyleHD}>
+                    <div style={containerStyleHd}>
                         <TitleRowContainer />
                         {homeRouter}
                     </div>
