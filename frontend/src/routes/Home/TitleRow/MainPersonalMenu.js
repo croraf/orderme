@@ -30,8 +30,9 @@ class MainPersonalMenu extends React.Component {
         const { anchorEl } = this.state;
 
         return (
-            <div>
+            <React.Fragment>
                 <Button
+                    style={{height: '75%', margin: 'auto 0px'}}
                     variant='outlined' color='primary' 
                     aria-owns={anchorEl ? 'simple-menu' : null}
                     aria-haspopup="true"
@@ -49,7 +50,7 @@ class MainPersonalMenu extends React.Component {
                     <MenuItem onClick={this.handleOrdersButtonClick}>My Orders</MenuItem>
                     <MenuItem onClick={this.handleLogoutButtonClick}>Logout</MenuItem>
                 </Menu>
-            </div>
+            </React.Fragment>
         );
     }
 }

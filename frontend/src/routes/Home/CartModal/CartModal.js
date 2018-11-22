@@ -7,6 +7,8 @@ import { CartModalContentContainer } from './CartModalContentContainer';
 import { CartModalHeader } from './CartModalHeader';
 import { CartFilledNotificationContainer } from './CartFilledNotification/CartFilledNotificationContainer';
 
+import CartIcon from '@material-ui/icons/ShoppingCart';
+
 function Transition(props) {
     return <Slide direction="up" {...props} />;
 }
@@ -26,11 +28,13 @@ class CartModal extends React.Component {
 
     render() {
         return (
-            <div>
+            <React.Fragment>
                 <div style={{
-                    display: 'flex'
+                    display: 'flex',
+                    height: '75%',
+                    margin: 'auto 0px',
                 }}>
-                    <Button variant='outlined' color='primary' onClick={this.handleClickOpen}>Manage cart & Checkout</Button>
+                    <Button variant='outlined' color='primary' onClick={this.handleClickOpen}><CartIcon /></Button>
                     <CartFilledNotificationContainer />
                 </div>
                 <Dialog
@@ -48,7 +52,7 @@ class CartModal extends React.Component {
                         <CartModalContentContainer closeModal={this.handleClose}/>
                     </DialogContent>
                 </Dialog>
-            </div>
+            </React.Fragment>
         );
     }
 }

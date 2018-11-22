@@ -42,8 +42,7 @@ class RestaurantsListBody extends React.Component {
                     );
 
                     if (
-                        openOnly && !restaurant.open || 
-                        area && restaurant.area !== area
+                        openOnly && !restaurant.open || area !== '-' && restaurant.area !== area 
                     ) {
                         return undefined;
                     } else {

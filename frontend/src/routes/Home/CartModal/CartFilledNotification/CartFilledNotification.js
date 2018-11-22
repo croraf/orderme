@@ -4,7 +4,7 @@ class CartFilledNotification extends React.Component {
 
     render() {
         return (
-            <div style={{color: 'red'}}>{this.props.count}</div>
+            <div style={{color: 'red', fontSize: '1.1rem'}}>{this.props.count}</div>
         );
     }
 }

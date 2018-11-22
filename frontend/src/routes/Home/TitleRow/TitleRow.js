@@ -10,22 +10,25 @@ class TitleRow extends React.Component {
         return (
             <div style={{
                 width: '99%',
-                margin: '20px 0px',
+                margin: '15px 0px',
                 display: 'flex',
                 flexDirection: 'row',
                 justifyContent: 'space-between'
             }}>
                 <div style={{
-                    fontSize: '35px'
+                    fontSize: '3rem',
+                    width: '33%'
                 }}>order.me</div>
 
-                <CartModalContainer />
+                <div style={{width: '33%', display: 'flex', justifyContent: 'center'}}><CartModalContainer /></div>
                 {/* <Button variant='outlined' color='secondary' onClick={logoutButtonHandler}>Log out</Button> */}
-                {
-                    loginStatus ? 
-                        <MainPersonalMenuContainer /> :
-                        <Button variant='outlined' color='secondary' onClick={loginButtonHandler}>Log in</Button>
-                }
+                <div style={{width: '33%', display: 'flex', justifyContent: 'end'}}>
+                    {
+                        loginStatus ? 
+                            <MainPersonalMenuContainer /> :
+                            <Button style={{height: '75%', margin: 'auto 0px', width: '33%'}} variant='outlined' color='secondary' onClick={loginButtonHandler}>Log in</Button>
+                    }
+                </div>
             </div>
         );
     }

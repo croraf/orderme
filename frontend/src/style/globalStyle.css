@@ -1,4 +1,8 @@
-
+@media (max-device-width: 1700px) {
+  html {
+    font-size: 0.87rem
+  }
+}
 
 body{
   background-color: #373d5c;

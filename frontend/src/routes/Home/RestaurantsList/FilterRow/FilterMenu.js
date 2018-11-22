@@ -39,6 +39,7 @@ class FilterMenu extends React.Component {
                     aria-owns={anchorEl ? 'simple-menu' : null}
                     aria-haspopup="true"
                     onClick={this.handleClick}
+                    style={{width: '150px'}}
                 >
                     <div style={{
                         display: 'flex',
