@@ -1,7 +1,7 @@
 import React from 'react';
 
-import burgerImage from './burger.png';
 import food8 from './food8.jpg';
+import food9 from './food9.jpg';
 
 class RestaurantsListBody extends React.Component {
 
@@ -18,14 +18,14 @@ class RestaurantsListBody extends React.Component {
                 flexWrap: 'wrap',
                 alignContent: 'flex-start'
             }}>
-                {listOfRestaurants.map((restaurant) => {
+                {listOfRestaurants.map((restaurant, index) => {
 
                     const restaurantDiv = (
                         <div 
                             onClick={() => {this.props.onRestaurantClickHandler(restaurant.name);}}
                             key={restaurant.name}
                             style={{
-                                backgroundImage: `url(${food8})`,
+                                backgroundImage: index % 2 ? `url(${food8})` : `url(${food9})`,
                                 backgroundSize: '100% 100%',
                                 backgroundPositionY: 'bottom',
                                 backgroundRepeat: 'no-repeat',
