@@ -2,6 +2,7 @@ import React from 'react';
 
 import food8 from './food8.jpg';
 import food9 from './food9.jpg';
+import StarRateIcon from '@material-ui/icons/StarRate';
 
 class RestaurantsListBody extends React.Component {
 
@@ -59,13 +60,25 @@ class RestaurantsListBody extends React.Component {
                                 fontSize: '1rem',
                             }}>
                                 <div 
-                                    onClick={() => {this.props.onRestaurantClickHandler(restaurant.name);}}
+                                    
                                     style={{
-                                        fontSize: '1.3rem',
-                                        cursor: 'pointer',
+                                        display: 'flex',
+                                        flexDirection: 'row',
+                                        justifyContent: 'space-between',
                                     }}
                                 >
-                                    {restaurant.name}
+                                    <div 
+                                        onClick={() => {this.props.onRestaurantClickHandler(restaurant.name);}}
+                                        style={{
+                                            fontSize: '1.3rem',
+                                            cursor: 'pointer',
+                                        }}
+                                    >{restaurant.name}</div>
+                                    <div style={{display: 'flex', fontStyle: 'italic'}}>
+                                        <div style={{paddingTop: '0.15rem'}}>3.5</div>
+                                        <StarRateIcon style={{color: 'gold'}}/>
+                                    </div>
+                                    
                                 </div>
                                 <div>({restaurant.area})</div>
                                 <div style={{color: restaurant.open ? 'black' : 'red'}}>{restaurant.open ? 'OPEN' : 'CLOSED'}</div>
