@@ -41,7 +41,7 @@ const jwtDecodeMiddleware = async (ctx, next) => {
 
 const createStaticCacheMiddleware = () => {
     return staticCache(path.resolve('..', 'frontend', 'dist'), {
-        maxAge: 365 * 24 * 60 * 60
+        maxAge: 60
     });
 };
 
