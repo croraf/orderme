@@ -16,22 +16,24 @@ class RestaurantsListBody extends React.Component {
                 display: 'flex',
                 flexDirection: 'row',
                 flexWrap: 'wrap',
-                alignContent: 'flex-start'
+                alignContent: 'flex-start',
+                justifyContent: 'center'
             }}>
                 {listOfRestaurants.map((restaurant, index) => {
 
                     const restaurantDiv = (
                         <div
+                            key={restaurant.name}
                             style={{
                                 display: 'flex',
                                 flexDirection: 'column',
-                                width: '31%',
-                                margin: '1%',
+                                width: '23%',
+                                margin: '3%',
+                                marginBottom: '0%',
                             }}
                         >
                             <div 
                                 onClick={() => {this.props.onRestaurantClickHandler(restaurant.name);}} 
-                                key={restaurant.name}
                                 style={{
                                     backgroundImage: index % 2 ? `url(${food8})` : `url(${food9})`,
                                     backgroundSize: '100% 100%',

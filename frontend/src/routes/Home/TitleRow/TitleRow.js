@@ -5,7 +5,7 @@ import {MainPersonalMenuContainer} from './MainPersonalMenuContainer';
 
 class TitleRow extends React.Component {
     render() {
-        const {loginStatus, loginButtonHandler} = this.props;
+        const {loginStatus, loginButtonHandler, logoClickedHandler} = this.props;
 
         return (
             <div style={{
@@ -15,10 +15,16 @@ class TitleRow extends React.Component {
                 flexDirection: 'row',
                 justifyContent: 'space-between'
             }}>
-                <div style={{
-                    fontSize: '3rem',
-                    width: '33%'
-                }}>order.me</div>
+                <div 
+                    onClick={logoClickedHandler}
+                    style={{
+                        fontSize: '3rem',
+                        width: '33%',
+                        cursor: 'pointer'
+                    }}
+                >
+                    order.me
+                </div>
 
                 <div style={{width: '33%', display: 'flex', justifyContent: 'center'}}><CartModalContainer /></div>
                 <div style={{width: '33%', display: 'flex', justifyContent: 'flex-end'}}>
