@@ -12,7 +12,7 @@ class RestaurantsListBody extends React.Component {
         return (
             <div style={{
                 width: '100%',
-                marginTop: '0px',
+                margin: '0.4rem 0rem 2rem 0rem',
                 display: 'flex',
                 flexDirection: 'row',
                 flexWrap: 'wrap',
