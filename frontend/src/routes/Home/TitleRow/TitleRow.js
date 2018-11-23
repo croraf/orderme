@@ -21,7 +21,6 @@ class TitleRow extends React.Component {
                 }}>order.me</div>
 
                 <div style={{width: '33%', display: 'flex', justifyContent: 'center'}}><CartModalContainer /></div>
-                {/* <Button variant='outlined' color='secondary' onClick={logoutButtonHandler}>Log out</Button> */}
                 <div style={{width: '33%', display: 'flex', justifyContent: 'flex-end'}}>
                     {
                         loginStatus ? 

@@ -55,6 +55,7 @@ class Home extends React.Component {
                 display: 'flex',
                 flexDirection: 'row',
                 justifyContent: 'center', */
+                //backgroundColor: 'whitesmoke'
             }}>
                 {/* <div style={{
                     minWidth: '200px'

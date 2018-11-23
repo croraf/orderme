@@ -21,35 +21,52 @@ class RestaurantsListBody extends React.Component {
                 {listOfRestaurants.map((restaurant, index) => {
 
                     const restaurantDiv = (
-                        <div 
-                            onClick={() => {this.props.onRestaurantClickHandler(restaurant.name);}}
-                            key={restaurant.name}
+                        <div
                             style={{
-                                backgroundImage: index % 2 ? `url(${food8})` : `url(${food9})`,
-                                backgroundSize: '100% 100%',
-                                backgroundPositionY: 'bottom',
-                                backgroundRepeat: 'no-repeat',
-                                backgroundColor: !restaurant.open && 'grey',
+                                display: 'flex',
+                                flexDirection: 'column',
                                 width: '31%',
-                                height: '0px',
-                                paddingTop: '31%',
                                 margin: '1%',
-                                border: '1px solid red',
-                                borderRadius: '3px',
-                                cursor: 'pointer',
-                                position: 'relative',
-                                marginBottom: '9%'
-                            }}>
+                            }}
+                        >
+                            <div 
+                                onClick={() => {this.props.onRestaurantClickHandler(restaurant.name);}} 
+                                key={restaurant.name}
+                                style={{
+                                    backgroundImage: index % 2 ? `url(${food8})` : `url(${food9})`,
+                                    backgroundSize: '100% 100%',
+                                    backgroundPositionY: 'bottom',
+                                    backgroundRepeat: 'no-repeat',
+                                    backgroundColor: !restaurant.open && 'grey',
+                                    width: '100%',
+                                    height: '0px',
+                                    paddingTop: '100%',
+                                    border: '1px solid red',
+                                    borderRadius: '3px',
+                                    cursor: 'pointer',
+                                    position: 'relative',
+                                    opacity: restaurant.open ? 1 : 0.25
+                                }}>
+                                
+                            </div>
                             <div style={{
                                 paddingTop: '1%',
                                 position: 'relative',
                                 display: 'flex',
                                 flexDirection: 'column',
-                                fontSize: '1rem'
+                                fontSize: '1rem',
                             }}>
-                                <div>{restaurant.name}</div>
+                                <div 
+                                    onClick={() => {this.props.onRestaurantClickHandler(restaurant.name);}}
+                                    style={{
+                                        fontSize: '1.3rem',
+                                        cursor: 'pointer',
+                                    }}
+                                >
+                                    {restaurant.name}
+                                </div>
                                 <div>({restaurant.area})</div>
-                                <div>{restaurant.open ? 'open' : 'closed'}</div>
+                                <div style={{color: restaurant.open ? 'black' : 'red'}}>{restaurant.open ? 'OPEN' : 'CLOSED'}</div>
                             </div>
                         </div>
                     );

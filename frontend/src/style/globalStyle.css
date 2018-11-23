@@ -1,10 +1,11 @@
 @media (max-device-width: 1700px) {
   html {
-    font-size: 0.87rem
+    font-size: 0.87rem;
   }
 }
 
-body{
+body {
+  font-family: helvetica;
   background-color: #373d5c;
   margin: 0px;
 }
