@@ -1,5 +1,6 @@
 import React from 'react';
 
+import food7 from './food7.jpg';
 import food8 from './food8.jpg';
 import food9 from './food9.jpg';
 import StarRateIcon from '@material-ui/icons/StarRate';
@@ -9,6 +10,8 @@ class RestaurantsListBody extends React.Component {
     render() {
 
         const {listOfRestaurants, openOnly, area} = this.props;
+
+        
 
         return (
             <div style={{
@@ -21,6 +24,21 @@ class RestaurantsListBody extends React.Component {
                 justifyContent: 'center'
             }}>
                 {listOfRestaurants.map((restaurant, index) => {
+
+                    let backgroundImageUrl;
+                    switch (index%3) {
+                        case 0:
+                            backgroundImageUrl = `url(${food7})`;
+                            break;
+                        case 1:
+                            backgroundImageUrl = `url(${food8})`;
+                            break;
+                        case 2:
+                            backgroundImageUrl = `url(${food9})`;
+                            break;
+                        default:
+                            break;
+                    }
 
                     const restaurantDiv = (
                         <div
@@ -36,7 +54,7 @@ class RestaurantsListBody extends React.Component {
                             <div 
                                 onClick={() => {this.props.onRestaurantClickHandler(restaurant.name);}} 
                                 style={{
-                                    backgroundImage: index % 2 ? `url(${food8})` : `url(${food9})`,
+                                    backgroundImage: backgroundImageUrl,
                                     backgroundSize: '100% 100%',
                                     backgroundPositionY: 'bottom',
                                     backgroundRepeat: 'no-repeat',
@@ -75,7 +93,7 @@ class RestaurantsListBody extends React.Component {
                                         }}
                                     >{restaurant.name}</div>
                                     <div style={{display: 'flex', fontStyle: 'italic'}}>
-                                        <div style={{paddingTop: '0.15rem'}}>3.5</div>
+                                        <div style={{paddingTop: '0.15rem'}}>{restaurant.rating}</div>
                                         <StarRateIcon style={{color: 'gold'}}/>
                                     </div>
                                     
