@@ -9,7 +9,7 @@ class TitleRow extends React.Component {
 
         return (
             <div style={{
-                width: '99%',
+                width: '80%',
                 margin: '15px 0px',
                 display: 'flex',
                 flexDirection: 'row',
@@ -26,8 +26,9 @@ class TitleRow extends React.Component {
                     order.me
                 </div>
 
-                <div style={{width: '33%', display: 'flex', justifyContent: 'center'}}><CartModalContainer /></div>
+                
                 <div style={{width: '33%', display: 'flex', justifyContent: 'flex-end'}}>
+                    <div style={{marginRight: '1rem', display: 'flex', justifyContent: 'center'}}><CartModalContainer /></div>
                     {
                         loginStatus ? 
                             <MainPersonalMenuContainer /> :
