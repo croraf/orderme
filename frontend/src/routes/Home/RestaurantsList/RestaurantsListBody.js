@@ -46,7 +46,7 @@ class RestaurantsListBody extends React.Component {
                             style={{
                                 display: 'flex',
                                 flexDirection: 'column',
-                                width: '29%',
+                                width: '29.5%',
                                 margin: '0%',
                                 marginBottom: '3%',
                             }}
@@ -55,14 +55,13 @@ class RestaurantsListBody extends React.Component {
                                 onClick={() => {this.props.onRestaurantClickHandler(restaurant.name);}} 
                                 style={{
                                     backgroundImage: backgroundImageUrl,
-                                    backgroundSize: '100% 100%',
-                                    backgroundPositionY: 'bottom',
+                                    backgroundSize: '100% 105%',
                                     backgroundRepeat: 'no-repeat',
                                     backgroundColor: !restaurant.open && 'grey',
                                     width: '100%',
                                     height: '0px',
                                     paddingTop: '85%',
-                                    border: '1px solid red',
+                                    border: '1px solid gray',
                                     borderRadius: '4px',
                                     cursor: 'pointer',
                                     position: 'relative',
