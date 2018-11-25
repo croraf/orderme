@@ -1,12 +1,8 @@
 import React from 'react';
 import MediaQuery from 'react-responsive';
 
-
-import { RestaurantsListContainer } from './RestaurantsList/RestaurantsListContainer';
 import { TitleRowContainer } from './TitleRow/TitleRowContainer';
-import { Switch, Route } from 'react-router';
-import { restaurantDetailsRenderer } from './RestaurantDetails/restaurantDetailsRenderer';
-import { OrdersContainer } from './Orders/OrdersContainer';
+import { HomeRouter } from './HomeRouter';
 
 const containerWidth = 950;
 
@@ -20,8 +16,7 @@ const containerStyleFullHd = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'start',
-    alignItems: 'center',
-    fontSize: '1rem'
+    alignItems: 'center'
 };
 
 const containerStyleHdOverrides = {
@@ -41,14 +36,6 @@ class Home extends React.Component {
 
     render() {
 
-        const homeRouter = (
-            <Switch>
-                <Route exact={true} path={'/'} component={RestaurantsListContainer} />
-                <Route path={'/restaurants/:restaurantName'} component={restaurantDetailsRenderer}/>
-                <Route path={'/orders'} component={OrdersContainer}/>
-            </Switch>
-        );
-
         return (
             <div style={{
                 /* position: 'relative',
@@ -64,14 +51,14 @@ class Home extends React.Component {
                 <MediaQuery query='(max-device-width: 1700px)'>
                     <div style={containerStyleHd}>
                         <TitleRowContainer />
-                        {homeRouter}
+                        <HomeRouter />
                     </div>
                 </MediaQuery>
 
                 <MediaQuery query='(min-device-width: 1701px)'>
                     <div style={containerStyleFullHd}>
                         <TitleRowContainer />
-                        {homeRouter}
+                        <HomeRouter />
                     </div>
                 </MediaQuery>
                 
