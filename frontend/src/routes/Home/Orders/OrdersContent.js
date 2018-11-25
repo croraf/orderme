@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
 import {OrderItemContainer} from '../CartModal/OrderItem/OrderItemContainer';
 
 class OrdersContent extends React.Component {
@@ -24,7 +23,8 @@ class OrdersContent extends React.Component {
                 borderTop: '2px solid black',
                 borderBottom: '2px solid black',
                 paddingLeft: '2px',
-                paddingRight: '2px'
+                paddingRight: '2px',
+                marginBottom: '2rem',
             }}>
                 {ordersElements}
             </div>

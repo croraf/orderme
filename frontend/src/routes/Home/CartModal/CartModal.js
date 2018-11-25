@@ -34,7 +34,7 @@ class CartModal extends React.Component {
                     height: '2.5rem',
                     margin: 'auto 0px',
                 }}>
-                    <Button variant='outlined' color='primary' onClick={this.handleClickOpen}><CartIcon /></Button>
+                    <Button style={{padding: '0rem'}} variant='outlined' color='primary' onClick={this.handleClickOpen}><CartIcon /></Button>
                     <CartFilledNotificationContainer />
                 </div>
                 <Dialog

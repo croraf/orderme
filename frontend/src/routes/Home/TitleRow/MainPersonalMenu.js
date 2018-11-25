@@ -33,7 +33,7 @@ class MainPersonalMenu extends React.Component {
         return (
             <React.Fragment>
                 <Button
-                    style={{height: '2.5rem', margin: 'auto 0px'}}
+                    style={{height: '2.5rem', margin: 'auto 0px', padding: '0rem'}}
                     variant='outlined' color='primary' 
                     aria-owns={anchorEl ? 'simple-menu' : null}
                     aria-haspopup="true"

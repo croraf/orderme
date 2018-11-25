@@ -32,7 +32,7 @@ class TitleRow extends React.Component {
                     {
                         loginStatus ? 
                             <MainPersonalMenuContainer /> :
-                            <Button style={{height: '75%', margin: 'auto 0px', width: '33%'}} variant='outlined' color='secondary' onClick={loginButtonHandler}>Log in</Button>
+                            <Button style={{height: '75%', margin: 'auto 0px', width: '33%', padding: '0rem'}} variant='outlined' color='secondary' onClick={loginButtonHandler}>Log in</Button>
                     }
                 </div>
             </div>
