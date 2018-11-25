@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
 import { CartButton } from './CartButton';
 
-const mapStateToProps = () => {
+const mapStateToProps = () => ({
 
-};
+});
 
 const mapDispatchToProps = (dispatch) => ({
     openModal: () => {dispatch({type: 'OPEN_MODAL'});},

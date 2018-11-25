@@ -1,5 +1,5 @@
 const config = {
-    numberOfOrderItemsInCartView: 5
+    numberOfOrderItemsInCartView: 2
 };
 
 module.exports = config;
