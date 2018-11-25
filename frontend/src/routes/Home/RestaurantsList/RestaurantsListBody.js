@@ -88,6 +88,8 @@ class RestaurantsListBody extends React.Component {
                                         onClick={() => {this.props.onRestaurantClickHandler(restaurant.name);}}
                                         style={{
                                             fontSize: '1.3rem',
+                                            fontWeight: 'bold',
+                                            fontStyle: 'italic',
                                             cursor: 'pointer',
                                         }}
                                     >{restaurant.name}</div>

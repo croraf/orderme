@@ -20,7 +20,8 @@ class TitleRow extends React.Component {
                     style={{
                         fontSize: '3rem',
                         width: '33%',
-                        cursor: 'pointer'
+                        cursor: 'pointer',
+                        fontWeight: 'bold'
                     }}
                 >
                     order.me
