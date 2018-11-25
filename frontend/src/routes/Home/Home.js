@@ -8,7 +8,7 @@ import { Switch, Route } from 'react-router';
 import { restaurantDetailsRenderer } from './RestaurantDetails/restaurantDetailsRenderer';
 import { OrdersContainer } from './Orders/OrdersContainer';
 
-const containerWidth = 1200;
+const containerWidth = 950;
 
 const containerStyleFullHd = {
     position: 'relative',

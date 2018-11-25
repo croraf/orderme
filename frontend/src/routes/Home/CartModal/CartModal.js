@@ -31,7 +31,7 @@ class CartModal extends React.Component {
             <React.Fragment>
                 <div style={{
                     display: 'flex',
-                    height: '75%',
+                    height: '2.5rem',
                     margin: 'auto 0px',
                 }}>
                     <Button variant='outlined' color='primary' onClick={this.handleClickOpen}><CartIcon /></Button>

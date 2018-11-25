@@ -16,12 +16,12 @@ class RestaurantsListBody extends React.Component {
         return (
             <div style={{
                 width: '100%',
-                margin: '0.4rem 0rem 2rem 0rem',
+                margin: '1rem 0rem 2rem 0rem',
                 display: 'flex',
                 flexDirection: 'row',
                 flexWrap: 'wrap',
                 alignContent: 'flex-start',
-                justifyContent: 'center'
+                justifyContent: 'space-between'
             }}>
                 {listOfRestaurants.map((restaurant, index) => {
 
@@ -46,9 +46,9 @@ class RestaurantsListBody extends React.Component {
                             style={{
                                 display: 'flex',
                                 flexDirection: 'column',
-                                width: '23%',
-                                margin: '3%',
-                                marginBottom: '0%',
+                                width: '29%',
+                                margin: '0%',
+                                marginBottom: '3%',
                             }}
                         >
                             <div 
@@ -61,9 +61,9 @@ class RestaurantsListBody extends React.Component {
                                     backgroundColor: !restaurant.open && 'grey',
                                     width: '100%',
                                     height: '0px',
-                                    paddingTop: '100%',
+                                    paddingTop: '85%',
                                     border: '1px solid red',
-                                    borderRadius: '3px',
+                                    borderRadius: '4px',
                                     cursor: 'pointer',
                                     position: 'relative',
                                     opacity: restaurant.open ? 1 : 0.25

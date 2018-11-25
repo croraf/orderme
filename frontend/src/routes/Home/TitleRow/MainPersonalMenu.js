@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import MenuIcon from '@material-ui/icons/Menu';
 
 class MainPersonalMenu extends React.Component {
     state = {
@@ -32,13 +33,13 @@ class MainPersonalMenu extends React.Component {
         return (
             <React.Fragment>
                 <Button
-                    style={{height: '75%', margin: 'auto 0px'}}
+                    style={{height: '2.5rem', margin: 'auto 0px'}}
                     variant='outlined' color='primary' 
                     aria-owns={anchorEl ? 'simple-menu' : null}
                     aria-haspopup="true"
                     onClick={this.handleClick}
                 >
-                    Open Menu
+                    <MenuIcon />
                 </Button>
                 <Menu
                     id="simple-menu"

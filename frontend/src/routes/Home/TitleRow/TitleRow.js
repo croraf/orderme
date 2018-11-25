@@ -9,7 +9,7 @@ class TitleRow extends React.Component {
 
         return (
             <div style={{
-                width: '80%',
+                width: '100%',
                 margin: '15px 0px',
                 display: 'flex',
                 flexDirection: 'row',
