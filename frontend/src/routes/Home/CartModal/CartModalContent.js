@@ -3,14 +3,14 @@
 import React from 'react';
 import { CartModalItemContainer } from './CartModalItem/CartModalItemContainer';
 import { OrderItemContainer } from './OrderItem/OrderItemContainer';
-import { Button } from '@material-ui/core';
 /* import DialogContentText from '@material-ui/core/DialogContentText'; */
 import config from 'Config';
+import { CartModalFooter } from './CartModalFooter';
 
 class CartModalContent extends React.Component {
 
     render() {
-        const { cartRestaurantIds, orders } = this.props;
+        const { cartRestaurantIds, orders, onFullOrdersButtonClickHandler } = this.props;
         const numberOfCartItems = cartRestaurantIds.length;
 
         const orderItemsArray = Object.values(orders);
@@ -26,7 +26,7 @@ class CartModalContent extends React.Component {
         }
 
         return (
-            <div style={{}}>
+            <React.Fragment>
                 <div style={{
                     minWidth: '500px',
                     borderTop: '5px solid black',
@@ -58,17 +58,12 @@ class CartModalContent extends React.Component {
                     padding: '10px 0px',
                     margin: '10px 0px 10px 0px'
                 }}>
-                    
                     {ordersElements}
                 </div>
 
-                <div style={{textAlign: 'center'}}>
-                    <Button 
-                        color='primary'
-                        onClick={this.props.onFullOrdersButtonClickHandler}
-                    >Full orders history</Button>
-                </div>
-            </div>
+                
+                <CartModalFooter onFullOrdersButtonClickHandler={onFullOrdersButtonClickHandler}/>
+            </React.Fragment>
         );
     }
 }

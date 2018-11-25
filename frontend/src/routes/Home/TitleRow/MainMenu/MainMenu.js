@@ -4,7 +4,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
 
-class MainPersonalMenu extends React.Component {
+class MainMenu extends React.Component {
     state = {
         anchorEl: null,
     };
@@ -56,4 +56,4 @@ class MainPersonalMenu extends React.Component {
     }
 }
 
-export default MainPersonalMenu;
+export default MainMenu;

@@ -3,6 +3,7 @@ import MediaQuery from 'react-responsive';
 
 import { TitleRowContainer } from './TitleRow/TitleRowContainer';
 import { HomeRouter } from './HomeRouter';
+import { CartModalContainer } from './CartModal/CartModalContainer';
 
 const containerWidth = 950;
 
@@ -65,6 +66,8 @@ class Home extends React.Component {
                 {/* <div style={{
                     minWidth: '200px'
                 }}><img src='https://picsum.photos/300/300' /></div> */}
+
+                <CartModalContainer />
             </div>
         );
     }

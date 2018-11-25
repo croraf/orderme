@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import MainPersonalMenu from './MainPersonalMenu';
+import MainMenu from './MainMenu';
 import {push} from 'connected-react-router';
 
 const mapStateToProps = (state) => ({
@@ -16,6 +16,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 
-const MainPersonalMenuContainer = connect(mapStateToProps, mapDispatchToProps)(MainPersonalMenu);
+const MainMenuContainer = connect(mapStateToProps, mapDispatchToProps)(MainMenu);
 
-export {MainPersonalMenuContainer};
+export {MainMenuContainer};

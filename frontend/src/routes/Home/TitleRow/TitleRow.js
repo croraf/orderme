@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import { CartModalContainer } from '../CartModal/CartModalContainer';
-import {MainPersonalMenuContainer} from './MainPersonalMenuContainer';
+import {MainMenuContainer} from './MainMenu/MainMenuContainer';
+import { CartButtonContainer } from './CartButton/CartButtonContainer';
 
 class TitleRow extends React.Component {
     render() {
@@ -29,10 +29,10 @@ class TitleRow extends React.Component {
 
                 
                 <div style={{width: '33%', display: 'flex', justifyContent: 'flex-end'}}>
-                    <div style={{marginRight: '1rem', display: 'flex', justifyContent: 'center'}}><CartModalContainer /></div>
+                    <CartButtonContainer />
                     {
                         loginStatus ? 
-                            <MainPersonalMenuContainer /> :
+                            <MainMenuContainer /> :
                             <Button style={{height: '75%', margin: 'auto 0px', width: '33%', padding: '0rem'}} variant='outlined' color='secondary' onClick={loginButtonHandler}>Log in</Button>
                     }
                 </div>

@@ -11,6 +11,7 @@ import { restaurantDetailsReducer } from './restaurantDetails';
 import { cartReducer } from './cart';
 import { ordersReducer } from './orders';
 import { loginReducer } from './login';
+import { modalReducer } from './modal';
 
 
 const history = createHistory();
@@ -24,7 +25,8 @@ const reducer = combineReducers({
     restaurantDetails: restaurantDetailsReducer,
     cart: cartReducer,
     orders: ordersReducer,
-    login: loginReducer
+    login: loginReducer,
+    modal: modalReducer,
 });
 
 const store = createStore(
