@@ -4,8 +4,8 @@ import Slide from '@material-ui/core/Slide';
 import { CartModalContentContainer } from './CartModalContentContainer';
 import { CartModalHeader } from './CartModalHeader';
 import { CartModalFooter } from './CartModalFooter';
-import { DeliveryData } from './DeliveryData/DeliveryData';
 import { OrderListContainer } from './OrderList/OrderListContainer';
+import DeliveryDataForm from './DeliveryData/DeliveryDataForm';
 
 function Transition(props) {
     return <Slide direction="up" {...props} />;
@@ -31,8 +31,8 @@ class CartModal extends React.Component {
                     <CartModalContentContainer closeModal={closeModal}/>
                 </div>
 
-                <div style={{padding: '0rem 1.5rem 1rem 1.5rem', textAlign: 'center'}}>
-                    <DeliveryData />
+                <div style={{padding: '0rem 1.5rem 1rem 1.5rem'}}>
+                    <DeliveryDataForm />
                 </div>
 
                 <div style={{padding: '0rem 1.5rem'}}>
