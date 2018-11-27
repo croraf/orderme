@@ -5,6 +5,8 @@ import { TitleRowContainer } from './TitleRow/TitleRowContainer';
 import { HomeRouter } from './HomeRouter';
 import { CartModalContainer } from './CartModal/CartModalContainer';
 
+import {initializeWebsocket} from 'Modules/websocket';
+
 const containerWidth = 950;
 
 const containerStyleFullHd = {
@@ -33,6 +35,7 @@ class Home extends React.Component {
 
     componentWillMount() {
         this.props.loadInitialHomeRouteData();
+        initializeWebsocket();
     }
 
     render() {

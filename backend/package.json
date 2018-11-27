@@ -28,7 +28,8 @@
     "request-promise": "^4.2.2",
     "swagger-ui": "^3.19.0",
     "swagger2": "^1.0.1",
-    "swagger2-koa": "^1.0.2"
+    "swagger2-koa": "^1.0.2",
+    "ws": "^6.1.2"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",

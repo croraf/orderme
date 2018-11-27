@@ -1,5 +1,6 @@
 
 const dal = require('../dal/orders');
+const {sendMessage} = require('../ws'); 
 
 const getOrder = async (_id) => {
     return await dal.getOrder(_id);
@@ -18,6 +19,8 @@ const cancelOrder = async (_id) => {
     const cancelingResult = await dal.updateOrder(
         {$and: [{_id}, {status: {$ne: 'CONFIRMED'}}]},
         {status: 'CANCELED'});
+    
+    sendMessage('facebook2103849006536449', {type: 'hello', message: 'canceled'});
     return cancelingResult;
 };
 
@@ -32,9 +35,15 @@ const acceptOrder = async (_id) => {
     if (updatingResult === 1) {
         // order has been set to accepted from awaiting confirmation
         // start confirmation timer
+
+        sendMessage('facebook2103849006536449', {type: 'hello', message: 'accepted'});
         orderConfirmationTimers[_id] = setTimeout(() => {confirmOrder(_id);}, acceptedTimestamp + 9500 - Date.now());
+    } else {
+        sendMessage('facebook2103849006536449', {type: 'hello', message: 'canceled'});
     }
     console.log('accepting result:', updatingResult);
+
+    
 };
 
 const confirmOrder = async (_id) => {
@@ -45,6 +54,7 @@ const confirmOrder = async (_id) => {
         {status: 'CONFIRMED'}
     );
     console.log('confirming result:', confirmingResult);
+    sendMessage('facebook2103849006536449', {type: 'hello', message: 'confirmed'});
 };
 
 

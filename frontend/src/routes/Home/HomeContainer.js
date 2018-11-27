@@ -8,7 +8,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    loadInitialHomeRouteData: () => {dispatch(fetchOrders());},
+    loadInitialHomeRouteData: () => {dispatch(fetchOrders());}
 });
 
 const HomeContainer = connect(mapStateToProps, mapDispatchToProps)(Home);
