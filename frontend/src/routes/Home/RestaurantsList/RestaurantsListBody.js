@@ -4,6 +4,7 @@ import food7 from './food7.jpg';
 import food8 from './food8.jpg';
 import food9 from './food9.jpg';
 import StarRateIcon from '@material-ui/icons/StarRate';
+import { RestaurantDetailsContainer } from '../RestaurantDetails/RestaurantDetailsContainer';
 
 class RestaurantsListBody extends React.Component {
 
@@ -11,7 +12,14 @@ class RestaurantsListBody extends React.Component {
 
         const {listOfRestaurants, openOnly, area} = this.props;
 
-        
+        // when listOfRestaurants.length % 3 !== 0, then last row has items centered
+        // adding dummy items to the list fixes this issue
+        let excessFrom3 = listOfRestaurants.length % 3;
+        const listOfRestaurantsAlligned = [...listOfRestaurants];
+        while (excessFrom3 !== 0) {
+            listOfRestaurantsAlligned.push({dummy: true, key: excessFrom3});
+            excessFrom3--;
+        }
 
         return (
             <div style={{
@@ -23,7 +31,11 @@ class RestaurantsListBody extends React.Component {
                 alignContent: 'flex-start',
                 justifyContent: 'space-between'
             }}>
-                {listOfRestaurants.map((restaurant, index) => {
+                {listOfRestaurantsAlligned.map((restaurant, index) => {
+
+                    if (restaurant.dummy) {
+                        return <div key={restaurant.excessFrom3} style={{width: '29.5%'}}/>;
+                    }
 
                     let backgroundImageUrl;
                     switch (index%3) {
