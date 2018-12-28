@@ -16,7 +16,7 @@ class CartModalContent extends React.Component {
                 borderTop: '5px solid black',
                 borderBottom: '5px solid black',
                 minHeight: '50px',
-                padding: '10px 0px',
+                padding: '5px 0px 0px',
                 margin: '0px 0px 10px 0px'
             }}>
                 {cartRestaurantIds.reverse().map((restaurantId, i) =>

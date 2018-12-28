@@ -4,21 +4,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 /* import DialogActions from '@material-ui/core/DialogActions'; */
 import {CustomLinearProgressContainer} from '../CustomLinearProgress/CustomLinearProgressContainer';
-
-class FoodItems extends React.Component {
-
-    render() {
-        const {items} = this.props;
-
-        return (
-            <ul style={{
-                margin: '5px 0px 0px 0px'
-            }}>
-                {items.map((foodItem, index) => <li key={index}>{foodItem}</li>)}
-            </ul>
-        );
-    }
-}
+import {FoodItems} from 'Components/FoodItems/FoodItems';
 
 class OrderItem extends React.Component {
 

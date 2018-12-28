@@ -4,7 +4,7 @@ import React from 'react';
 /* import DialogContentText from '@material-ui/core/DialogContentText'; */
 import Button from '@material-ui/core/Button';
 import DialogActions from '@material-ui/core/DialogActions';
-
+import {FoodItems} from 'Components/FoodItems/FoodItems';
 class CartModalItem extends React.Component {
 
     render() {
@@ -20,9 +20,14 @@ class CartModalItem extends React.Component {
                 }}
             >
                 <div style={{
-                    fontWeight: 'bold'
-                }}>{restaurantId}:</div>
-                <div>{restaurantOrderData.join(', ')}</div>
+                    display: 'flex',
+                    justifyContent: 'space-between'
+                }}>
+                    <div style={{
+                        fontWeight: 'bold'
+                    }}>{restaurantId}:</div>
+                </div>
+                <FoodItems items={restaurantOrderData} />
 
                 <DialogActions>
                     <Button onClick={() => {orderItemFromCartHandler(restaurantId);}} color="primary">
