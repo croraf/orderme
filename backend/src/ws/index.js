@@ -37,9 +37,10 @@ const initializeWss = async () => {
             console.log('received:', data);
 
             if(data.type === 'hello') {
+                // When the ws client connects, he should send authorization jwt
+                // If the credentials are OK, store the connection to the connections map
                 const credentials = jwt.verify(data.message, 'abcdef');
-                console.log(credentials);
-
+                console.log('websocket server received:', credentials);
                 authorizedWebsockets[credentials.id] = ws;
 
                 /* setTimeout(() => {
@@ -56,4 +57,10 @@ const sendMessage = (userId, data) => {
     authorizedWebsockets[userId].send(JSON.stringify(data));
 };
 
-module.exports = {initializeWss, sendMessage};
+const broadcastMessage = (data) => {
+    for (const userId in authorizedWebsockets) {
+        authorizedWebsockets[userId].send(JSON.stringify(data));
+    }
+};
+
+module.exports = {initializeWss, sendMessage, broadcastMessage};

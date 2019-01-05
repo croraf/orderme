@@ -3,9 +3,8 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 /* import DialogActions from '@material-ui/core/DialogActions'; */
-import {CustomLinearProgressContainer} from '../CustomLinearProgress/CustomLinearProgressContainer';
 import {FoodItems} from 'Components/FoodItems/FoodItems';
-import CustomProgress2 from '../CustomProgress2/CustomProgress2';
+import CustomProgress from 'Components/CustomProgress/CustomProgress';
 
 class OrderItem extends React.Component {
 
@@ -53,9 +52,8 @@ class OrderItem extends React.Component {
             </div>
         );
 
-        const progressComponentAwaiting = orderData.status === 'AWAITING CONFIRMATION' && (
-            <CustomLinearProgressContainer 
-                orderId={orderData._id}
+        const progressComponentAwaitingConfirmation = orderData.status === 'AWAITING CONFIRMATION' && (
+            <CustomProgress
                 orderStatus={orderData.status}
                 initialTimestamp={orderData.timestamp}
                 duration={10} 
@@ -63,24 +61,7 @@ class OrderItem extends React.Component {
         );
 
         const progressComponentAccepted = orderData.status === 'ACCEPTED' && (
-            <CustomLinearProgressContainer 
-                orderId={orderData._id}
-                orderStatus={orderData.status}
-                initialTimestamp={orderData.acceptedTimestamp}
-                duration={10} 
-            />
-        );
-
-        const newProgressComponentAwaitingConfirmation = orderData.status === 'AWAITING CONFIRMATION' && (
-            <CustomProgress2 
-                orderStatus={orderData.status}
-                initialTimestamp={orderData.timestamp}
-                duration={10} 
-            />
-        );
-
-        const newProgressComponentAccepted = orderData.status === 'ACCEPTED' && (
-            <CustomProgress2 
+            <CustomProgress
                 orderStatus={orderData.status}
                 initialTimestamp={orderData.acceptedTimestamp}
                 duration={10} 
@@ -118,11 +99,8 @@ class OrderItem extends React.Component {
                     {canceledStatusText}
                 </div>
                 
-
-                {progressComponentAwaiting}
+                {progressComponentAwaitingConfirmation}
                 {progressComponentAccepted}
-                {newProgressComponentAwaitingConfirmation}
-                {newProgressComponentAccepted}
             </div>
 
         );

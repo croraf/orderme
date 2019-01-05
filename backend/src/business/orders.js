@@ -18,9 +18,19 @@ const cancelOrder = async (_id) => {
 
     const cancelingResult = await dal.updateOrder(
         {$and: [{_id}, {status: {$ne: 'CONFIRMED'}}]},
-        {status: 'CANCELED'});
+        {status: 'CANCELED'}
+    );
     
-    sendMessage('facebook2103849006536449', {type: 'hello', message: 'canceled'});
+    sendMessage(
+        'facebook2103849006536449', 
+        {
+            type: 'orderStatusChange', 
+            message: {
+                _id, 
+                status: 'CANCELED'
+            }
+        }
+    );
     return cancelingResult;
 };
 
@@ -36,10 +46,29 @@ const acceptOrder = async (_id) => {
         // order has been set to accepted from awaiting confirmation
         // start confirmation timer
 
-        sendMessage('facebook2103849006536449', {type: 'hello', message: 'accepted'});
+        sendMessage(
+            'facebook2103849006536449', 
+            {
+                type: 'orderStatusChange', 
+                message: {
+                    _id, 
+                    status: 'ACCEPTED',
+                    acceptedTimestamp
+                }
+            }
+        );
         orderConfirmationTimers[_id] = setTimeout(() => {confirmOrder(_id);}, acceptedTimestamp + 9500 - Date.now());
     } else {
-        sendMessage('facebook2103849006536449', {type: 'hello', message: 'canceled'});
+        sendMessage(
+            'facebook2103849006536449', 
+            {
+                type: 'orderStatusChange', 
+                message: {
+                    _id, 
+                    status: 'CANCELED'
+                }
+            }
+        );
     }
     console.log('accepting result:', updatingResult);
 
@@ -54,7 +83,16 @@ const confirmOrder = async (_id) => {
         {status: 'CONFIRMED'}
     );
     console.log('confirming result:', confirmingResult);
-    sendMessage('facebook2103849006536449', {type: 'hello', message: 'confirmed'});
+    sendMessage(
+        'facebook2103849006536449', 
+        {
+            type: 'orderStatusChange', 
+            message: {
+                _id, 
+                status: 'CONFIRMED'
+            }
+        }
+    );
 };
 
 
