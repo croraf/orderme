@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 /* import DialogActions from '@material-ui/core/DialogActions'; */
 import {CustomLinearProgressContainer} from '../CustomLinearProgress/CustomLinearProgressContainer';
 import {FoodItems} from 'Components/FoodItems/FoodItems';
+import CustomProgress2 from '../CustomProgress2/CustomProgress2';
 
 class OrderItem extends React.Component {
 
@@ -70,6 +71,14 @@ class OrderItem extends React.Component {
             />
         );
 
+        const newProgressComponent = orderData.status === 'AWAITING CONFIRMATION' && (
+            <CustomProgress2 
+                orderStatus={orderData.status}
+                initialTimestamp={orderData.timestamp}
+                duration={10} 
+            />
+        );
+
         return (
             
             <div
@@ -104,6 +113,7 @@ class OrderItem extends React.Component {
 
                 {progressComponentAwaiting}
                 {progressComponentAccepted}
+                {newProgressComponent}
             </div>
 
         );

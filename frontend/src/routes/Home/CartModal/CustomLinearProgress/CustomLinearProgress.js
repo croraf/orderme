@@ -76,11 +76,11 @@ class CustomLinearProgress extends React.Component {
             <div style={{
                 marginBottom: '5px'
             }}>
-                <LinearProgress 
+                {/* <LinearProgress 
                     variant="determinate"
                     value={this.state.progress} 
-                    classes={{/*  barColorPrimary: color,  */bar1Determinate: classes.bar1Determinate }}
-                />
+                    classes={{bar1Determinate: classes.bar1Determinate }}
+                /> */}
             </div>
         );
     }
