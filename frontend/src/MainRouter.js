@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Route, Switch } from 'react-router';
+import { Route, Switch } from 'react-router-dom';
 import LoginRouter from './routes/Login/LoginRouter';
 import { HomeContainer } from './routes/Home/HomeContainer';
 /* import { noRouteRenderer } from './routes/NoRoute/noRouteRenderer'; */

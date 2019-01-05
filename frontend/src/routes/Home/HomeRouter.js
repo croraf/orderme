@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router';
+import { Switch, Route } from 'react-router-dom';
 
 import { restaurantDetailsRenderer } from './RestaurantDetails/restaurantDetailsRenderer';
 import { OrdersContainer } from './Orders/OrdersContainer';
