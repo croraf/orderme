@@ -71,10 +71,18 @@ class OrderItem extends React.Component {
             />
         );
 
-        const newProgressComponent = orderData.status === 'AWAITING CONFIRMATION' && (
+        const newProgressComponentAwaitingConfirmation = orderData.status === 'AWAITING CONFIRMATION' && (
             <CustomProgress2 
                 orderStatus={orderData.status}
                 initialTimestamp={orderData.timestamp}
+                duration={10} 
+            />
+        );
+
+        const newProgressComponentAccepted = orderData.status === 'ACCEPTED' && (
+            <CustomProgress2 
+                orderStatus={orderData.status}
+                initialTimestamp={orderData.acceptedTimestamp}
                 duration={10} 
             />
         );
@@ -113,7 +121,8 @@ class OrderItem extends React.Component {
 
                 {progressComponentAwaiting}
                 {progressComponentAccepted}
-                {newProgressComponent}
+                {newProgressComponentAwaitingConfirmation}
+                {newProgressComponentAccepted}
             </div>
 
         );
