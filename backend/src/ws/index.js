@@ -6,9 +6,9 @@ let wss;
 
 const authorizedWebsockets = {};
 
-const initializeWss = async () => {
+const configureWss = async (server) => {
     wss = new WebSocket.Server({
-        port: 10000,
+        server: server,
         /* perMessageDeflate: {
             zlibDeflateOptions: {
             // See zlib defaults.
@@ -63,4 +63,4 @@ const broadcastMessage = (data) => {
     }
 };
 
-module.exports = {initializeWss, sendMessage, broadcastMessage};
+module.exports = {configureWss, sendMessage, broadcastMessage};
