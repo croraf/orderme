@@ -57,7 +57,7 @@ const acceptOrder = async (_id) => {
                 }
             }
         );
-        orderConfirmationTimers[_id] = setTimeout(() => {confirmOrder(_id);}, acceptedTimestamp + 9500 - Date.now());
+        orderConfirmationTimers[_id] = setTimeout(() => {confirmOrder(_id);}, acceptedTimestamp + 10000 - Date.now());
     } else {
         sendMessage(
             'facebook2103849006536449', 
