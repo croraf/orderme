@@ -4,7 +4,7 @@ import food7 from './food7.jpg';
 import food8 from './food8.jpg';
 import food9 from './food9.jpg';
 import StarRateIcon from '@material-ui/icons/StarRate';
-import { RestaurantDetailsContainer } from '../RestaurantDetails/RestaurantDetailsContainer';
+// import { RestaurantDetailsContainer } from '../RestaurantDetails/RestaurantDetailsContainer';
 
 class RestaurantsListBody extends React.Component {
 
