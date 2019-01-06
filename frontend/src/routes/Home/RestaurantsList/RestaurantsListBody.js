@@ -16,9 +16,9 @@ class RestaurantsListBody extends React.Component {
         // adding dummy items to the list fixes this issue
         let excessFrom3 = listOfRestaurants.length % 3;
         const listOfRestaurantsAlligned = [...listOfRestaurants];
-        while (excessFrom3 !== 0) {
+        while (excessFrom3 % 3 !== 0) {
             listOfRestaurantsAlligned.push({dummy: true, key: excessFrom3});
-            excessFrom3--;
+            excessFrom3++;
         }
 
         return (
@@ -34,7 +34,7 @@ class RestaurantsListBody extends React.Component {
                 {listOfRestaurantsAlligned.map((restaurant, index) => {
 
                     if (restaurant.dummy) {
-                        return <div key={restaurant.excessFrom3} style={{width: '29.5%'}}/>;
+                        return <div key={restaurant.key} style={{width: '29.5%'}}/>;
                     }
 
                     let backgroundImageUrl;
