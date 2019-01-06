@@ -1,9 +1,9 @@
 import {store} from './store';
-
+import config from 'Config';
 let websocket;
 
 const initializeWebsocket = () => {
-    websocket = new WebSocket('ws://localhost:10000');
+    websocket = new WebSocket(config.wsHost);
 
     websocket.onopen = () => {
         console.log('opened');
