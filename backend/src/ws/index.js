@@ -31,25 +31,24 @@ const configureWss = async (server) => {
     });
 
     wss.on('connection', (ws) => {
+        console.log('[WSS] new connection received');
         ws.on('message', (dataString) => {
             const data = JSON.parse(dataString);
 
-            console.log('received:', data);
+            console.log('[WSS] received message on socket');
+            console.log('[WSS] type:', data.type);
+            console.log('[WSS] message:', data.message);
 
             if(data.type === 'hello') {
                 // When the ws client connects, he should send authorization jwt
-                // If the credentials are OK, store the connection to the connections map
+                // If the credentials are OK, add the connection to the connections map
                 const credentials = jwt.verify(data.message, 'abcdef');
-                console.log('websocket server received:', credentials);
-                authorizedWebsockets[credentials.id] = ws;
-
-                /* setTimeout(() => {
-                    sendMessage(credentials.id, credentials);
-                }, 3000); */
+                console.log('[WSS] credentials:', credentials);
+                if (!authorizedWebsockets[credentials.id]) {authorizedWebsockets[credentials.id] = [];}
+                authorizedWebsockets[credentials.id].push(ws);
+                console.log('[WSS] added socket in the list of sockets for connected user');
             }
         });
-        
-        
     });
 };
 
