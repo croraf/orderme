@@ -1,4 +1,5 @@
 import jwtDecode from 'jwt-decode';
+import websocket from './websocket';
 
 const loginButtonHandler = () => async (dispatch, getState) => {
 
@@ -15,6 +16,7 @@ const loginButtonHandler = () => async (dispatch, getState) => {
 
     window.loginPopupChildWindowMessageHandler = (jwtToken) => {
         console.log('Auth token received:', jwtToken);
+        websocket.sendAuthenticationMesssage(jwtToken);
         const tokenPayload = jwtDecode(jwtToken);
         console.log('tokenPayload:', tokenPayload);
         dispatch({type: 'login', token: jwtToken, name: tokenPayload.name});

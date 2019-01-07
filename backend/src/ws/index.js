@@ -60,6 +60,8 @@ const configureWss = async (server) => {
                         authorizedWebsockets[userId] = authorizedWebsockets[userId].filter(element => element !== ws);
                         console.log('[WSS] user:', userId, ', has:', authorizedWebsockets[userId].length, 'ws connections remaining');
                     });
+
+                    ws.send(JSON.stringify({type: 'hello', message: 'authentication successful'}));
                 } catch (err) {
                     console.log('[WSS] processing "hello" message failed:', err);
                 }

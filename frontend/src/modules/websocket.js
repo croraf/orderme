@@ -1,13 +1,15 @@
 import {store} from './store';
 import config from 'Config';
+
 let websocket;
 
-const initializeWebsocket = () => {
+const initialize = () => {
     websocket = new WebSocket(config.wsHost);
 
     websocket.onopen = () => {
-        console.log('opened');
-        websocket.send(JSON.stringify({type: 'hello', message: localStorage.getItem('token')}));
+        console.log('[WS] websocket connection opened (still not authenticated)');
+        const storedJwt = localStorage.getItem('token');
+        if (storedJwt) {sendAuthenticationMesssage(storedJwt);}
     };
     
     websocket.onmessage = (ev) => {
@@ -15,10 +17,10 @@ const initializeWebsocket = () => {
 
         switch (data.type) {
             case 'hello':
-                console.log('hello websocket:', data.message);
+                console.log('[WS] hello response:', data.message);
                 break;
             case 'orderStatusChange':
-                console.log('orderStatusChange:', data.message);
+                console.log('[WS] orderStatusChange received:', data.message);
                 store.dispatch({type: 'modifyOrder',  _id: data.message._id, data: data.message});
                 break;
             default:
@@ -28,4 +30,9 @@ const initializeWebsocket = () => {
     };
 };
 
-export {initializeWebsocket};
+const sendAuthenticationMesssage = (jwtToken) => {
+    console.log('[WS] sending authentication request with jwt:', jwtToken);
+    websocket.send(JSON.stringify({type: 'hello', message: jwtToken}));
+};
+
+export default {initialize, sendAuthenticationMesssage};
