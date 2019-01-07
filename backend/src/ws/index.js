@@ -32,6 +32,7 @@ const configureWss = async (server) => {
 
     wss.on('connection', (ws) => {
         console.log('[WSS] new connection received');
+
         ws.on('message', (dataString) => {
             const data = JSON.parse(dataString);
 
@@ -44,21 +45,35 @@ const configureWss = async (server) => {
                 // If the credentials are OK, add the connection to the connections map
                 const credentials = jwt.verify(data.message, 'abcdef');
                 console.log('[WSS] credentials:', credentials);
-                if (!authorizedWebsockets[credentials.id]) {authorizedWebsockets[credentials.id] = [];}
-                authorizedWebsockets[credentials.id].push(ws);
+                const userId = credentials.id;
+                // Websockets for specific user are stored in a list, as user can open multiple instances 
+                // (on several devices or browsers) and each should receive updates
+                if (!authorizedWebsockets[userId]) {authorizedWebsockets[userId] = [];}
+                authorizedWebsockets[userId].push(ws);
                 console.log('[WSS] added socket in the list of sockets for connected user');
+
+                ws.on('close', (code) => {
+                    console.log('[WSS] connection for user:', userId, ', closed with code:', code);
+                    // remove websocket from user's list of websockets
+                    authorizedWebsockets[userId] = authorizedWebsockets[userId].filter(element => element !== ws);
+                    console.log('[WSS] user:', userId, ', has:', authorizedWebsockets[userId].length, 'ws connections remaining');
+                });
             }
         });
     });
 };
 
 const sendMessage = (userId, data) => {
-    authorizedWebsockets[userId].send(JSON.stringify(data));
+    authorizedWebsockets[userId].forEach(ws => {
+        ws.send(JSON.stringify(data));
+    });
 };
 
 const broadcastMessage = (data) => {
     for (const userId in authorizedWebsockets) {
-        authorizedWebsockets[userId].send(JSON.stringify(data));
+        authorizedWebsockets[userId].forEach(ws => {
+            ws.send(JSON.stringify(data));
+        });
     }
 };
 
