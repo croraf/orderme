@@ -9,7 +9,13 @@ class CartModalItem extends React.Component {
 
     render() {
 
-        const { restaurantId, orderItemFromCartHandler, restaurantOrderData, isLastChild } = this.props;
+        const { restaurantId, orderItemFromCartHandler, restaurantOrderData, isLastChild, loginStatus } = this.props;
+
+        const orderButtonComponent = loginStatus ? (
+            <Button onClick={() => {orderItemFromCartHandler(restaurantId);}} color="primary">
+                Order
+            </Button>
+        ) : <Button>LOG IN TO ORDER</Button>;
 
         return (
             
@@ -29,10 +35,9 @@ class CartModalItem extends React.Component {
                 </div>
                 <FoodItems items={restaurantOrderData} />
 
+                
                 <DialogActions>
-                    <Button onClick={() => {orderItemFromCartHandler(restaurantId);}} color="primary">
-                        Order
-                    </Button>
+                    {orderButtonComponent}
                 </DialogActions>
             </div>
 
