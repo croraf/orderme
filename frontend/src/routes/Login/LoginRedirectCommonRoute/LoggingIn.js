@@ -1,6 +1,8 @@
 import React from 'react';
 import config from 'Config';
 
+import CustomSpinner from 'Components/CustomSpinner/CustomSpinner';
+
 const fetchJWT = async (code, provider) => {
     console.log('fetching auth token for received authentication code from provider:', provider);
     const url = config.apiHost + 'v0/auth?code=' + code + '&provider=' + provider;
@@ -56,16 +58,9 @@ class LoggingIn extends React.Component {
                 display: 'flex',
                 justifyContent: 'center',
                 flexDirection: 'row',
-                marginTop: '200px'
+                marginTop: '150px'
             }}>
-                <div 
-                    style={{
-                        color: 'white',
-                        fontSize: '30px'
-                    }}
-                >
-                    ... logging in ...
-                </div>
+                <CustomSpinner color='darkblue' />
             </div>
         );
     }

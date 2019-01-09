@@ -11,6 +11,8 @@ const override = css`
 class CustomSpinner extends React.Component {
 
     render() {
+        const {color} = this.props;
+        
         return (
             <div style={{
                 textAlign: 'center',
@@ -20,7 +22,7 @@ class CustomSpinner extends React.Component {
                     className={override}
                     sizeUnit={'px'}
                     size={100}
-                    color={'#123abc'}
+                    color={color || '#123abc'}
                     loading={true}
                 />
             </div>
