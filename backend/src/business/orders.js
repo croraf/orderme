@@ -57,7 +57,7 @@ const acceptOrder = async (_id) => {
                 }
             }
         );
-        orderConfirmationTimers[_id] = setTimeout(() => {confirmOrder(_id);}, acceptedTimestamp + 10000 - Date.now());
+        orderConfirmationTimers[_id] = setTimeout(() => {confirmOrder(_id);}, acceptedTimestamp + 30000 - Date.now());
     } else {
         sendMessage(
             'facebook2103849006536449', 
@@ -108,7 +108,7 @@ const createOrder = async (orderData) => {
         () => {
             Math.random() > 0.5 ? cancelOrder(_id) : acceptOrder(_id);
         },
-        3000 + Math.random() * 6000
+        15000 + Math.random() * 6000
     );
     
     return {

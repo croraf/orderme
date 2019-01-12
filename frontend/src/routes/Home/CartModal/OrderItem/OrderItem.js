@@ -56,7 +56,7 @@ class OrderItem extends React.Component {
             <CustomProgress
                 orderStatus={orderData.status}
                 initialTimestamp={orderData.timestamp}
-                duration={10} 
+                duration={30} 
             />
         );
 
@@ -64,7 +64,7 @@ class OrderItem extends React.Component {
             <CustomProgress
                 orderStatus={orderData.status}
                 initialTimestamp={orderData.acceptedTimestamp}
-                duration={10} 
+                duration={30} 
             />
         );
 
