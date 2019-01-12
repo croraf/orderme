@@ -6,9 +6,16 @@ const styles = {
     progressBar: {
         height: '5px',
         backgroundColor: '#3f51b5',
-        //borderRadius: '3px',
-        //border: '1px solid black',
-    }
+        animation: 'progress 30s 1 linear'
+    },
+    '@keyframes progress': {
+        '0%': {
+            width: '0%'
+        },
+        '100%': {
+            width: '100%'
+        },
+    },
 
 };
 
@@ -42,13 +49,6 @@ class CustomLinearProgress extends React.Component {
         //clearInterval(this.interval);
     }
 
-    componentWillReceiveProps = (nextProps) => {
-        /* const {orderStatus} = nextProps;
-        if (orderStatus === 'CANCELED') {
-            clearInterval(this.interval);
-        } */
-    }
-
     render() {
         const {classes, initialTimestamp, duration} = this.props;
 
@@ -61,11 +61,7 @@ class CustomLinearProgress extends React.Component {
                 <div 
                     className={classes.progressBar}
                     ref={this.myRef}
-                    style={{
-                        width: this.state.mounted ? '100%' : initialProgress + '%',
-                        transition: 'width 10s linear 0s',
-                        transitionDuration: ((100 - initialProgress) / 100 * duration) + 's'
-                    }} />
+                />
             </div>
         );
     }
