@@ -19,11 +19,13 @@ const styles = {
 
 };
 
-const calculateProgress = (initialTimestamp, duration) => {
+const calculateInitialProgress = (initialTimestamp, duration) => {
     // console.log(Date.now() - initialTimestamp);
     const diffInMillis = Date.now() - initialTimestamp;
     const progress = Math.ceil(diffInMillis / 10 / duration);
-    return Math.min(progress, 100);
+
+    // Constrain progress to be in 0-100 range.
+    return Math.max(0, Math.min(progress, 100));
 };
 
 
@@ -42,7 +44,7 @@ class CustomLinearProgress extends React.Component {
     }
 
     componentDidMount = () => {
-        const initialProgress = calculateProgress(this.state.initialTimestamp, this.state.duration);
+        const initialProgress = calculateInitialProgress(this.state.initialTimestamp, this.state.duration);
         const effectiveDuration = ((100 - initialProgress) / 100 * this.state.duration);
 
         this.myRef.current.animate(
