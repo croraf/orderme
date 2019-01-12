@@ -6,16 +6,16 @@ const styles = {
     progressBar: {
         height: '5px',
         backgroundColor: '#3f51b5',
-        animation: 'progress 30s 1 linear'
+        //animation: 'progress 30s 1 linear'
     },
-    '@keyframes progress': {
+    /* '@keyframes progress': {
         '0%': {
             width: '0%'
         },
         '100%': {
             width: '100%'
         },
-    },
+    }, */
 
 };
 
@@ -31,28 +31,34 @@ class CustomLinearProgress extends React.Component {
 
     constructor (props) {
         super(props);
-
-        this.state = {
-            mounted: false
-        };
         this.myRef = React.createRef();
+
+        // Hack because componentDidMount cannot use props
+        const {initialTimestamp, duration} = this.props;
+        this.state = {
+            initialTimestamp,
+            duration
+        };
     }
 
     componentDidMount = () => {
-        this.myRef.current.getClientRects();
-        this.setState({
-            mounted: true
-        });
-    }
+        const initialProgress = calculateProgress(this.state.initialTimestamp, this.state.duration);
+        const effectiveDuration = ((100 - initialProgress) / 100 * this.state.duration);
 
-    componentWillUnmount = () => {
-        //clearInterval(this.interval);
+        this.myRef.current.animate(
+            [
+                {width: initialProgress + '%'},
+                {width: '100%'}
+            ],
+            {
+                duration: effectiveDuration * 1000,
+                iterations: 1
+            }
+        );
     }
 
     render() {
-        const {classes, initialTimestamp, duration} = this.props;
-
-        const initialProgress = calculateProgress(initialTimestamp, duration);
+        const {classes} = this.props;
 
         return (
             <div style={{
