@@ -3,7 +3,7 @@ import config from 'Config';
 
 import CustomSpinner from 'Components/CustomSpinner/CustomSpinner';
 
-const fetchJWT = async (code, provider) => {
+const fetchJwtContactParentAndClose = async (code, provider) => {
     console.log('fetching auth token for received authentication code from provider:', provider);
     const url = config.apiHost + 'v0/auth?code=' + code + '&provider=' + provider;
     const options = {
@@ -12,13 +12,14 @@ const fetchJWT = async (code, provider) => {
         }
     };
     const jwtToken = await ((await fetch(url, options)).text());
-    window.opener.loginPopupChildWindowMessageHandler(jwtToken);
+    //window.opener.loginPopupChildWindowMessageHandler(jwtToken);
+    window.opener.postMessage(jwtToken, '*');
     window.close();
 };
 
 const facebookLoginRedirectHandler = async (location) => {
     const facebookAuthCode = new URLSearchParams(location.search).get('code');
-    fetchJWT(facebookAuthCode, 'facebook');
+    fetchJwtContactParentAndClose(facebookAuthCode, 'facebook');
 };
 /* 'http://localhost:9002/login/googleLoginRedirect#state=1234
 '&id_token=eyJhbGciOiJSUzI1NiIsImtpZCI6ImQxZTg2OWU3YmY0MGRkYzNkM2RlMDgwNDI1OThiYTgzNTA5NzBmMGEiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNDMzMDgxNDkwNjI5LXZqMWZ0bm92dGo2cG1hY25pbGRxYTQzZmU0NG0xZDJtLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNDMzMDgxNDkwNjI5LXZqMWZ0bm92dGo2cG1hY25pbGRxYTQzZmU0NG0xZDJtLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA1ODAzMjUwMTkxNTQzNDcyMTU3IiwiZW1haWwiOiJ2cmFmYWVsaUBtc24uY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImlhdCI6MTU0MjIyNTc3NCwiZXhwIjoxNTQyMjI5Mzc0LCJqdGkiOiJhMWRjNzc5MWQ1ZjYzNjhmOTM0MzdlZjRiOGFlNDE3MmQ4NTFlNmFhIn0.nNB8nrvcxE7v5TQmq-0XSdovofIWYUYLO4vniU_rYxulNVZrjaLBN7QdxAMp_r21IUTjCs3gedOGmefPQ_ZI2phNsYCcsxrahc-1q1k0MFnVKhxagPV3Q7sHcPk9u0t9sYg7Lexamp6h8BDyWh9zZBu2bNsrKgJBASayQXlK533sNq0j7rFf9nV-OQC-t47o_RHLrv8ezTg-zIKsfKylv20mku7_vfkzDX9Ix-TYY8kIBmwttcqqLvWA3Y4rxVYOgC6cwmUUUJFSMsXdl3Z4-2CUsrIFTjWhdeqK7sRDyV2buTe-HVqMblVNOVgVOmuZwL3cmyqxXBAm6WO3WJpEoA
@@ -27,7 +28,7 @@ const facebookLoginRedirectHandler = async (location) => {
 '&prompt=none */
 const googleLoginRedirectHandler = async (location) => {
     const googleIdToken = location.hash.split('&')[1].split('=')[1];
-    fetchJWT(googleIdToken, 'google');
+    fetchJwtContactParentAndClose(googleIdToken, 'google');
 };
 
 class LoggingIn extends React.Component {

@@ -25,11 +25,22 @@ const loginPopupChildWindowMessageHandler = (dispatch) => (jwtToken) => {
     postLogin(dispatch, jwtToken);
 };
 
+const loginPopupWindowMessageHandler = (dispatch) => (event) => {
+    const jwtToken = event.data;
+    console.log('[login] Child window sent message. jwt-token received:', jwtToken);
+    // Persist token
+    localStorage.setItem('token', jwtToken);
+    postLogin(dispatch, jwtToken);
+};
+
 const loginButtonHandler = () => async (dispatch, getState) => {
 
     // Store handler of child-window's messages on parent window object
     // as child windows can access it. (Seems it is not working though in mobile Chrome) 
-    window.loginPopupChildWindowMessageHandler = loginPopupChildWindowMessageHandler(dispatch);
+    /* window.loginPopupChildWindowMessageHandler = loginPopupChildWindowMessageHandler(dispatch); */
+
+    // Add listener that will listen for loginPopupWindow messages.
+    window.addEventListener('message', loginPopupWindowMessageHandler(dispatch), false);
 
     // Close child window if parent closes
     window.onunload = () => {
