@@ -13,7 +13,7 @@ const fetchJwtContactParentAndClose = async (code, provider) => {
     };
     const jwtToken = await ((await fetch(url, options)).text());
     //window.opener.loginPopupChildWindowMessageHandler(jwtToken);
-    window.opener.postMessage(jwtToken, '*');
+    window.opener.postMessage({source: 'login-popup', payload: jwtToken}, config.uiHost);
     window.close();
 };
 

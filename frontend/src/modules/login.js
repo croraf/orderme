@@ -12,32 +12,19 @@ const postLogin = (dispatch, jwtToken) => {
     dispatch({type: 'login', token: jwtToken, name: tokenPayload.name});
 };
 
-
-/**
- * Called from child window when login is completed with jwt-token generated from "orderMe".
- * Dispatch is provided so that needed redux actions can be called after login success.
- * TODO: Possibly grab store in a different way (directly).
-*/
-const loginPopupChildWindowMessageHandler = (dispatch) => (jwtToken) => {
-    console.log('[login] Child window sent message. jwt-token received:', jwtToken);
-    // Persist token
-    localStorage.setItem('token', jwtToken);
-    postLogin(dispatch, jwtToken);
-};
-
 const loginPopupWindowMessageHandler = (dispatch) => (event) => {
-    const jwtToken = event.data;
-    console.log('[login] Child window sent message. jwt-token received:', jwtToken);
-    // Persist token
-    localStorage.setItem('token', jwtToken);
-    postLogin(dispatch, jwtToken);
+    console.log('[login] message event received:', event);
+    const messageSource = event.data.source;
+    if (messageSource === 'login-popup') {
+        const jwtToken = event.data.payload;
+        console.log('[login] login-popup sent jwt-token:', jwtToken);
+        // Persist token
+        localStorage.setItem('token', jwtToken);
+        postLogin(dispatch, jwtToken);
+    }
 };
 
 const loginButtonHandler = () => async (dispatch, getState) => {
-
-    // Store handler of child-window's messages on parent window object
-    // as child windows can access it. (Seems it is not working though in mobile Chrome) 
-    /* window.loginPopupChildWindowMessageHandler = loginPopupChildWindowMessageHandler(dispatch); */
 
     // Add listener that will listen for loginPopupWindow messages.
     window.addEventListener('message', loginPopupWindowMessageHandler(dispatch), false);
