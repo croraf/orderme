@@ -34,29 +34,6 @@ class CustomLinearProgress extends React.Component {
     constructor (props) {
         super(props);
         this.myRef = React.createRef();
-
-        // Hack because componentDidMount cannot use props
-        const {initialTimestamp, duration} = this.props;
-        this.state = {
-            initialTimestamp,
-            duration
-        };
-    }
-
-    componentDidMount = () => {
-        const initialProgress = calculateInitialProgress(this.state.initialTimestamp, this.state.duration);
-        const effectiveDuration = ((100 - initialProgress) / 100 * this.state.duration);
-
-        this.myRef.current.animate(
-            [
-                {width: initialProgress + '%'},
-                {width: '100%'}
-            ],
-            {
-                duration: effectiveDuration * 1000,
-                iterations: 1
-            }
-        );
     }
 
     render() {
@@ -71,6 +48,22 @@ class CustomLinearProgress extends React.Component {
                     ref={this.myRef}
                 />
             </div>
+        );
+    }
+
+    componentDidMount = () => {
+        const initialProgress = calculateInitialProgress(this.props.initialTimestamp, this.props.duration);
+        const effectiveDuration = ((100 - initialProgress) / 100 * this.props.duration);
+
+        this.myRef.current.animate(
+            [
+                {width: initialProgress + '%'},
+                {width: '100%'}
+            ],
+            {
+                duration: effectiveDuration * 1000,
+                iterations: 1
+            }
         );
     }
 }
