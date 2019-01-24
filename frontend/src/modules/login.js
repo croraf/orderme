@@ -1,12 +1,17 @@
 import jwtDecode from 'jwt-decode';
 import websocket from './websocket';
+import { fetchOrders } from 'Modules/orders';
 
 
 let loginPopupChildWindowObjectReference;
 
 
-const postLogin = (dispatch, jwtToken) => {
+const postAuthentication = async (dispatch, jwtToken) => {
+    dispatch(fetchOrders());
+
+    await websocket.initialize();
     websocket.sendAuthenticationMesssage(jwtToken);
+
     const tokenPayload = jwtDecode(jwtToken);
     console.log('[login] decoded token:', tokenPayload);
     dispatch({type: 'login', token: jwtToken, name: tokenPayload.name});
@@ -20,7 +25,7 @@ const loginPopupWindowMessageHandler = (dispatch) => (event) => {
         console.log('[login] login-popup sent jwt-token:', jwtToken);
         // Persist token
         localStorage.setItem('token', jwtToken);
-        postLogin(dispatch, jwtToken);
+        postAuthentication(dispatch, jwtToken);
     }
 };
 
@@ -49,18 +54,22 @@ const loginButtonHandler = () => async (dispatch, getState) => {
     }
 };
 
+const logoutHandler = () => async (dispatch) => {
+    dispatch({type: 'clearOrders'});
+    localStorage.removeItem('token');
+    localStorage.removeItem('name');
+    dispatch({type: 'logout'});
+};
+
 const loginReducer = (state = {token: undefined, name: undefined}, action) => {
     switch (action.type) {
         case 'logout':
-            localStorage.removeItem('token');
-            localStorage.removeItem('name');
             return {token: undefined, name: undefined};
         case 'login':
-
             return {token: action.token, name: action.name};
         default:
             return state;
     }
 };
 
-export { loginReducer, loginButtonHandler };
+export { loginReducer, loginButtonHandler, postAuthentication, logoutHandler };

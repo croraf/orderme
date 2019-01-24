@@ -15,7 +15,7 @@ class CartModalItem extends React.Component {
             <Button onClick={() => {orderItemFromCartHandler(restaurantId);}} color="primary">
                 Order
             </Button>
-        ) : <Button>LOG IN TO ORDER</Button>;
+        ) : <div>LOG IN TO ORDER (!)</div>;
 
         return (
             
@@ -33,7 +33,7 @@ class CartModalItem extends React.Component {
                         fontWeight: 'bold'
                     }}>{restaurantId}:</div>
                 </div>
-                <FoodItems items={restaurantOrderData} />
+                <FoodItems items={restaurantOrderData} restaurantId={restaurantId} editable={true} />
 
                 
                 <DialogActions>

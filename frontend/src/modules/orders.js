@@ -68,6 +68,8 @@ const ordersReducer = (state = {}, action) => {
         case 'modifyOrder':
             const replacedOrder = Object.assign({}, state[action._id], action.data);
             return Object.assign({}, state, {[action._id]: replacedOrder});
+        case 'clearOrders':
+            return {};
         default:
             return state;
     }

@@ -3,13 +3,12 @@ import config from 'Config';
 
 let websocket;
 
-const initialize = () => {
+const initialize = () => new Promise((resolve, reject) => {
     websocket = new WebSocket(config.wsHost);
 
     websocket.onopen = () => {
         console.log('[WS] websocket connection opened (still not authenticated)');
-        const storedJwt = localStorage.getItem('token');
-        if (storedJwt) {sendAuthenticationMesssage(storedJwt);}
+        resolve();
     };
     
     websocket.onmessage = (ev) => {
@@ -26,9 +25,8 @@ const initialize = () => {
             default:
                 break;
         }
-    
     };
-};
+});
 
 const sendAuthenticationMesssage = (jwtToken) => {
     console.log('[WS] sending authentication request with jwt:', jwtToken);
