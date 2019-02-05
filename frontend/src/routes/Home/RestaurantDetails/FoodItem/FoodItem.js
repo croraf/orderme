@@ -17,7 +17,7 @@ class FoodItem extends React.Component {
                     <div style={{
                         fontSize: '20px',
                         padding: '5px 0px'
-                    }}>{foodItem.name}: {foodItem.price} kn</div>
+                    }}>{foodItem.name}: {foodItem.price.toFixed(2)} kn</div>
                     <div>{foodItem.description}</div>
                 </div>
                 <Button 

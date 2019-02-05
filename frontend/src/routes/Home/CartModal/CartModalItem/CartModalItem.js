@@ -22,7 +22,7 @@ class CartModalItem extends React.Component {
             <div
                 style={{
                     padding: '10px 0px 0px 0px',
-                    borderBottom: !isLastChild && '1px dashed black'
+                    borderBottom: !isLastChild && '1px solid black'
                 }}
             >
                 <div style={{

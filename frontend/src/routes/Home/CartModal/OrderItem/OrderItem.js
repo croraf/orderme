@@ -74,7 +74,7 @@ class OrderItem extends React.Component {
                 style={{
                     padding: '10px 0px 0px 0px',
                     color: 'black',
-                    borderBottom: !isLastChild && '1px dashed black'
+                    borderBottom: !isLastChild && '1px solid black'
                 }}
             >
                 <div style={{

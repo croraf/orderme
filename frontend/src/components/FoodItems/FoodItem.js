@@ -21,7 +21,7 @@ class FoodItem extends React.Component {
 
         return (
             <li style={{
-                borderBottom: '1px solid black',
+                borderBottom: '1px dashed black',
                 marginTop: '10px',
                 paddingBottom: '5px'
             }}>
@@ -46,7 +46,7 @@ class FoodItem extends React.Component {
                         {editable && <div style={{cursor: 'pointer'}}>+</div>}
                     </div>
                     
-                    {price}kn
+                    {price.toFixed(2)} kn
                     
                 </div>
             </li>
