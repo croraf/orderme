@@ -5,9 +5,9 @@ class FoodItems extends React.Component {
     render() {
         const {items, editable=false} = this.props;
 
-        const itemsComponents = items.map(
-            (foodItem, index) => {
-                return <FoodItem key={index} foodItem={foodItem} editable={editable} />;
+        const itemsComponents = Object.values(items).map(
+            foodItem => {
+                return <FoodItem key={foodItem.name} foodItem={foodItem} editable={editable} />;
             }
         );
 

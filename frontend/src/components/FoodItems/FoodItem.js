@@ -3,16 +3,15 @@ import CloseIcon from '@material-ui/icons/Close';
 
 class FoodItem extends React.Component {
     render () {
-        const {foodItem, editable} = this.props;
+        const {foodItem, editable, removeItemHandler} = this.props;
 
-        const closeButton = editable && (
-            <div style={{cursor: 'pointer'}}>
+        const removeItemElement = editable && (
+            <div style={{cursor: 'pointer'}} onClick={removeItemHandler}>
                 <CloseIcon />
             </div>
         );
 
-        const quantity = 2;
-        const price = quantity * foodItem.price;
+        const price = foodItem.quantity * foodItem.price;
 
         return (
             <li style={{
@@ -26,7 +25,7 @@ class FoodItem extends React.Component {
                     width: '100%'
                 }}>
                     <div>{foodItem.name}</div>
-                    {closeButton}
+                    {removeItemElement}
                 </div>
                 <div style={{
                     display: 'flex',
@@ -37,7 +36,7 @@ class FoodItem extends React.Component {
                         display: 'flex'
                     }}>
                         {editable && <div style={{cursor: 'pointer'}}>-</div>}
-                        <div style={{paddingLeft: '10px', paddingRight: '10px'}}>{quantity}</div>
+                        <div style={{paddingLeft: '10px', paddingRight: '10px'}}>{foodItem.quantity}</div>
                         {editable && <div style={{cursor: 'pointer'}}>+</div>}
                     </div>
                     

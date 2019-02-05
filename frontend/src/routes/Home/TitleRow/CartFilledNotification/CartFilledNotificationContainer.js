@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
     const arrayOfRestaurantsWithItems = Object.values(state.cart);
     
     arrayOfRestaurantsWithItems.forEach(items => {
-        items.forEach(() => {
+        Object.values(items).forEach(() => {
             count++;
         });
     });
