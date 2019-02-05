@@ -25,7 +25,7 @@ class FoodItem extends React.Component {
                     style={{
                         cursor: 'pointer'
                     }}
-                    onClick={() => {addItem(restaurantId, foodItem.name);}}
+                    onClick={() => {addItem(restaurantId, foodItem);}}
                 >
                     Add to cart
                 </Button>

@@ -12,6 +12,7 @@ const mapStateToProps = (state) => {
         });
     });
     
+    // TODO: when same food items will be collapsed into one item with multiple quantity this should be revisioned
     return {
         count
     };

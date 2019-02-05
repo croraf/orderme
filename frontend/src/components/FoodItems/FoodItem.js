@@ -11,6 +11,9 @@ class FoodItem extends React.Component {
             </div>
         );
 
+        const quantity = 2;
+        const price = quantity * foodItem.price;
+
         return (
             <li style={{
                 borderBottom: '1px solid black',
@@ -22,7 +25,7 @@ class FoodItem extends React.Component {
                     justifyContent: 'space-between',
                     width: '100%'
                 }}>
-                    <div>{foodItem}</div>
+                    <div>{foodItem.name}</div>
                     {closeButton}
                 </div>
                 <div style={{
@@ -34,11 +37,11 @@ class FoodItem extends React.Component {
                         display: 'flex'
                     }}>
                         {editable && <div style={{cursor: 'pointer'}}>-</div>}
-                        <div style={{paddingLeft: '10px', paddingRight: '10px'}}>2</div>
+                        <div style={{paddingLeft: '10px', paddingRight: '10px'}}>{quantity}</div>
                         {editable && <div style={{cursor: 'pointer'}}>+</div>}
                     </div>
                     
-                    50,00kn
+                    {price}kn
                     
                 </div>
             </li>
