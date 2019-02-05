@@ -145,7 +145,7 @@ const spec = {
             'type': 'object',
             'properties': {
                 restaurantId: {type: 'string', example: 'Bistro To-Mi'},
-                items: {type: 'array', items: {type: 'object'}},
+                items: {type: 'object'},
                 status: {type: 'string', example: 'ORDER_ACCEPTED'}
             }
         }
