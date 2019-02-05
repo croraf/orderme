@@ -21,7 +21,13 @@ const removeItemFromCart = (state, action) => {
 
     const copiedRestaurantState = Object.assign({}, state[restaurantId]);
     delete copiedRestaurantState[foodItemName];
-    return Object.assign({}, state, {[restaurantId]: copiedRestaurantState});
+
+    const copiedCartState = Object.assign({}, state, {[restaurantId]: copiedRestaurantState});
+    // if restaurant has no more foodItems remove it from cart
+    if (Object.keys(copiedRestaurantState).length === 0) {
+        delete copiedCartState[restaurantId];
+    }
+    return copiedCartState;
 };
 
 const cartReducer = (state = {}, action) => {
