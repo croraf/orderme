@@ -1,5 +1,5 @@
 import React from 'react';
-import {FoodItem} from './FoodItem';
+import {FoodItemContainer} from './FoodItemContainer';
 class FoodItems extends React.Component {
 
     render() {
@@ -7,7 +7,7 @@ class FoodItems extends React.Component {
 
         const itemsComponents = Object.values(items).map(
             foodItem => {
-                return <FoodItem key={foodItem.name} foodItem={foodItem} editable={editable} />;
+                return <FoodItemContainer key={foodItem.name} foodItem={foodItem} editable={editable} />;
             }
         );
 

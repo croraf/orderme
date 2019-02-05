@@ -2,11 +2,17 @@ import React from 'react';
 import CloseIcon from '@material-ui/icons/Close';
 
 class FoodItem extends React.Component {
+
+    removeItemHandler = () => {
+        const {removeItemHandler, foodItem} = this.props;
+        removeItemHandler(foodItem.restaurantId, foodItem.name);
+    }
+
     render () {
-        const {foodItem, editable, removeItemHandler} = this.props;
+        const {foodItem, editable} = this.props;
 
         const removeItemElement = editable && (
-            <div style={{cursor: 'pointer'}} onClick={removeItemHandler}>
+            <div style={{cursor: 'pointer'}} onClick={this.removeItemHandler}>
                 <CloseIcon />
             </div>
         );

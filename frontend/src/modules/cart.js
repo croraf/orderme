@@ -7,7 +7,7 @@ const addItemToCart = (state, action) => {
         copiedFoodItemInCart = Object.assign({}, foodItemInCart);
         copiedFoodItemInCart.quantity++;
     } else {
-        copiedFoodItemInCart = Object.assign({}, foodItem, {quantity: 1});
+        copiedFoodItemInCart = Object.assign({}, foodItem, {quantity: 1, restaurantId});
     }
 
     // copy restaurant state object and replace it's foodItem with newly added foodItem
@@ -17,10 +17,10 @@ const addItemToCart = (state, action) => {
 };
 
 const removeItemFromCart = (state, action) => {
-    const {restaurantId, foodItem} = action;
+    const {restaurantId, foodItemName} = action;
 
     const copiedRestaurantState = Object.assign({}, state[restaurantId]);
-    delete copiedRestaurantState[foodItem.name];
+    delete copiedRestaurantState[foodItemName];
     return Object.assign({}, state, {[restaurantId]: copiedRestaurantState});
 };
 
