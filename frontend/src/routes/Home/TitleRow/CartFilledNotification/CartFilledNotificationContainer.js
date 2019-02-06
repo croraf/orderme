@@ -6,13 +6,12 @@ const mapStateToProps = (state) => {
     let count = 0;
     const arrayOfRestaurantsWithItems = Object.values(state.cart);
     
-    arrayOfRestaurantsWithItems.forEach(items => {
-        Object.values(items).forEach(() => {
-            count++;
+    arrayOfRestaurantsWithItems.forEach(restaurantItem => {
+        Object.values(restaurantItem).forEach(foodItem => {
+            count += foodItem.quantity;
         });
     });
     
-    // TODO: when same food items will be collapsed into one item with multiple quantity this should be revisioned
     return {
         count
     };
