@@ -71,8 +71,10 @@ class FoodItem extends React.Component {
                     }}>
                         <div style={{
                             backgroundImage: `url(${coinsUrl})`,
-                            backgroundSize: '100% 100%',
-                            width: '25px'
+                            backgroundSize: '100% 90%',
+                            width: '20px',
+                            backgroundPositionY: 'center',
+                            backgroundRepeat: 'no-repeat'
                         }} />
                         <div style={{margin: '0px 5px'}}>{price.toFixed(2)}</div>
                         <div>kn</div>
