@@ -32,7 +32,6 @@ const containerStyleHd = Object.assign({}, containerStyleFullHd, containerStyleH
 class Home extends React.Component {
 
     componentWillMount() {
-        console.log('HOME COMPONENT MOUNTING');
         this.props.checkAuthenticationAndLoadUserData();
     }
 
