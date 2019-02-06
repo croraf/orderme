@@ -30,12 +30,46 @@ const removeItemFromCart = (state, action) => {
     return copiedCartState;
 };
 
+const decrementItemFromCart = (state, action) => {
+    const {restaurantId, foodItemName} = action;
+
+    const copiedFoodItemState = Object.assign({}, state[restaurantId][foodItemName]);
+
+    if (copiedFoodItemState.quantity === 1) {
+        return state;
+    } else {
+        copiedFoodItemState.quantity--;
+    }
+
+    const copiedRestaurantState = Object.assign({}, state[restaurantId], {[foodItemName]: copiedFoodItemState});
+
+    const copiedCartState = Object.assign({}, state, {[restaurantId]: copiedRestaurantState});
+    return copiedCartState;
+};
+
+const incrementItemFromCart = (state, action) => {
+    const {restaurantId, foodItemName} = action;
+
+    const copiedFoodItemState = Object.assign({}, state[restaurantId][foodItemName]);
+
+    copiedFoodItemState.quantity++;
+
+    const copiedRestaurantState = Object.assign({}, state[restaurantId], {[foodItemName]: copiedFoodItemState});
+
+    const copiedCartState = Object.assign({}, state, {[restaurantId]: copiedRestaurantState});
+    return copiedCartState;
+};
+
 const cartReducer = (state = {}, action) => {
     switch (action.type) {
         case 'addFoodItemToCart':
             return addItemToCart(state, action);
-        case 'removeItemFromCart':
+        case 'removeFoodItemFromCart':
             return removeItemFromCart(state, action);
+        case 'decrementFoodItemInCart':
+            return decrementItemFromCart(state, action);
+        case 'incrementFoodItemInCart':
+            return incrementItemFromCart(state, action);
         case 'clearCart':
             const stateCopy = Object.assign({}, state);
             delete stateCopy[action.restaurantId];

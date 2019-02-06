@@ -8,8 +8,26 @@ class FoodItem extends React.Component {
         removeItemHandler(foodItem.restaurantId, foodItem.name);
     }
 
+    decrementItemHandler = () => {
+        const {decrementItemHandler, foodItem} = this.props;
+        decrementItemHandler(foodItem.restaurantId, foodItem.name);
+    }
+
+    incrementItemHandler = () => {
+        const {incrementItemHandler, foodItem} = this.props;
+        incrementItemHandler(foodItem.restaurantId, foodItem.name);
+    }
+
     render () {
         const {foodItem, editable} = this.props;
+
+        const decrementItemElement = editable && (
+            <div style={{cursor: 'pointer'}} onClick={this.decrementItemHandler}>-</div>
+        );
+
+        const incrementItemElement = editable && (
+            <div style={{cursor: 'pointer'}} onClick={this.incrementItemHandler}>+</div>
+        );
 
         const removeItemElement = editable && (
             <div style={{cursor: 'pointer'}} onClick={this.removeItemHandler}>
@@ -41,9 +59,9 @@ class FoodItem extends React.Component {
                     <div style={{
                         display: 'flex'
                     }}>
-                        {editable && <div style={{cursor: 'pointer'}}>-</div>}
+                        {decrementItemElement}
                         <div style={{paddingLeft: '10px', paddingRight: '10px'}}>{foodItem.quantity}</div>
-                        {editable && <div style={{cursor: 'pointer'}}>+</div>}
+                        {incrementItemElement}
                     </div>
                     
                     {price.toFixed(2)} kn
