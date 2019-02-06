@@ -1,5 +1,6 @@
 import React from 'react';
 import CloseIcon from '@material-ui/icons/Close';
+import coinsUrl from './coins.png';
 
 class FoodItem extends React.Component {
 
@@ -64,7 +65,18 @@ class FoodItem extends React.Component {
                         {incrementItemElement}
                     </div>
                     
-                    {price.toFixed(2)} kn
+                    
+                    <div style={{
+                        display: 'flex'
+                    }}>
+                        <div style={{
+                            backgroundImage: `url(${coinsUrl})`,
+                            backgroundSize: '100% 100%',
+                            width: '25px'
+                        }} />
+                        <div style={{margin: '0px 5px'}}>{price.toFixed(2)}</div>
+                        <div>kn</div>
+                    </div>
                     
                 </div>
             </li>
