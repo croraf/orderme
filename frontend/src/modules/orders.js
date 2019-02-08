@@ -13,11 +13,11 @@ const fetchOrders = () => async (dispatch) => {
     dispatch({type: 'ordersLoaded', data: ordersToObject});
 };
 
-const makeOrder = (restaurantId) => async (dispatch, getState) => {
+const makeOrder = () => async (dispatch, getState) => {
 
     // has to be created before the cart content is cleared
     const order = {
-        restaurantId: restaurantId,
+        restaurantId: getState().cart.restaurantId,
         items: getState().cart.foodItems
     };
     dispatch({type: 'clearCart'});

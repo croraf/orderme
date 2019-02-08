@@ -1,29 +1,27 @@
 
 
 import React from 'react';
-import DialogActions from '@material-ui/core/DialogActions';
 import {FoodItems} from 'Components/FoodItems/FoodItems';
-import Button from '@material-ui/core/Button';
 
 class CartModalContent extends React.Component {
 
     render() {
-        const { cart, loginStatus, orderItemFromCartHandler } = this.props;
+        const { cart } = this.props;
 
         if (cart.restaurantId === undefined) {
             return null;
         }
 
-        const orderButtonComponent = loginStatus ? (
-            <Button onClick={() => {orderItemFromCartHandler(cart.restaurantId);}} color="primary">
-                Order
-            </Button>
-        ) : <div>LOG IN TO ORDER (!)</div>;
+        let totalPrice = 0;
+        const arrayOfFoodItems = Object.values(cart.foodItems);
+        arrayOfFoodItems.forEach(foodItem => {
+            totalPrice += foodItem.quantity * foodItem.price;
+        });
 
         return (
             <div
                 style={{
-                    padding: '10px 0px 0px 0px'
+                    padding: '1rem 0rem 1rem 0rem'
                 }}
             >
                 <div style={{
@@ -35,13 +33,16 @@ class CartModalContent extends React.Component {
                     }}>{cart.restaurantId}:</div>
                 </div>
 
-                {cart.foodItems &&
-                    <FoodItems items={cart.foodItems} restaurantId={cart.restaurantId} editable={true} />
-                }
-                
-                <DialogActions>
-                    {orderButtonComponent}
-                </DialogActions>
+                <FoodItems items={cart.foodItems} restaurantId={cart.restaurantId} editable={true} />
+
+                <div
+                    style={{
+                        padding: '1rem 0rem 0rem 0rem',
+                        display: 'flex',
+                        justifyContent: 'right',
+                        fontSize: '1.2rem'
+                    }}
+                >TOTAL: {totalPrice.toFixed(2)} kn</div>
             </div>
         );
     }

@@ -13,7 +13,8 @@ class FoodItems extends React.Component {
 
         return (
             <ul style={{
-                margin: '5px 0px 0px 0px'
+                margin: '5px 0px 0px 0px',
+                marginLeft: '-1rem',
             }}>
                 {itemsComponents}
             </ul>
