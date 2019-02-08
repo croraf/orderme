@@ -7,9 +7,9 @@ const mapStateToProps = () => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    removeItemHandler: (restaurantId, foodItemName) => {dispatch({type: 'removeFoodItemFromCart', restaurantId, foodItemName});},
-    incrementItemHandler: (restaurantId, foodItemName) => {dispatch({type: 'incrementFoodItemInCart', restaurantId, foodItemName});},
-    decrementItemHandler: (restaurantId, foodItemName) => {dispatch({type: 'decrementFoodItemInCart', restaurantId, foodItemName});},
+    removeItemHandler: (foodItemName) => {dispatch({type: 'removeFoodItemFromCart', foodItemName});},
+    incrementItemHandler: (foodItemName) => {dispatch({type: 'incrementFoodItemInCart', foodItemName});},
+    decrementItemHandler: (foodItemName) => {dispatch({type: 'decrementFoodItemInCart', foodItemName});},
 });
 
 const FoodItemContainer = connect(mapStateToProps, mapDispatchToProps)(FoodItem);

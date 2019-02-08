@@ -1,31 +1,47 @@
 
 
 import React from 'react';
-import { CartModalItemContainer } from './CartModalItem/CartModalItemContainer';
+import DialogActions from '@material-ui/core/DialogActions';
+import {FoodItems} from 'Components/FoodItems/FoodItems';
+import Button from '@material-ui/core/Button';
 
 class CartModalContent extends React.Component {
 
     render() {
-        const { cartRestaurantIds } = this.props;
-        const numberOfCartItems = cartRestaurantIds.length;
+        const { cart, loginStatus, orderItemFromCartHandler } = this.props;
 
+        if (cart.restaurantId === undefined) {
+            return null;
+        }
+
+        const orderButtonComponent = loginStatus ? (
+            <Button onClick={() => {orderItemFromCartHandler(cart.restaurantId);}} color="primary">
+                Order
+            </Button>
+        ) : <div>LOG IN TO ORDER (!)</div>;
 
         return (
-            <div style={{
-                minWidth: '500px',
-                borderTop: '5px solid black',
-                borderBottom: '5px solid black',
-                minHeight: '50px',
-                padding: '5px 0px 0px',
-                margin: '0px 0px 10px 0px'
-            }}>
-                {cartRestaurantIds.reverse().map((restaurantId, i) =>
-                    <CartModalItemContainer 
-                        key={restaurantId}
-                        isLastChild={i === numberOfCartItems - 1}
-                        restaurantId={restaurantId}
-                    />
-                )}
+            <div
+                style={{
+                    padding: '10px 0px 0px 0px'
+                }}
+            >
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between'
+                }}>
+                    <div style={{
+                        fontWeight: 'bold'
+                    }}>{cart.restaurantId}:</div>
+                </div>
+
+                {cart.foodItems &&
+                    <FoodItems items={cart.foodItems} restaurantId={cart.restaurantId} editable={true} />
+                }
+                
+                <DialogActions>
+                    {orderButtonComponent}
+                </DialogActions>
             </div>
         );
     }

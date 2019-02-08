@@ -29,20 +29,29 @@ class CartModal extends React.Component {
                     <CartModalHeader handleClose={closeModal}/>
                     
                     <div style={{padding: '0rem 1.5rem'}}>
-                        <CartModalContentContainer closeModal={closeModal}/>
+                        <div style={{
+                            minWidth: '500px',
+                            borderTop: '5px solid black',
+                            // borderBottom: '5px solid black',
+                            minHeight: '500px',
+                            padding: '5px 0px 0px',
+                            margin: '0px 0px 10px 0px'
+                        }}>
+                            <CartModalContentContainer closeModal={closeModal}/>
+                        </div>
                     </div>
 
-                    <div style={{padding: '0rem 1.5rem 1rem 1.5rem'}}>
+                    {/* <div style={{padding: '0rem 1.5rem 1rem 1.5rem'}}>
                         <DeliveryDataForm />
-                    </div>
+                    </div> */}
 
-                    <div style={{padding: '0rem 1.5rem'}}>
+                    {/* <div style={{padding: '0rem 1.5rem'}}>
                         <OrderListContainer />
-                    </div>
+                    </div> */}
 
-                    <div style={{paddingBottom: '1rem'}}>
+                    {/* <div style={{paddingBottom: '1rem'}}>
                         <CartModalFooter onFullOrdersButtonClickHandler={onFullOrdersButtonClickHandler}/>
-                    </div>
+                    </div> */}
                 </div>
             </Dialog>
         );

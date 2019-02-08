@@ -1,39 +1,55 @@
 
 const addItemToCart = (state, action) => {
     const {restaurantId, foodItem} = action;
-    const foodItemInCart = state[restaurantId] && state[restaurantId][foodItem.name];
-    let copiedFoodItemInCart;
-    if (foodItemInCart) {
-        copiedFoodItemInCart = Object.assign({}, foodItemInCart);
-        copiedFoodItemInCart.quantity++;
-    } else {
-        copiedFoodItemInCart = Object.assign({}, foodItem, {quantity: 1, restaurantId});
+
+    if (state.restaurantId === undefined) {
+        const newFoodItemInCart = Object.assign({}, foodItem, {quantity: 1, restaurantId});
+        return {
+            restaurantId,
+            foodItems: {[foodItem.name]: newFoodItemInCart}
+        };
+    } else if (state.restaurantId === restaurantId) {
+    
+        // if there is already same foodItem just increment its quantity field
+        // else create new item from foodItem provided as function argument
+        const foodItemInCart = state.foodItems[foodItem.name];
+        let copiedFoodItemInCart;
+        if (foodItemInCart) {
+            copiedFoodItemInCart = Object.assign({}, foodItemInCart);
+            copiedFoodItemInCart.quantity++;
+        } else {
+            copiedFoodItemInCart = Object.assign({}, foodItem, {quantity: 1, restaurantId});
+        }
+
+        // take old foodItems, and replace the food item in question with the edited one
+        const foodItemsCopy = Object.assign({}, state.foodItems, {[foodItem.name]: copiedFoodItemInCart});
+        return Object.assign({}, state, {foodItems: foodItemsCopy});
+    } else if (state.restaurantId !== restaurantId) {
+        console.log('Other restaurant already in cart');
+        return state;
     }
-
-    // copy restaurant state object and replace it's foodItem with newly added foodItem
-    const copiedRestaurantState = Object.assign({}, state[restaurantId], {[foodItem.name]: copiedFoodItemInCart});
-
-    return Object.assign({}, state, {[restaurantId]: copiedRestaurantState});
+    
 };
 
 const removeItemFromCart = (state, action) => {
-    const {restaurantId, foodItemName} = action;
+    const {foodItemName} = action;
 
-    const copiedRestaurantState = Object.assign({}, state[restaurantId]);
-    delete copiedRestaurantState[foodItemName];
+    const copiedFoodItems = Object.assign({}, state.foodItems);
+    delete copiedFoodItems[foodItemName];
 
-    const copiedCartState = Object.assign({}, state, {[restaurantId]: copiedRestaurantState});
-    // if restaurant has no more foodItems remove it from cart
-    if (Object.keys(copiedRestaurantState).length === 0) {
-        delete copiedCartState[restaurantId];
+    // if there are no more foodItems in cart clear all other data also
+    if (Object.keys(copiedFoodItems).length === 0) {
+        return {};
     }
+
+    const copiedCartState = Object.assign({}, state, {foodItems: copiedFoodItems});
     return copiedCartState;
 };
 
 const decrementItemFromCart = (state, action) => {
-    const {restaurantId, foodItemName} = action;
+    const {foodItemName} = action;
 
-    const copiedFoodItemState = Object.assign({}, state[restaurantId][foodItemName]);
+    const copiedFoodItemState = Object.assign({}, state.foodItems[foodItemName]);
 
     if (copiedFoodItemState.quantity === 1) {
         return state;
@@ -41,22 +57,22 @@ const decrementItemFromCart = (state, action) => {
         copiedFoodItemState.quantity--;
     }
 
-    const copiedRestaurantState = Object.assign({}, state[restaurantId], {[foodItemName]: copiedFoodItemState});
+    const copiedFoodItemsState = Object.assign({}, state.foodItems, {[foodItemName]: copiedFoodItemState});
 
-    const copiedCartState = Object.assign({}, state, {[restaurantId]: copiedRestaurantState});
+    const copiedCartState = Object.assign({}, state, {foodItems: copiedFoodItemsState});
     return copiedCartState;
 };
 
 const incrementItemFromCart = (state, action) => {
-    const {restaurantId, foodItemName} = action;
+    const {foodItemName} = action;
 
-    const copiedFoodItemState = Object.assign({}, state[restaurantId][foodItemName]);
+    const copiedFoodItemState = Object.assign({}, state.foodItems[foodItemName]);
 
     copiedFoodItemState.quantity++;
 
-    const copiedRestaurantState = Object.assign({}, state[restaurantId], {[foodItemName]: copiedFoodItemState});
+    const copiedFoodItemsState = Object.assign({}, state.foodItems, {[foodItemName]: copiedFoodItemState});
 
-    const copiedCartState = Object.assign({}, state, {[restaurantId]: copiedRestaurantState});
+    const copiedCartState = Object.assign({}, state, {foodItems: copiedFoodItemsState});
     return copiedCartState;
 };
 
@@ -71,9 +87,7 @@ const cartReducer = (state = {}, action) => {
         case 'incrementFoodItemInCart':
             return incrementItemFromCart(state, action);
         case 'clearCart':
-            const stateCopy = Object.assign({}, state);
-            delete stateCopy[action.restaurantId];
-            return stateCopy;
+            return {};
         default:
             return state;
     }

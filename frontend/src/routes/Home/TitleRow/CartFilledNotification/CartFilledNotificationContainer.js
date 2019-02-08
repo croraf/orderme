@@ -4,12 +4,13 @@ import {CartFilledNotification} from './CartFilledNotification';
 const mapStateToProps = (state) => {
 
     let count = 0;
-    const arrayOfRestaurantsWithItems = Object.values(state.cart);
+
+    if (state.cart.foodItems === undefined) {return {count};}
+
+    const arrayOfFoodItems = Object.values(state.cart.foodItems);
     
-    arrayOfRestaurantsWithItems.forEach(restaurantItem => {
-        Object.values(restaurantItem).forEach(foodItem => {
-            count += foodItem.quantity;
-        });
+    arrayOfFoodItems.forEach(foodItem => {
+        count += foodItem.quantity;
     });
     
     return {

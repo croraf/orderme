@@ -18,9 +18,9 @@ const makeOrder = (restaurantId) => async (dispatch, getState) => {
     // has to be created before the cart content is cleared
     const order = {
         restaurantId: restaurantId,
-        items: getState().cart[restaurantId]
+        items: getState().cart.foodItems
     };
-    dispatch({type: 'clearCart', restaurantId});
+    dispatch({type: 'clearCart'});
 
     const fetchOptions = {
         method: 'POST',

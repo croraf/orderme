@@ -6,17 +6,17 @@ class FoodItem extends React.Component {
 
     removeItemHandler = () => {
         const {removeItemHandler, foodItem} = this.props;
-        removeItemHandler(foodItem.restaurantId, foodItem.name);
+        removeItemHandler(foodItem.name);
     }
 
     decrementItemHandler = () => {
         const {decrementItemHandler, foodItem} = this.props;
-        decrementItemHandler(foodItem.restaurantId, foodItem.name);
+        decrementItemHandler(foodItem.name);
     }
 
     incrementItemHandler = () => {
         const {incrementItemHandler, foodItem} = this.props;
-        incrementItemHandler(foodItem.restaurantId, foodItem.name);
+        incrementItemHandler(foodItem.name);
     }
 
     render () {
