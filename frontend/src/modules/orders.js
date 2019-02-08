@@ -15,6 +15,10 @@ const fetchOrders = () => async (dispatch) => {
 
 const makeOrder = () => async (dispatch, getState) => {
 
+    if (getState().cart.restaurantId === undefined) {
+        return;
+    }
+
     // has to be created before the cart content is cleared
     const order = {
         restaurantId: getState().cart.restaurantId,
