@@ -6,6 +6,7 @@ import { CartModalHeader } from './CartModalHeader';
 import { CartModalFooter } from './CartModalFooter';
 import { OrderListContainer } from './OrderList/OrderListContainer';
 import DeliveryDataForm from './DeliveryData/DeliveryDataForm';
+import CustomersNoteForm from './CustomersNoteForm/CustomersNoteForm';
 import Button from '@material-ui/core/Button';
 import DialogActions from '@material-ui/core/DialogActions';
 
@@ -20,7 +21,7 @@ class CartModal extends React.Component {
         const {open, closeModal, onFullOrdersButtonClickHandler, loginStatus, orderButtonClickHandler} = this.props;
 
         const orderButtonComponent = loginStatus ? (
-            <Button onClick={() => {orderButtonClickHandler();}} color="primary">
+            <Button onClick={() => {orderButtonClickHandler();}} color="primary" style={{fontSize: '1.2rem'}}>
                 Order
             </Button>
         ) : <div>LOG IN TO ORDER (!)</div>;
@@ -70,7 +71,14 @@ class CartModal extends React.Component {
                     </div> */}
 
                     <div style={{
-                        margin: '0rem 1.5rem 1rem 1.5rem',
+                        margin: '0rem 1.5rem 0.5rem 1.5rem',
+                        paddingBottom: '0.5rem',
+                    }}>
+                        <CustomersNoteForm />
+                    </div>
+
+                    <div style={{
+                        margin: '0rem 1.5rem 1rem 1.5rem'
                     }}>
                         <DialogActions>
                             {orderButtonComponent}

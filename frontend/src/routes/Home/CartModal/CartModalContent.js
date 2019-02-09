@@ -37,10 +37,10 @@ class CartModalContent extends React.Component {
 
                 <div
                     style={{
-                        padding: '1rem 0rem 0rem 0rem',
+                        padding: '1.2rem 0rem 0rem 0rem',
                         display: 'flex',
                         justifyContent: 'right',
-                        fontSize: '1.2rem'
+                        fontSize: '1.1rem'
                     }}
                 >TOTAL: {totalPrice.toFixed(2)} kn</div>
             </div>
