@@ -23,11 +23,11 @@ class FoodItem extends React.Component {
         const {foodItem, editable} = this.props;
 
         const decrementItemElement = editable && (
-            <div style={{cursor: 'pointer'}} onClick={this.decrementItemHandler}>-</div>
+            <div style={{cursor: 'pointer', width: '1.5rem', textAlign: 'center'}} onClick={this.decrementItemHandler}>-</div>
         );
 
         const incrementItemElement = editable && (
-            <div style={{cursor: 'pointer'}} onClick={this.incrementItemHandler}>+</div>
+            <div style={{cursor: 'pointer', width: '1.5rem', textAlign: 'center'}} onClick={this.incrementItemHandler}>+</div>
         );
 
         const removeItemElement = editable && (
@@ -61,7 +61,7 @@ class FoodItem extends React.Component {
                         display: 'flex'
                     }}>
                         {decrementItemElement}
-                        <div style={{paddingLeft: '10px', paddingRight: '10px'}}>{foodItem.quantity}</div>
+                        <div style={{width: '1.5rem', textAlign: 'center'}}>{foodItem.quantity}</div>
                         {incrementItemElement}
                     </div>
                     

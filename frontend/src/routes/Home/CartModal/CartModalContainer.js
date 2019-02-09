@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     closeModal: () => {dispatch({type: 'CLOSE_MODAL'});},
-    onFullOrdersButtonClickHandler: () => {
+    ordersHistoryButtonClickHandler: () => {
         dispatch({type: 'CLOSE_MODAL'});
         dispatch(push('/orders'));
     },

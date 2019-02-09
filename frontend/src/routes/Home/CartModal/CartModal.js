@@ -7,8 +7,6 @@ import { CartModalFooter } from './CartModalFooter';
 import { OrderListContainer } from './OrderList/OrderListContainer';
 import DeliveryDataForm from './DeliveryData/DeliveryDataForm';
 import CustomersNoteForm from './CustomersNoteForm/CustomersNoteForm';
-import Button from '@material-ui/core/Button';
-import DialogActions from '@material-ui/core/DialogActions';
 
 function Transition(props) {
     return <Slide direction="up" {...props} />;
@@ -18,13 +16,7 @@ class CartModal extends React.Component {
 
     render() {
 
-        const {open, closeModal, onFullOrdersButtonClickHandler, loginStatus, orderButtonClickHandler} = this.props;
-
-        const orderButtonComponent = loginStatus ? (
-            <Button onClick={() => {orderButtonClickHandler();}} color="primary" style={{fontSize: '1.2rem'}}>
-                Order
-            </Button>
-        ) : <div>LOG IN TO ORDER (!)</div>;
+        const {open, closeModal, ordersHistoryButtonClickHandler, loginStatus, orderButtonClickHandler} = this.props;
 
         return (
             <Dialog
@@ -64,26 +56,24 @@ class CartModal extends React.Component {
 
                     {/* <div style={{padding: '0rem 1.5rem'}}>
                         <OrderListContainer />
-                    </div>
-
-                    <div style={{paddingBottom: '1rem'}}>
-                        <CartModalFooter onFullOrdersButtonClickHandler={onFullOrdersButtonClickHandler}/>
-                    </div> */}
+                    </div>*/}
 
                     <div style={{
-                        margin: '0rem 1.5rem 0.5rem 1.5rem',
-                        paddingBottom: '0.5rem',
+                        margin: '0rem 1.5rem 0rem 1.5rem',
                     }}>
                         <CustomersNoteForm />
                     </div>
 
-                    <div style={{
-                        margin: '0rem 1.5rem 1rem 1.5rem'
-                    }}>
-                        <DialogActions>
-                            {orderButtonComponent}
-                        </DialogActions>
-                    </div>
+
+                    {/* <div style={{paddingBottom: '1rem'}}>
+                        <CartModalFooter onFullOrdersButtonClickHandler={onFullOrdersButtonClickHandler}/>
+                    </div> */}
+
+                    <CartModalFooter 
+                        loginStatus={loginStatus}
+                        orderButtonClickHandler={orderButtonClickHandler}
+                        ordersHistoryButtonClickHandler={ordersHistoryButtonClickHandler}
+                    />
                 </div>
             </Dialog>
         );
