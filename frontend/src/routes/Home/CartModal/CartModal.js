@@ -1,7 +1,7 @@
 import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import Slide from '@material-ui/core/Slide';
-import { CartModalContentContainer } from './CartModalContentContainer';
+import { CartModalContentContainer } from './CartModalContent/CartModalContentContainer';
 import { CartModalHeader } from './CartModalHeader';
 import { CartModalFooter } from './CartModalFooter';
 import { OrderListContainer } from './OrderList/OrderListContainer';
