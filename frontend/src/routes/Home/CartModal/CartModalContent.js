@@ -29,8 +29,12 @@ class CartModalContent extends React.Component {
                     justifyContent: 'space-between'
                 }}>
                     <div style={{
-                        fontWeight: 'bold'
-                    }}>{cart.restaurantId}:</div>
+                        fontWeight: 'bold',
+                        fontSize: '1.2rem',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        width: '100%',
+                    }}>{cart.restaurantId}</div>
                 </div>
 
                 <FoodItems items={cart.foodItems} restaurantId={cart.restaurantId} editable={true} />
