@@ -23,7 +23,7 @@ class FoodItem extends React.Component {
         const {foodItem, editable} = this.props;
 
         const decrementItemElement = editable && (
-            <div style={{cursor: 'pointer', width: '1.5rem', textAlign: 'center'}} onClick={this.decrementItemHandler}>-</div>
+            <div style={{cursor: 'pointer', width: '1.5rem', textAlign: 'center'}} onClick={this.decrementItemHandler}>&ndash;</div>
         );
 
         const incrementItemElement = editable && (
