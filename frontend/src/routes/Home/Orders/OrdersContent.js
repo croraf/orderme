@@ -1,5 +1,5 @@
 import React from 'react';
-import {OrderItemContainer} from '../CartModal/OrderItem/OrderItemContainer';
+import {OrderItemContainer} from './OrderItem/OrderItemContainer';
 
 class OrdersContent extends React.Component {
 

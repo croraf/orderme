@@ -4,7 +4,6 @@ import Slide from '@material-ui/core/Slide';
 import { CartModalContentContainer } from './CartModalContent/CartModalContentContainer';
 import { CartModalHeader } from './CartModalHeader';
 import { CartModalFooter } from './CartModalFooter/CartModalFooter';
-import { OrderListContainer } from './OrderList/OrderListContainer';
 import DeliveryDataForm from './DeliveryData/DeliveryDataForm';
 import CustomersNoteForm from './CustomersNoteForm/CustomersNoteForm';
 
