@@ -1,22 +1,19 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import DialogActions from '@material-ui/core/DialogActions';
+import { OrderButtonContainer } from './OrderButtonContainer';
 
 class CartModalFooter extends React.Component {
     render() {
-        const {loginStatus, orderButtonClickHandler, ordersHistoryButtonClickHandler} = this.props;
-
-        const orderButtonComponent = loginStatus ? (
-            <Button onClick={orderButtonClickHandler} color="primary" style={{fontSize: '1.2rem'}}>
-                Order
-            </Button>
-        ) : <div style={{fontSize: '1.2rem'}}>LOG IN TO ORDER (!)</div>;
+        const {loginStatus, ordersHistoryButtonClickHandler} = this.props;
 
         const ordersHistoryButtonComponent = loginStatus ? (
-            <Button onClick={this.props.ordersHistoryButtonClickHandler} color='primary' style={{fontSize: '1.2rem'}}>
+            <Button onClick={ordersHistoryButtonClickHandler} color='primary' style={{fontSize: '1.2rem'}}>
                 ORDERS HISTORY
             </Button>
         ) : <div />;
+
+
 
         return (
             <div style={{
@@ -25,7 +22,7 @@ class CartModalFooter extends React.Component {
                 justifyContent: 'space-between',
             }}>
                 {ordersHistoryButtonComponent}
-                {orderButtonComponent}
+                <OrderButtonContainer />
             </div>
         );
     }

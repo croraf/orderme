@@ -3,7 +3,7 @@ import Dialog from '@material-ui/core/Dialog';
 import Slide from '@material-ui/core/Slide';
 import { CartModalContentContainer } from './CartModalContent/CartModalContentContainer';
 import { CartModalHeader } from './CartModalHeader';
-import { CartModalFooter } from './CartModalFooter';
+import { CartModalFooter } from './CartModalFooter/CartModalFooter';
 import { OrderListContainer } from './OrderList/OrderListContainer';
 import DeliveryDataForm from './DeliveryData/DeliveryDataForm';
 import CustomersNoteForm from './CustomersNoteForm/CustomersNoteForm';
@@ -64,14 +64,8 @@ class CartModal extends React.Component {
                         <CustomersNoteForm />
                     </div>
 
-
-                    {/* <div style={{paddingBottom: '1rem'}}>
-                        <CartModalFooter onFullOrdersButtonClickHandler={onFullOrdersButtonClickHandler}/>
-                    </div> */}
-
                     <CartModalFooter 
                         loginStatus={loginStatus}
-                        orderButtonClickHandler={orderButtonClickHandler}
                         ordersHistoryButtonClickHandler={ordersHistoryButtonClickHandler}
                     />
                 </div>

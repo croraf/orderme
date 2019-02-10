@@ -81,10 +81,12 @@ class OrderItem extends React.Component {
                     display: 'flex',
                     justifyContent: 'space-between'
                 }}>
+                    {/* <div style={{width: '20rem', textAlign: 'left'}}/> */}
                     <div style={{
-                        fontWeight: 'bold'
-                    }}>{orderData.restaurantId}:</div>
-                    <div>{orderData.localeTimestamp}</div>
+                        fontWeight: 'bold',
+                        textAlign: 'center'
+                    }}>{orderData.restaurantId}</div>
+                    <div style={{width: '20rem', textAlign: 'right'}}>{orderData.localeTimestamp}</div>
                 </div>
                 <FoodItems items={orderData.items} />
 
