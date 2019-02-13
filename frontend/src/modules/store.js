@@ -12,6 +12,8 @@ import { cartReducer } from './cart';
 import { ordersReducer } from './orders';
 import { loginReducer } from './login';
 import { modalReducer } from './modal';
+import { orderingStatusReducer } from './orderingStatus';
+
 import { reducer as formReducer } from 'redux-form';
 
 const history = createHistory();
@@ -24,10 +26,11 @@ const reducer = combineReducers({
     restaurants: restaurantsReducer,
     restaurantDetails: restaurantDetailsReducer,
     cart: cartReducer,
+    orderingStatus: orderingStatusReducer,
     orders: ordersReducer,
     login: loginReducer,
     modal: modalReducer,
-    form: formReducer
+    form: formReducer,
 });
 
 const store = createStore(

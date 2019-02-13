@@ -6,6 +6,8 @@ import { CartModalHeader } from './CartModalHeader';
 import { CartModalFooter } from './CartModalFooter/CartModalFooter';
 import DeliveryDataForm from './DeliveryData/DeliveryDataForm';
 import CustomersNoteForm from './CustomersNoteForm/CustomersNoteForm';
+import { OrderItemContainer } from '../Orders/OrderItem/OrderItemContainer';
+import { OrderControls } from './OrderControls/OrderControls';
 
 function Transition(props) {
     return <Slide direction="up" {...props} />;
@@ -15,7 +17,10 @@ class CartModal extends React.Component {
 
     render() {
 
-        const {open, closeModal, ordersHistoryButtonClickHandler, loginStatus, orderButtonClickHandler} = this.props;
+        const {open, closeModal, ordersHistoryButtonClickHandler, loginStatus, orders} = this.props;
+
+        const orderItemsArray = Object.values(orders);
+        const lastOrder = (orderItemsArray.length > 0) && orderItemsArray[orderItemsArray.length - 1];
 
         return (
             <Dialog
@@ -32,18 +37,24 @@ class CartModal extends React.Component {
                     }}
                 >
                     <CartModalHeader handleClose={closeModal}/>
+
+                    {/* <div style={{padding: '0rem 1.5rem'}}>
+                        { lastOrder && <OrderItemContainer isLastChild={true} orderData={lastOrder}/> }
+                    </div> */}
                     
                     <div style={{padding: '0rem 1.5rem'}}>
                         <div style={{
                             minHeight: '100px',
                             borderTop: '5px solid black',
-                            borderBottom: '5px solid black',
                             padding: '5px 0px 0px',
                             margin: '0px 0px 10px 0px'
                         }}>
                             <CartModalContentContainer closeModal={closeModal}/>
                         </div>
                     </div>
+
+                    
+                    <OrderControls orderData={lastOrder} />
 
                     <div style={{
                         margin: '0rem 1.5rem 0.5rem 1.5rem',
@@ -52,10 +63,6 @@ class CartModal extends React.Component {
                     }}>
                         <DeliveryDataForm />
                     </div>
-
-                    {/* <div style={{padding: '0rem 1.5rem'}}>
-                        <OrderListContainer />
-                    </div>*/}
 
                     <div style={{
                         margin: '0rem 1.5rem 0rem 1.5rem',

@@ -15,16 +15,16 @@ const fetchOrders = () => async (dispatch) => {
 
 const makeOrder = () => async (dispatch, getState) => {
 
+    dispatch({type: 'CHANGE_ORDERING_STATUS', newStatus: 'PLACING ORDER'});
+
     if (getState().cart.restaurantId === undefined) {
         return;
     }
 
-    // has to be created before the cart content is cleared
     const order = {
         restaurantId: getState().cart.restaurantId,
         items: getState().cart.foodItems
     };
-    dispatch({type: 'clearCart'});
 
     const fetchOptions = {
         method: 'POST',
@@ -39,8 +39,9 @@ const makeOrder = () => async (dispatch, getState) => {
     order['timestamp'] = result.timestamp;
     order['localeTimestamp'] = new Date(result.timestamp).toLocaleString('de');
     order['status'] = result.status;
-    
+
     dispatch({type: 'createOrder', order});
+    dispatch({type: 'CHANGE_ORDERING_STATUS', newStatus: 'AWAITING CONFIRMATION'});
 };
 
 const cancelOrder = (_id) => async (dispatch) => {
