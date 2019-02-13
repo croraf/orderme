@@ -14,8 +14,11 @@ class CartButton extends React.Component {
                     height: '2.5rem',
                     margin: 'auto 0px',
                 }}>
-                    <Button style={{padding: '0rem'}} variant='outlined' color='primary' onClick={this.props.openModal}><CartIcon /></Button>
-                    <CartFilledNotificationContainer />
+                    <Button style={{padding: '0rem'}} variant='outlined' color='primary' onClick={this.props.openModal}>
+                        <CartIcon />
+                        <CartFilledNotificationContainer />
+                    </Button>
+                    
                 </div>
             </div>
         );
