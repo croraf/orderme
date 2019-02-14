@@ -5,12 +5,12 @@ class CartFilledNotification extends React.Component {
     render() {
         const {count} = this.props;
 
-        if (count === 0) {
-            return null;
-        }
+        let color = count === 0 && '#3f51b5';
 
         return (
-            <div style={{color: 'red', fontSize: '1.1rem', marginRight: '-5px', marginBottom: '10px'}}>{count}</div>
+            <div style={{color: color || 'red', fontSize: '1.3rem', marginRight: '0px', marginBottom: '0px'}}>
+                +{count}
+            </div>
         );
     }
 }
