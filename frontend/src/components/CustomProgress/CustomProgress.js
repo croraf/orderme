@@ -4,8 +4,9 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
     progressBar: {
-        height: '5px',
+        height: '25px',
         backgroundColor: '#3f51b5',
+        borderRadius: '5px'
         //animation: 'progress 30s 1 linear'
     },
     /* '@keyframes progress': {

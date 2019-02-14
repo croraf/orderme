@@ -4,6 +4,12 @@ import CustomProgress from 'Components/CustomProgress/CustomProgress';
 import Button from '@material-ui/core/Button';
 
 class OrderControls extends React.Component {
+
+
+    cancelOrder = () => {
+        this.props.cancelOrderClickHandler(this.props.orderData._id);
+    } 
+
     render() {
         const {orderData} = this.props;
 

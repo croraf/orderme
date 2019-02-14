@@ -46,6 +46,7 @@ const makeOrder = () => async (dispatch, getState) => {
 
 const cancelOrder = (_id) => async (dispatch) => {
     const result = await fetchUtils.fetchRelative('cancel/orders/' + _id);
+    dispatch({type: 'CHANGE_ORDERING_STATUS', newStatus: 'CANCELED'});
     dispatch({type: 'modifyOrder',  _id, data: {status: result === 1 ? 'CANCELED' : 'CONFIRMED'}});
 };
 
