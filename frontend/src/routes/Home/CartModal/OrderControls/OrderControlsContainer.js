@@ -4,6 +4,7 @@ import { OrderControls } from './OrderControls';
 
 
 const mapStateToProps = (state) => ({
+    orderingStatus: state.orderingStatus,
 });
 
 const mapDispatchToProps = () => ({

@@ -11,7 +11,11 @@ class OrderControls extends React.Component {
     } 
 
     render() {
-        const {orderData} = this.props;
+        const {orderData, orderingStatus} = this.props;
+
+        if (!['AWAITING CONFIRMATION', 'ACCEPTED', 'CANCELED', 'CONFIRMED'].includes(orderingStatus)) {
+            return null;
+        }
 
         let statusColor = 'black';
         switch (orderData.status) {
@@ -67,9 +71,8 @@ class OrderControls extends React.Component {
 
         return (
             <div style={{
-                padding: '0rem 1.5rem 1rem',
+                padding: '0rem 1.5rem 0rem',
                 margin: '0rem 1.5rem 0.5rem 1.5rem',
-                borderBottom: '5px solid black'
             }}>
                 <div style={{
                     display: 'flex',

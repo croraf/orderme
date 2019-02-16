@@ -7,7 +7,7 @@ import { CartModalFooter } from './CartModalFooter/CartModalFooter';
 import DeliveryDataForm from './DeliveryData/DeliveryDataForm';
 import CustomersNoteForm from './CustomersNoteForm/CustomersNoteForm';
 import { OrderItemContainer } from '../Orders/OrderItem/OrderItemContainer';
-import { OrderControls } from './OrderControls/OrderControls';
+import { OrderControlsContainer } from './OrderControls/OrderControlsContainer';
 
 function Transition(props) {
     return <Slide direction="up" {...props} />;
@@ -54,11 +54,12 @@ class CartModal extends React.Component {
                     </div>
 
                     
-                    <OrderControls orderData={lastOrder} />
+                    <OrderControlsContainer orderData={lastOrder} />
 
                     <div style={{
                         margin: '0rem 1.5rem 0.5rem 1.5rem',
                         borderBottom: '5px solid black',
+                        borderTop: '5px solid black',
                         paddingBottom: '0.5rem',
                     }}>
                         <DeliveryDataForm />
