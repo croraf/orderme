@@ -40,8 +40,8 @@ class OrderControls extends React.Component {
         }
 
         const cancelOrderButton = orderingStatus === 'AWAITING CONFIRMATION' || orderingStatus === 'ACCEPTED' ? (
-            <Button onClick={this.cancelOrder} color="primary">
-                Cancel
+            <Button onClick={this.cancelOrder} color="primary" style={{fontSize: '1rem'}}>
+                Cancel order
             </Button>
         ) : <div />;
 
@@ -64,17 +64,19 @@ class OrderControls extends React.Component {
         return (
             <div style={{
                 padding: '0rem 0rem',
-                margin: '0rem 0rem 0rem 0rem',
+                margin: '0.2rem 0rem 0rem 0rem',
             }}>
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'space-between'
-                }}>
-                    {cancelOrderButton}
-                </div>
 
                 {progressComponentAwaitingConfirmation}
                 {progressComponentAccepted}
+                <div style={{
+                    width: '100%',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    marginBottom: '-1.2rem'
+                }}>
+                    {cancelOrderButton}
+                </div>
             </div>
         );
     }
