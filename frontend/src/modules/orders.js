@@ -36,11 +36,12 @@ const makeOrder = () => async (dispatch, getState) => {
     const result = await fetchUtils.fetchRelative('orders', fetchOptions);
     order['_id'] = result._id;
     order['timestamp'] = result.timestamp;
-    order['localeTimestamp'] = new Date(result.timestamp).toLocaleString('de');
+    const localeTimestamp = new Date(result.timestamp).toLocaleString('de');
+    order['localeTimestamp'] = localeTimestamp;
     order['status'] = result.status;
 
     dispatch({type: 'createOrder', order});
-    dispatch({type: 'modifyCartMetadata', metadata: {status: 'AWAITING CONFIRMATION', timestamp: result.timestamp}});
+    dispatch({type: 'modifyCartMetadata', metadata: {status: 'AWAITING CONFIRMATION', timestamp: result.timestamp, localeTimestamp}});
 };
 
 const cancelOrder = (_id) => async (dispatch) => {
