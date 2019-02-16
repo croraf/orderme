@@ -3,9 +3,11 @@ import { OrderControls } from './OrderControls';
 
 
 
-const mapStateToProps = (state) => ({
-    orderingStatus: state.orderingStatus,
-});
+const mapStateToProps = (state) => {
+
+    return ({
+    });
+};
 
 const mapDispatchToProps = () => ({
 

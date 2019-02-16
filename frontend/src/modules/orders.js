@@ -5,17 +5,16 @@ import transforms from 'Utilities/transforms';
 
 const fetchOrders = () => async (dispatch) => {
     const orders = await fetchUtils.fetchRelative('orders');
-    performance.mark('before transform');
+    
+    // add locale timestamp to orders on frontend (for optimization)
     const ordersToObject = transforms.arrayToObjectAddLocaleTimestamp(orders, '_id');
-    performance.mark('after transform');
-    performance.measure('measure222');
     console.log('orders fetched:', ordersToObject);
     dispatch({type: 'ordersLoaded', data: ordersToObject});
 };
 
 const makeOrder = () => async (dispatch, getState) => {
 
-    dispatch({type: 'CHANGE_ORDERING_STATUS', newStatus: 'PLACING ORDER'});
+    dispatch({type: 'modifyCartMetadata', metadata: {status: 'PLACING ORDER'}});
 
     if (getState().cart.restaurantId === undefined) {
         return;
@@ -41,12 +40,12 @@ const makeOrder = () => async (dispatch, getState) => {
     order['status'] = result.status;
 
     dispatch({type: 'createOrder', order});
-    dispatch({type: 'CHANGE_ORDERING_STATUS', newStatus: 'AWAITING CONFIRMATION'});
+    dispatch({type: 'modifyCartMetadata', metadata: {status: 'AWAITING CONFIRMATION', timestamp: result.timestamp}});
 };
 
 const cancelOrder = (_id) => async (dispatch) => {
     const result = await fetchUtils.fetchRelative('cancel/orders/' + _id);
-    dispatch({type: 'CHANGE_ORDERING_STATUS', newStatus: 'CANCELED'});
+    dispatch({type: 'modifyCartMetadata', metadata: {status: result === 1 ? 'CANCELED' : 'CONFIRMED'}});
     dispatch({type: 'modifyOrder',  _id, data: {status: result === 1 ? 'CANCELED' : 'CONFIRMED'}});
 };
 

@@ -21,6 +21,7 @@ const initialize = () => new Promise((resolve, reject) => {
             case 'orderStatusChange':
                 console.log('[WS] orderStatusChange received:', data.message);
                 store.dispatch({type: 'modifyOrder',  _id: data.message._id, data: data.message});
+                store.dispatch({type: 'modifyCartMetadata',  metadata: data.message});
                 break;
             default:
                 break;

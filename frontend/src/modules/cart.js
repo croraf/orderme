@@ -5,6 +5,7 @@ const addItemToCart = (state, action) => {
     if (state.restaurantId === undefined) {
         const newFoodItemInCart = Object.assign({}, foodItem, {quantity: 1, restaurantId});
         return {
+            status: 'NOT PLACED',
             restaurantId,
             foodItems: {[foodItem.name]: newFoodItemInCart}
         };
@@ -76,6 +77,11 @@ const incrementItemFromCart = (state, action) => {
     return copiedCartState;
 };
 
+const modifyCartMetadata = (state, action) => {
+    const copiedCartState = Object.assign({}, state, {...action.metadata});
+    return copiedCartState;
+};
+
 const cartReducer = (state = {}, action) => {
     switch (action.type) {
         case 'addFoodItemToCart':
@@ -86,6 +92,8 @@ const cartReducer = (state = {}, action) => {
             return decrementItemFromCart(state, action);
         case 'incrementFoodItemInCart':
             return incrementItemFromCart(state, action);
+        case 'modifyCartMetadata': 
+            return modifyCartMetadata(state, action);
         case 'clearCart':
             return {};
         default:

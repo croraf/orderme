@@ -6,8 +6,6 @@ import { CartModalHeader } from './CartModalHeader';
 import { CartModalFooter } from './CartModalFooter/CartModalFooter';
 import DeliveryDataForm from './DeliveryData/DeliveryDataForm';
 import CustomersNoteForm from './CustomersNoteForm/CustomersNoteForm';
-import { OrderItemContainer } from '../Orders/OrderItem/OrderItemContainer';
-import { OrderControlsContainer } from './OrderControls/OrderControlsContainer';
 
 function Transition(props) {
     return <Slide direction="up" {...props} />;
@@ -17,10 +15,8 @@ class CartModal extends React.Component {
 
     render() {
 
-        const {open, closeModal, ordersHistoryButtonClickHandler, loginStatus, orders} = this.props;
+        const {open, closeModal, ordersHistoryButtonClickHandler, loginStatus} = this.props;
 
-        const orderItemsArray = Object.values(orders);
-        const lastOrder = (orderItemsArray.length > 0) && orderItemsArray[orderItemsArray.length - 1];
 
         return (
             <Dialog
@@ -33,7 +29,7 @@ class CartModal extends React.Component {
             >
                 <div
                     style={{
-                        minWidth: '500px',
+                        minWidth: '600px',
                     }}
                 >
                     <CartModalHeader handleClose={closeModal}/>
@@ -53,8 +49,6 @@ class CartModal extends React.Component {
                         </div>
                     </div>
 
-                    
-                    <OrderControlsContainer orderData={lastOrder} />
 
                     <div style={{
                         margin: '0rem 1.5rem 0.5rem 1.5rem',

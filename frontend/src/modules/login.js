@@ -2,12 +2,13 @@ import jwtDecode from 'jwt-decode';
 import websocket from './websocket';
 import { fetchOrders } from 'Modules/orders';
 
-
 let loginPopupChildWindowObjectReference;
 
 
 const postAuthentication = async (dispatch, jwtToken) => {
     dispatch(fetchOrders());
+
+    // TODO: checkForRecentOrdersToDisplayNote
 
     await websocket.initialize();
     websocket.sendAuthenticationMesssage(jwtToken);

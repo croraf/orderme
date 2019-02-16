@@ -13,8 +13,7 @@ class RestaurantName extends React.Component {
                 <div style={{
                     fontWeight: 'bold',
                     fontSize: '1.2rem',
-                    display: 'flex',
-                    justifyContent: 'center',
+                    textAlign: 'center',
                     width: '100%',
                 }}>{restaurantName}</div>
             </div>

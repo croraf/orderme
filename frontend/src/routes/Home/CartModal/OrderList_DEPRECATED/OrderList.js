@@ -23,14 +23,14 @@ class OrderList extends React.Component {
         return (
             <React.Fragment>
                 <div style={{
-                    minWidth: '500px',
+                    minWidth: '600px',
                     textAlign: 'center',
                     borderTop: '5px solid black',
                     paddingTop: '8px'
                 }}>Recent orders:</div>
 
                 <div style={{
-                    minWidth: '500px',
+                    minWidth: '600px',
                     borderTop: '5px solid black',
                     borderBottom: '5px solid black',
                     minHeight: '50px',

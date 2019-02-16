@@ -11,15 +11,16 @@ class OrderControls extends React.Component {
     } 
 
     render() {
-        const {orderData, orderingStatus} = this.props;
+        const {orderingStatus, orderedTimestamp, acceptedTimestamp} = this.props;
+
 
         if (!['AWAITING CONFIRMATION', 'ACCEPTED', 'CANCELED', 'CONFIRMED'].includes(orderingStatus)) {
             return null;
         }
 
         let statusColor = 'black';
-        switch (orderData.status) {
-            case 'NOT_PLACED':
+        switch (orderingStatus) {
+            case 'NOT PLACED':
                 statusColor = 'black';
                 break;
             case 'AWAITING CONFIRMATION':
@@ -38,48 +39,38 @@ class OrderControls extends React.Component {
                 break;
         }
 
-        const cancelOrderButton = orderData.status === 'AWAITING CONFIRMATION' || orderData.status === 'ACCEPTED' ? (
+        const cancelOrderButton = orderingStatus === 'AWAITING CONFIRMATION' || orderingStatus === 'ACCEPTED' ? (
             <Button onClick={this.cancelOrder} color="primary">
                 Cancel
             </Button>
         ) : <div />;
 
-        const canceledStatusText = (
-            <div style={{
-                color: statusColor,
-                padding: '8px 0px'
-            }}>
-                {orderData.status}
-            </div>
-        );
-
-        const progressComponentAwaitingConfirmation = orderData.status === 'AWAITING CONFIRMATION' && (
+        const progressComponentAwaitingConfirmation = orderingStatus === 'AWAITING CONFIRMATION' && (
             <CustomProgress
-                orderStatus={orderData.status}
-                initialTimestamp={orderData.timestamp}
+                orderStatus={orderingStatus}
+                initialTimestamp={orderedTimestamp}
                 duration={20} 
             />
         );
 
-        const progressComponentAccepted = orderData.status === 'ACCEPTED' && (
+        const progressComponentAccepted = orderingStatus === 'ACCEPTED' && (
             <CustomProgress
-                orderStatus={orderData.status}
-                initialTimestamp={orderData.acceptedTimestamp}
+                orderStatus={orderingStatus}
+                initialTimestamp={acceptedTimestamp}
                 duration={20} 
             />
         );
 
         return (
             <div style={{
-                padding: '0rem 1.5rem 0rem',
-                margin: '0rem 1.5rem 0.5rem 1.5rem',
+                padding: '0rem 0rem',
+                margin: '0rem 0rem 0rem 0rem',
             }}>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'space-between'
                 }}>
                     {cancelOrderButton}
-                    {canceledStatusText}
                 </div>
 
                 {progressComponentAwaitingConfirmation}

@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 /* import DialogActions from '@material-ui/core/DialogActions'; */
 import {FoodItems} from 'Components/FoodItems/FoodItems';
 import CustomProgress from 'Components/CustomProgress/CustomProgress';
+import { RestaurantName } from '../../CartModal/CartModalContent/RestaurantName';
 
 class OrderItem extends React.Component {
 
@@ -18,7 +19,7 @@ class OrderItem extends React.Component {
 
         let statusColor = 'black';
         switch (orderData.status) {
-            case 'NOT_PLACED':
+            case 'NOT PLACED':
                 statusColor = 'black';
                 break;
             case 'AWAITING CONFIRMATION':
@@ -43,10 +44,11 @@ class OrderItem extends React.Component {
             </Button>
         ) : <div />;
 
-        const canceledStatusText = (
+        const orderStatusText = (
             <div style={{
                 color: statusColor,
-                padding: '8px 0px'
+                width: '20rem',
+                textAlign: 'left',
             }}>
                 {orderData.status}
             </div>
@@ -72,20 +74,17 @@ class OrderItem extends React.Component {
             
             <div
                 style={{
-                    padding: '10px 0px 0px 0px',
+                    padding: '1rem 0rem 1rem 0rem',
                     color: 'black',
-                    borderBottom: !isLastChild && '1px solid black'
+                    borderBottom: !isLastChild && '1px solid black',
                 }}
             >
                 <div style={{
                     display: 'flex',
                     justifyContent: 'space-between'
                 }}>
-                    {/* <div style={{width: '20rem', textAlign: 'left'}}/> */}
-                    <div style={{
-                        fontWeight: 'bold',
-                        textAlign: 'center'
-                    }}>{orderData.restaurantId}</div>
+                    {orderStatusText}
+                    <RestaurantName restaurantName={orderData.restaurantId} />
                     <div style={{width: '20rem', textAlign: 'right'}}>{orderData.localeTimestamp}</div>
                 </div>
 
@@ -96,7 +95,6 @@ class OrderItem extends React.Component {
                     justifyContent: 'space-between'
                 }}>
                     {cancelOrderButton}
-                    {canceledStatusText}
                 </div>
                 
                 {progressComponentAwaitingConfirmation}
