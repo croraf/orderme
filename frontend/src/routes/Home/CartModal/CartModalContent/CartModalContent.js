@@ -66,7 +66,7 @@ class CartModalContent extends React.Component {
                 }}>
                     {orderStatusText}
                     <RestaurantName restaurantName={cart.restaurantId} />
-                    <div style={{width: '20rem', textAlign: 'right'}}>{12345}</div>
+                    <div style={{width: '20rem', textAlign: 'right'}}>{'timestamp placeholder'}</div>
                 </div>
 
                 <FoodItems items={cart.foodItems} restaurantId={cart.restaurantId} editable={cart.status === 'NOT PLACED'} />

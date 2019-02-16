@@ -41,7 +41,7 @@ class OrderControls extends React.Component {
 
         const cancelOrderButton = orderingStatus === 'AWAITING CONFIRMATION' || orderingStatus === 'ACCEPTED' ? (
             <Button onClick={this.cancelOrder} color="primary">
-                Cancel
+                Cancel (to fix)
             </Button>
         ) : <div />;
 

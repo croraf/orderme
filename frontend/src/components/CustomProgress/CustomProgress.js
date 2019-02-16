@@ -41,14 +41,10 @@ class CustomLinearProgress extends React.Component {
         const {classes} = this.props;
 
         return (
-            <div style={{
-                marginBottom: '5px'
-            }}>
-                <div 
-                    className={classes.progressBar}
-                    ref={this.myRef}
-                />
-            </div>
+            <div 
+                className={classes.progressBar}
+                ref={this.myRef}
+            />
         );
     }
 
