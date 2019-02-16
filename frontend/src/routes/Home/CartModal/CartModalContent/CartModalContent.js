@@ -38,7 +38,7 @@ class CartModalContent extends React.Component {
                 width: '20rem',
                 textAlign: 'left',
             }}>
-                {cart.status}
+                {!['NOT PLACED', 'PLACING ORDER'].includes(cart.status) && cart.status}
             </div>
         );
 
@@ -77,6 +77,7 @@ class CartModalContent extends React.Component {
                     orderingStatus={cart.status}
                     orderedTimestamp={cart.timestamp}
                     acceptedTimestamp={cart.acceptedTimestamp}
+                    orderId={cart._id}
                 />
             </div>
         );

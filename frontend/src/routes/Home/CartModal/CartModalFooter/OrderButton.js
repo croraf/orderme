@@ -3,9 +3,12 @@ import Button from '@material-ui/core/Button';
 
 class OrderButton extends React.Component {
     render() {
-        const {orderButtonClickHandler, loginStatus, cartFilled} = this.props;
+        const {orderButtonClickHandler, loginStatus, cartFilled, cartStatus} = this.props;
 
-        const disabled = loginStatus === false || cartFilled === false;
+        const disabled = 
+            loginStatus === false ||
+            cartFilled === false ||
+            ['PLACING ORDER', 'AWAITING CONFIRMATION', 'ACCEPTED'].includes(cartStatus);
 
         return (
             <Button onClick={orderButtonClickHandler} color="primary" style={{fontSize: '1.2rem'}} disabled={disabled}>

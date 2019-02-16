@@ -41,7 +41,15 @@ const makeOrder = () => async (dispatch, getState) => {
     order['status'] = result.status;
 
     dispatch({type: 'createOrder', order});
-    dispatch({type: 'modifyCartMetadata', metadata: {status: 'AWAITING CONFIRMATION', timestamp: result.timestamp, localeTimestamp}});
+    dispatch({
+        type: 'modifyCartMetadata',
+        metadata: {
+            _id: result._id,
+            status: 'AWAITING CONFIRMATION',
+            timestamp: result.timestamp,
+            localeTimestamp
+        }
+    });
 };
 
 const cancelOrder = (_id) => async (dispatch) => {

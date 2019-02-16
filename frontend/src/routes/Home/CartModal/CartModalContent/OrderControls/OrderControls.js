@@ -7,7 +7,7 @@ class OrderControls extends React.Component {
 
 
     cancelOrder = () => {
-        this.props.cancelOrderClickHandler(this.props.orderData._id);
+        this.props.cancelOrderClickHandler(this.props.orderId);
     } 
 
     render() {
@@ -41,7 +41,7 @@ class OrderControls extends React.Component {
 
         const cancelOrderButton = orderingStatus === 'AWAITING CONFIRMATION' || orderingStatus === 'ACCEPTED' ? (
             <Button onClick={this.cancelOrder} color="primary">
-                Cancel (to fix)
+                Cancel
             </Button>
         ) : <div />;
 
