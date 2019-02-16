@@ -64,7 +64,7 @@ class OrderControls extends React.Component {
         return (
             <div style={{
                 padding: '0rem 0rem',
-                margin: '0.2rem 0rem 0rem 0rem',
+                margin: '0.5rem 0rem 0rem 0rem',
             }}>
 
                 {progressComponentAwaitingConfirmation}
@@ -73,7 +73,7 @@ class OrderControls extends React.Component {
                     width: '100%',
                     display: 'flex',
                     justifyContent: 'center',
-                    marginBottom: '-1.2rem'
+                    marginBottom: '-1rem'
                 }}>
                     {cancelOrderButton}
                 </div>
