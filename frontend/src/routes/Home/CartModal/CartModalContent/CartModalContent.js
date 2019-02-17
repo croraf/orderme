@@ -35,7 +35,7 @@ class CartModalContent extends React.Component {
         const orderStatusText = (
             <div style={{
                 color: statusColor,
-                width: '8rem',
+                width: '15rem',
                 textAlign: 'left',
             }}>
                 {!['NOT PLACED', 'PLACING ORDER'].includes(cart.status) && cart.status}
@@ -67,7 +67,7 @@ class CartModalContent extends React.Component {
                 }}>
                     {orderStatusText}
                     <RestaurantName restaurantName={cart.restaurantId} />
-                    <div style={{width: '8rem', textAlign: 'right'}}>{cart.localeTimestamp}</div>
+                    <div style={{width: '15rem', textAlign: 'right'}}>{cart.localeTimestamp}</div>
                 </div>
 
                 <FoodItems items={cart.foodItems} restaurantId={cart.restaurantId} editable={cart.status === 'NOT PLACED'} />

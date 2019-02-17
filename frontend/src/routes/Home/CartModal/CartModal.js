@@ -6,17 +6,17 @@ import { CartModalHeader } from './CartModalHeader';
 import { CartModalFooter } from './CartModalFooter/CartModalFooter';
 import DeliveryDataForm from './DeliveryData/DeliveryDataForm';
 import CustomersNoteForm from './CustomersNoteForm/CustomersNoteForm';
+import { withStyles } from '@material-ui/styles';
 
 function Transition(props) {
     return <Slide direction="up" {...props} />;
 }
 
+
 class CartModal extends React.Component {
 
     render() {
-
-        const {open, closeModal, ordersHistoryButtonClickHandler, loginStatus} = this.props;
-
+        const {open, closeModal, ordersHistoryButtonClickHandler, loginStatus, classes} = this.props;
 
         return (
             <Dialog
@@ -26,10 +26,11 @@ class CartModal extends React.Component {
                 onClose={closeModal}
                 aria-labelledby="alert-dialog-slide-title"
                 aria-describedby="alert-dialog-slide-description"
+                classes={{paper: classes.paper}}
             >
                 <div
                     style={{
-                        minWidth: '600px',
+                        minWidth: '800px',
                     }}
                 >
                     <CartModalHeader handleClose={closeModal}/>
@@ -75,4 +76,13 @@ class CartModal extends React.Component {
     }
 }
 
-export {CartModal};
+const classes = {
+    paper: {
+        maxWidth: '800px',
+        width: '800px',
+    },
+};
+
+const StyledComponent = withStyles(classes)(CartModal);
+
+export {StyledComponent as CartModal};
