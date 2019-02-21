@@ -16,10 +16,6 @@ const makeOrder = () => async (dispatch, getState) => {
 
     dispatch({type: 'modifyCartMetadata', metadata: {status: 'PLACING ORDER'}});
 
-    if (getState().cart.restaurantId === undefined) {
-        return;
-    }
-
     const order = {
         restaurantId: getState().cart.restaurantId,
         items: getState().cart.foodItems
