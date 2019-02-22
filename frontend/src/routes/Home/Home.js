@@ -4,6 +4,7 @@ import MediaQuery from 'react-responsive';
 import { TitleRowContainer } from './TitleRow/TitleRowContainer';
 import { HomeRouter } from './HomeRouter';
 import { CartModalContainer } from './CartModal/CartModalContainer';
+import { RecentOrderNotificationContainer } from './RecentOrderNotification/RecentOrderNotificationContainer';
 
 const containerWidth = 950;
 
@@ -48,6 +49,8 @@ class Home extends React.Component {
                 {/* <div style={{
                     minWidth: '200px'
                 }}><img src='https://picsum.photos/200/600' /></div> */}
+
+                <RecentOrderNotificationContainer />
 
                 <MediaQuery query='(max-device-width: 1700px)'>
                     <div style={containerStyleHd}>
