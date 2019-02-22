@@ -13,28 +13,28 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "config": "^2.0.1",
-    "deepmerge": "^2.1.1",
-    "jsonwebtoken": "^8.3.0",
-    "koa": "^2.5.3",
-    "koa-body": "^4.0.4",
+    "config": "^2.0.2",
+    "deepmerge": "^2.2.1",
+    "jsonwebtoken": "^8.5.0",
+    "koa": "^2.7.0",
+    "koa-body": "^4.0.8",
     "koa-cors": "0.0.16",
     "koa-router": "^7.4.0",
     "koa-send": "^5.0.0",
     "koa-static-cache": "^5.1.2",
-    "koa2-swagger-ui": "^2.9.7",
-    "mongodb": "^3.1.4",
+    "koa2-swagger-ui": "^2.12.2",
+    "mongodb": "^3.1.13",
     "request": "^2.88.0",
-    "request-promise": "^4.2.2",
-    "swagger-ui": "^3.19.0",
-    "swagger2": "^1.0.1",
-    "swagger2-koa": "^1.0.2",
-    "ws": "^6.1.2"
+    "request-promise": "^4.2.4",
+    "swagger-ui": "^3.20.8",
+    "swagger2": "^1.0.4",
+    "swagger2-koa": "^1.0.3",
+    "ws": "^6.1.4"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
     "cross-env": "^5.2.0",
-    "eslint": "^5.5.0",
-    "nodemon": "^1.18.4"
+    "eslint": "^5.14.1",
+    "nodemon": "^1.18.10"
   }
 }
