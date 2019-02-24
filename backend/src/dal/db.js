@@ -6,7 +6,7 @@ const dbName = 'test';
 let client;
 let databaseConnection;
 
-const initializeDatabase = async () => {
+const initializeDatabaseInterface = async () => {
 
     try {
         client = await MongoClient.connect(mongoUri, { useNewUrlParser: true });
@@ -24,10 +24,10 @@ const initializeDatabase = async () => {
     }
 };
 
-const shutdownDatabase = async () => {
+const shutdownDatabaseInterface = async () => {
     client.close();
 };
 
 const getDatabaseConnection = () => databaseConnection;
 
-module.exports = { getDatabaseConnection, initializeDatabase, shutdownDatabase };
+module.exports = { getDatabaseConnection, initializeDatabaseInterface, shutdownDatabaseInterface };

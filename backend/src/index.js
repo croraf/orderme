@@ -1,4 +1,4 @@
-const { initializeDatabase, shutdownDatabase } = require('./dal/db');
+const { initializeDatabaseInterface, shutdownDatabaseInterface } = require('./dal/db');
 
 const {configureKoa} = require('./server/koa');
 
@@ -8,7 +8,7 @@ const http = require('http');
 
 const main = async () => {
 
-    await initializeDatabase();
+    await initializeDatabaseInterface();
     console.log('- Database interface initialized');
 
     const koaConfiguration = await configureKoa();

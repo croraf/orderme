@@ -1,4 +1,4 @@
-const { initializeDatabase, shutdownDatabase } = require('../src/dal/db');
+const { initializeDatabaseInterface, shutdownDatabaseInterface } = require('../src/dal/db');
 const { getAllRestaurants, getRestaurant, createRestaurant, deleteRestaurant, updateRestaurant } = require('../src/dal/restaurants');
 
 const {restaurantsList} = require('./restaurants');
@@ -6,7 +6,7 @@ const {restaurantsList} = require('./restaurants');
 
 const reshapeDb = async () => {
 
-    await initializeDatabase();
+    await initializeDatabaseInterface();
     console.log('- Database interface initialized');
 
     const deleteCount = await deleteRestaurant();
@@ -20,7 +20,7 @@ const reshapeDb = async () => {
     // console.log(restaurantsCreator);
     console.log('- All restaurants created. Create count:', restaurantsCreator.length);
 
-    await shutdownDatabase();
+    await shutdownDatabaseInterface();
     
 
 
@@ -34,7 +34,7 @@ const reshapeDb = async () => {
     console.log('- Restaurant Chello deleted. Deleted count:', deleteCount2);
 
 
-    await shutdownDatabase();
+    await shutdownDatabaseInterface();
     console.log('- Database interface shut down'); */
 };
 

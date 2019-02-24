@@ -14,7 +14,6 @@ const bindRoutes = () => {
     const router = new Router({prefix: '/v0/'});
 
     router.get('restaurants', async (ctx) => {
-        
         ctx.body = await restaurants.getAllRestaurants();
     });
     router.delete('restaurants', async (ctx) => {
@@ -49,7 +48,7 @@ const bindRoutes = () => {
         ctx.body = await orders.cancelOrder(ObjectId(ctx.params.id));
     });
 
-    const jwt = require('jsonwebtoken');
+    // const jwt = require('jsonwebtoken');
     router.get('users', async (ctx) => {
         /* console.log('user:', jwt.verify(ctx.request.headers['x-access-token'], 'abcdef')); */
         ctx.body = await users.getUsers();
