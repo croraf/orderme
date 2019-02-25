@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
 import { RecentOrderNotification } from './RecentOrderNotification';
 
-const mapStateToProps = () => {
-
-};
+const mapStateToProps = (state) => ({
+    show: state.recentOrderNotification,
+});
 
 const mapDispatchToProps = () => {
 

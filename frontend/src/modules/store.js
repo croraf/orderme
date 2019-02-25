@@ -12,6 +12,7 @@ import { cartReducer } from './cart';
 import { ordersReducer } from './orders';
 import { loginReducer } from './login';
 import { modalReducer } from './modal';
+import { recentOrderNotificationReducer } from './recentOrderNotification';
 
 import { reducer as formReducer } from 'redux-form';
 
@@ -29,6 +30,7 @@ const reducer = combineReducers({
     login: loginReducer,
     modal: modalReducer,
     form: formReducer,
+    recentOrderNotification: recentOrderNotificationReducer,
 });
 
 const store = createStore(

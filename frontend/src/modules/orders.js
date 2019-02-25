@@ -6,6 +6,13 @@ import transforms from 'Utilities/transforms';
 const fetchOrders = () => async (dispatch) => {
     const orders = await fetchUtils.fetchRelative('orders');
     
+    const lastOrderTimestampDiff = Date.now() - orders[orders.length - 1].timestamp;
+    if (lastOrderTimestampDiff < 1 * 3600 * 1000) {
+        console.log('order in last hour');
+        dispatch({type: 'showRecentOrderNotifiction'});
+    }
+
+    // convert array of orders to object (for optimization)
     // add locale timestamp to orders on frontend (for optimization)
     const ordersToObject = transforms.arrayToObjectAddLocaleTimestamp(orders, '_id');
     console.log('orders fetched:', ordersToObject);

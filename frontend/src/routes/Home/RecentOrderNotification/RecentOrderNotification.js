@@ -2,7 +2,12 @@ import React from 'react';
 
 
 class RecentOrderNotification extends React.Component {
+
     render() {
+        const {show} = this.props;
+
+        if (!show) {return null;}
+
         return (
             <div style={{
                 width: '100%',
