@@ -5,9 +5,9 @@ const mapStateToProps = (state) => ({
     show: state.recentOrderNotification,
 });
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = () => ({
 
-};
+});
 
 const RecentOrderNotificationContainer = connect(mapStateToProps, mapDispatchToProps)(RecentOrderNotification);
 
