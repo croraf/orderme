@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Button from '@material-ui/core/Button';
 
 class OrderButton extends React.Component {

@@ -37,6 +37,7 @@ module.exports = {
         ],
         "no-console": 0,
         "switch": 0,
-        "no-case-declarations": 0
+        "no-case-declarations": 0,
+        "react/prop-types": "off",
     }
 };
