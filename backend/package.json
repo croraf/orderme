@@ -15,26 +15,26 @@
   "dependencies": {
     "config": "^2.0.2",
     "deepmerge": "^2.2.1",
-    "jsonwebtoken": "^8.5.0",
+    "jsonwebtoken": "^8.5.1",
     "koa": "^2.7.0",
-    "koa-body": "^4.0.8",
+    "koa-body": "^4.1.0",
     "koa-cors": "0.0.16",
     "koa-router": "^7.4.0",
     "koa-send": "^5.0.0",
     "koa-static-cache": "^5.1.2",
-    "koa2-swagger-ui": "^2.12.2",
-    "mongodb": "^3.1.13",
+    "koa2-swagger-ui": "^2.13.2",
+    "mongodb": "^3.2.3",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
-    "swagger-ui": "^3.20.8",
+    "swagger-ui": "^3.22.0",
     "swagger2": "^1.0.4",
     "swagger2-koa": "^1.0.3",
-    "ws": "^6.1.4"
+    "ws": "^6.2.1"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
     "cross-env": "^5.2.0",
-    "eslint": "^5.14.1",
-    "nodemon": "^1.18.10"
+    "eslint": "^5.16.0",
+    "nodemon": "^1.18.11"
   }
 }
